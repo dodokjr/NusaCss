@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="id">
+<head>
+<title>Kopi Nusa — Store</title>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#4f46e5">
+<link rel="stylesheet" href="assets/nusa.min.css">
+<script>try{var t=localStorage.getItem("nusa-theme");document.documentElement.classList.toggle("dark",t==="dark"||(!t&&matchMedia("(prefers-color-scheme:dark)").matches));var p=localStorage.getItem("nusa-palette");p&&p!=="default"&&document.documentElement.setAttribute("data-palette",p)}catch(e){}</script>
+</head>
+<body class="page">
+<div class="scroll-bar"></div>
+
+<div class="banner"><i class="i i-truck"></i><span>Gratis ongkir se-Indonesia untuk belanja di atas Rp 150.000</span><button class="alert-close" data-dismiss aria-label="Tutup"><i class="i i-x"></i></button></div>
+
+<header class="navbar">
+  <a class="navbar-brand" href="index.html"><i class="i i-box text-brand"></i> Kopi Nusa</a>
+  <div class="navbar-end">
+    <button class="btn btn-ghost btn-icon" data-nu-theme aria-label="Ganti tema"><i class="i i-moon"></i></button>
+    <button class="btn btn-ghost btn-icon relative" data-nu-open="cart" aria-label="Keranjang"><i class="i i-cart"></i><span class="badge-count" data-cart-count hidden>0</span></button>
+    <button class="navbar-toggle" data-nu-toggle="menu" aria-expanded="false" aria-controls="menu" aria-label="Menu"><span class="hamburger"></span></button>
+  </div>
+  <nav class="navbar-menu" id="menu">
+    <a href="index.html">Beranda</a>
+    <a class="active" href="store.html">Store</a>
+    <a href="about.html">Tentang</a>
+    <a href="docs.html">Dokumentasi</a>
+  </nav>
+</header>
+
+<main>
+  <!-- HERO -->
+  <header class="aurora section">
+    <div class="container split gap-fluid-lg">
+      <div class="stack stack-lg animate-up">
+        <span class="eyebrow">Sangrai segar · Kirim 24 jam</span>
+        <h1 class="display text-balance">Kopi pilihan dari <span class="text-gradient">kebun Nusantara</span></h1>
+        <p class="lead">Biji kopi single origin, alat seduh, dan perlengkapan barista. Disangrai setiap minggu, dikirim langsung ke rumah Anda.</p>
+        <div class="row">
+          <a href="#produk" class="btn btn-lg btn-gradient btn-pill">Belanja sekarang <i class="i i-arrow-right"></i></a>
+          <button class="btn btn-lg btn-outline btn-pill" onclick="Nusa.toast('Kode NUSA10: diskon 10% untuk pesanan pertama',{type:'success',ms:4500})"><i class="i i-tag"></i> Lihat promo</button>
+        </div>
+        <div class="grid grid-cols-3 gap-6 pt-4">
+          <div class="stat"><span class="stat-value" data-count="48">0</span><span class="stat-label">Asal kebun</span></div>
+          <div class="stat"><span class="stat-value" data-count="12400">0</span><span class="stat-label">Pelanggan</span></div>
+          <div class="stat"><span class="stat-value">4,9★</span><span class="stat-label">Rating toko</span></div>
+        </div>
+      </div>
+      <div class="grid grid-cols-2 gap-4 animate-zoom delay-200" data-tilt>
+        <div class="ph ph-3 rounded-2xl aspect-square shadow-xl" data-ph="☕" style="--ph-size:5rem"></div>
+        <div class="ph ph-2 rounded-2xl aspect-4/3 shadow-xl mt-8" data-ph="🫘" style="--ph-size:4rem"></div>
+        <div class="ph ph-5 rounded-2xl aspect-4/3 shadow-xl" data-ph="🫖" style="--ph-size:4rem"></div>
+        <div class="ph ph-6 rounded-2xl aspect-square shadow-xl" data-ph="🧊" style="--ph-size:5rem"></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- KEUNGGULAN -->
+  <section class="section-sm">
+    <div class="container grid-auto grid-sm gap-fluid stagger">
+      <div class="row animate-up"><span class="icon-box"><i class="i i-truck"></i></span><div><b>Pengiriman cepat</b><p class="text-muted text-sm">Dikirim di hari yang sama</p></div></div>
+      <div class="row animate-up"><span class="icon-box"><i class="i i-wallet"></i></span><div><b>Bayar aman</b><p class="text-muted text-sm">QRIS, transfer, kartu</p></div></div>
+      <div class="row animate-up"><span class="icon-box"><i class="i i-heart"></i></span><div><b>Jaminan puas</b><p class="text-muted text-sm">Garansi 7 hari</p></div></div>
+      <div class="row animate-up"><span class="icon-box"><i class="i i-box"></i></span><div><b>Kemasan ramah</b><p class="text-muted text-sm">Bisa didaur ulang</p></div></div>
+    </div>
+  </section>
+
+  <!-- PRODUK -->
+  <section class="section" id="produk">
+    <div class="container stack stack-lg">
+      <div class="row row-between gap-fluid">
+        <div class="stack stack-sm"><span class="eyebrow">Katalog</span><h2 class="title">Semua produk</h2><p class="text-muted text-sm" id="count" aria-live="polite">Memuat produk…</p></div>
+        <div class="row">
+          <div class="input-group w-full md:w-72"><input class="input" id="q" type="search" placeholder="Cari kopi atau alat…" aria-label="Cari produk"><button class="btn btn-icon" aria-label="Cari"><i class="i i-search"></i></button></div>
+          <select class="select w-auto" id="sort" aria-label="Urutkan"><option value="pop">Terpopuler</option><option value="low">Harga terendah</option><option value="high">Harga tertinggi</option><option value="rate">Rating tertinggi</option></select>
+        </div>
+      </div>
+      <div class="row" id="cats" role="group" aria-label="Kategori"></div>
+      <div class="grid-auto gap-fluid" id="grid" aria-busy="true"></div>
+      <div class="empty" id="empty" hidden><i class="i i-search text-4xl"></i><p class="mt-3">Produk tidak ditemukan. Coba kata kunci lain.</p></div>
+    </div>
+  </section>
+
+  <!-- PROMO -->
+  <section class="section section-dark">
+    <div class="container split gap-fluid-lg">
+      <div class="stack stack-lg reveal reveal-left">
+        <span class="eyebrow">Langganan bulanan</span>
+        <h2 class="title text-fluid-xl">Biji segar tiap bulan, <span class="marker text-black">hemat 15%</span></h2>
+        <p class="lead">Pilih takaran dan tingkat sangrai. Jeda atau berhenti kapan saja tanpa biaya tambahan.</p>
+        <ul class="checklist"><li>Kirim otomatis setiap 2 atau 4 minggu</li><li>Sampel kopi baru gratis tiap bulan</li><li>Prioritas untuk edisi terbatas</li></ul>
+        <div class="row"><button class="btn btn-lg btn-gradient btn-pill" onclick="Nusa.toast('Terima kasih! Kami hubungi Anda lewat email.',{type:'success'})">Mulai berlangganan</button></div>
+      </div>
+      <div class="card card-lg gborder glass reveal reveal-right pricing">
+        <p class="eyebrow">Paket Penikmat</p>
+        <p class="price-big mt-3">Rp 72.250<small class="text-muted text-base font-normal">/bulan</small></p>
+        <p class="text-muted mt-2">2 kantong × 250 g</p>
+        <div class="divider"></div>
+        <ul class="checklist text-left"><li>Gratis ongkir</li><li>Giling sesuai alat seduh</li><li>Bisa dijeda kapan saja</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ULASAN -->
+  <section class="section">
+    <div class="container stack stack-lg">
+      <div class="stack center"><span class="eyebrow">Ulasan</span><h2 class="title">Kata pelanggan kami</h2></div>
+      <div class="carousel hide-scrollbar" tabindex="0" aria-label="Ulasan pelanggan">
+        <figure class="card quote reveal"><p>Aroma Gayo-nya luar biasa. Paket datang rapi dan masih terasa baru disangrai.</p><figcaption class="row mt-4"><span class="avatar">AR</span><div><b>Arini R.</b><p class="text-muted text-sm">Bandung</p></div></figcaption></figure>
+        <figure class="card quote reveal rd-1"><p>Dripper V60 kualitasnya jauh di atas harga. Seduhan jadi lebih bersih dan konsisten.</p><figcaption class="row mt-4"><span class="avatar" style="--brand:var(--c-teal-600)">DP</span><div><b>Dimas P.</b><p class="text-muted text-sm">Yogyakarta</p></div></figcaption></figure>
+        <figure class="card quote reveal rd-2"><p>Langganan bulanan sangat praktis. Kopi selalu habis sebelum kiriman berikutnya datang.</p><figcaption class="row mt-4"><span class="avatar" style="--brand:var(--c-pink-600)">SN</span><div><b>Sari N.</b><p class="text-muted text-sm">Jakarta</p></div></figcaption></figure>
+        <figure class="card quote reveal rd-3"><p>Admin ramah, pengiriman cepat, dan tersedia banyak pilihan metode pembayaran.</p><figcaption class="row mt-4"><span class="avatar" style="--brand:var(--c-orange-600)">BH</span><div><b>Budi H.</b><p class="text-muted text-sm">Surabaya</p></div></figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="section">
+    <div class="container container-sm">
+      <div class="card card-xl aurora center stack stack-lg gborder">
+        <h2 class="title">Dapatkan info kopi terbaru</h2>
+        <p class="lead">Promo, edisi terbatas, dan tips menyeduh. Kirim seminggu sekali, tanpa spam.</p>
+        <form class="newsletter w-full" id="nl"><input class="input" type="email" required placeholder="nama@email.com" aria-label="Email"><button class="btn btn-gradient">Berlangganan</button></form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer footer-dark footer-lg">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="stack"><b class="text-xl text-white">Kopi Nusa</b><p class="text-sm">Kopi Indonesia pilihan, disangrai segar dan dikirim ke seluruh negeri.</p><div class="social"><a href="#" aria-label="Situs"><i class="i i-globe"></i></a><a href="#" aria-label="Email"><i class="i i-mail"></i></a><a href="#" aria-label="Telepon"><i class="i i-phone"></i></a></div></div>
+      <div><p class="footer-title">Belanja</p><nav class="footer-links"><a href="#produk">Biji kopi</a><a href="#produk">Alat seduh</a><a href="#produk">Aksesori</a></nav></div>
+      <div><p class="footer-title">Perusahaan</p><nav class="footer-links"><a href="about.html">Tentang kami</a><a href="#">Karier</a><a href="#">Kontak</a></nav></div>
+      <div><p class="footer-title">Bantuan</p><nav class="footer-links"><a href="#">Pengiriman</a><a href="#">Pengembalian</a><a href="#">FAQ</a></nav></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 Kopi Nusa. Dibuat dengan Nusa CSS.</span><span>Syarat · Privasi</span></div>
+  </div>
+</footer>
+
+<button class="btn btn-circle btn-gradient to-top" aria-label="Kembali ke atas"><i class="i i-arrow-right" style="rotate:-90deg"></i></button>
+
+<!-- KERANJANG -->
+<div class="modal drawer" id="cart" aria-label="Keranjang belanja">
+  <div class="card flex flex-col gap-4">
+    <div class="modal-header mb-0"><h3>Keranjang <span class="text-muted font-normal text-sm" data-cart-label></span></h3><button class="modal-close" data-nu-close aria-label="Tutup"><i class="i i-x"></i></button></div>
+    <div class="grow overflow-auto" id="cartList"></div>
+    <div class="stack stack-sm">
+      <div class="progress"><i id="ship" style="width:0"></i></div>
+      <p class="text-sm text-muted" id="shipText"></p>
+      <div class="row row-between"><span class="text-muted">Subtotal</span><b class="text-xl" id="subtotal">Rp 0</b></div>
+      <button class="btn btn-lg btn-gradient btn-block" id="checkout">Bayar sekarang</button>
+    </div>
+  </div>
+</div>
+
+<!-- DETAIL PRODUK -->
+<div class="modal modal-lg modal-blur" id="qv"><div class="card" id="qvBody"></div></div>
+
+<script src="assets/nusa.js"></script>
+<script>
+const rp = Nusa.fmt.rupiah;
+const $ = s => document.querySelector(s);
+const ls = (k, d) => { try { return JSON.parse(localStorage.getItem(k)) ?? d } catch { return d } };
+const save = () => { try { localStorage.setItem('nusa-cart', JSON.stringify(S.cart)); localStorage.setItem('nusa-fav', JSON.stringify([...S.fav])) } catch {} };
+
+const P = [
+  { id: 1, n: 'Arabika Gayo 250 g', c: 'Biji kopi', p: 85000, o: 99000, e: '🫘', t: 3, r: 4.9, rv: 214, b: 'Terlaris', d: 'Single origin dari dataran tinggi Gayo, Aceh. Rasa cokelat gelap, rempah manis, dan keasaman lembut.' },
+  { id: 2, n: 'Robusta Temanggung 250 g', c: 'Biji kopi', p: 62000, e: '🫘', t: 5, r: 4.6, rv: 98, d: 'Body tebal dengan aroma kayu dan karamel. Cocok untuk kopi susu dan espresso.' },
+  { id: 3, n: 'Toraja Sapan 250 g', c: 'Biji kopi', p: 98000, e: '🫘', t: 1, r: 4.8, rv: 156, b: 'Baru', bc: 'badge-green', d: 'Aroma buah gelap dan rempah. Sangrai medium untuk metode pour over.' },
+  { id: 4, n: 'Flores Bajawa 250 g', c: 'Biji kopi', p: 91000, e: '🫘', t: 4, r: 4.7, rv: 87, d: 'Manis seperti gula aren dengan sentuhan kacang panggang dan cokelat susu.' },
+  { id: 5, n: 'V60 Dripper Keramik', c: 'Alat seduh', p: 145000, o: 175000, e: '⏳', t: 6, r: 4.8, rv: 301, b: 'Diskon', d: 'Dripper keramik ukuran 02 dengan alur spiral untuk ekstraksi merata.' },
+  { id: 6, n: 'Teko Leher Angsa 600 ml', c: 'Alat seduh', p: 289000, e: '🫖', t: 2, r: 4.7, rv: 76, d: 'Stainless steel food grade dengan kontrol tuang presisi dan gagang tahan panas.' },
+  { id: 7, n: 'Grinder Manual Burr', c: 'Alat seduh', p: 425000, e: '⚙️', t: 3, r: 4.9, rv: 189, b: 'Pilihan editor', bc: 'badge-amber', d: 'Burr baja 38 mm, 24 tingkat kekasaran, dan bodi aluminium yang kokoh.' },
+  { id: 8, n: 'Gelas Keramik Nusa', c: 'Aksesori', p: 55000, e: '☕', t: 5, r: 4.5, rv: 64, d: 'Gelas keramik 300 ml berglasir tangan. Aman untuk microwave dan mesin cuci piring.' },
+  { id: 9, n: 'Botol Cold Brew 1 L', c: 'Aksesori', p: 129000, e: '🧊', t: 2, r: 4.6, rv: 52, d: 'Botol kaca borosilikat dengan saringan halus untuk seduhan dingin 12 jam.' },
+  { id: 10, n: 'Kertas Filter V60 (100)', c: 'Aksesori', p: 38000, e: '📄', t: 4, r: 4.7, rv: 143, d: 'Kertas filter putih tanpa rasa kertas, tersedia untuk dripper ukuran 01 dan 02.' }
+];
+const S = { cat: 'Semua', q: '', sort: 'pop', cart: ls('nusa-cart', {}), fav: new Set(ls('nusa-fav', [])) };
+const CATS = ['Semua', ...new Set(P.map(p => p.c))];
+const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+const skeleton = () => `<div class="card card-flush"><div class="skeleton skeleton-img" style="border-radius:0"></div><div class="card-content"><div class="skeleton skeleton-title"></div><div class="skeleton skeleton-text mt-3"></div><div class="skeleton skeleton-text"></div></div></div>`;
+const card = p => `
+<article class="card card-flush card-hover product animate-up">
+  <div class="card-img"><div class="ph ph-${p.t}" data-ph="${p.e}" style="--ph-size:4rem"></div></div>
+  ${p.b ? `<span class="badge ${p.bc || 'badge-red'} product-badge">${esc(p.b)}</span>` : ''}
+  <button class="btn btn-glass btn-circle btn-sm product-fav" data-fav="${p.id}" aria-pressed="${S.fav.has(p.id)}" aria-label="Favorit"><i class="i i-heart ${S.fav.has(p.id) ? 'text-danger' : ''}"></i></button>
+  <div class="card-content stack stack-sm">
+    <p class="eyebrow">${esc(p.c)}</p>
+    <h3 class="card-title"><a href="#" class="link-underline" data-view="${p.id}">${esc(p.n)}</a></h3>
+    <div class="rating"><i class="i i-star"></i> ${p.r} <small>(${p.rv})</small></div>
+    <div class="row row-between pt-1"><span class="price">${rp(p.p)}${p.o ? `<del>${rp(p.o)}</del>` : ''}</span><button class="btn btn-sm" data-add="${p.id}"><i class="i i-plus"></i> Keranjang</button></div>
+  </div>
+</article>`;
+
+function render() {
+  let L = P.filter(p => (S.cat === 'Semua' || p.c === S.cat) && (p.n + p.c).toLowerCase().includes(S.q));
+  const by = { pop: (a, b) => b.rv - a.rv, low: (a, b) => a.p - b.p, high: (a, b) => b.p - a.p, rate: (a, b) => b.r - a.r };
+  L.sort(by[S.sort]);
+  $('#grid').innerHTML = L.map(card).join('');
+  $('#grid').setAttribute('aria-busy', 'false');
+  $('#empty').hidden = L.length > 0;
+  $('#count').textContent = `${L.length} produk${S.cat !== 'Semua' ? ' · ' + S.cat : ''}`;
+  $('#cats').innerHTML = CATS.map(c => `<button class="chip ${c === S.cat ? 'active' : ''}" data-cat="${c}">${c}</button>`).join('');
+}
+
+const items = () => Object.entries(S.cart).map(([id, q]) => ({ p: P.find(x => x.id == id), q })).filter(x => x.p);
+const total = () => items().reduce((a, x) => a + x.p.p * x.q, 0);
+function drawCart() {
+  const L = items(), n = L.reduce((a, x) => a + x.q, 0), t = total(), FREE = 150000;
+  document.querySelectorAll('[data-cart-count]').forEach(b => { b.textContent = n; b.hidden = !n });
+  $('[data-cart-label]').textContent = n ? `(${n} item)` : '';
+  $('#cartList').innerHTML = L.length ? L.map(({ p, q }) => `
+    <div class="cart-item">
+      <div class="ph ph-${p.t} rounded-lg aspect-square" data-ph="${p.e}" style="--ph-size:1.8rem"></div>
+      <div><b class="line-clamp-1">${esc(p.n)}</b><p class="text-muted text-sm">${rp(p.p)}</p>
+        <div class="qty mt-2"><button data-dec="${p.id}" aria-label="Kurangi">−</button><span>${q}</span><button data-inc="${p.id}" aria-label="Tambah">+</button></div></div>
+      <button class="btn btn-ghost btn-icon btn-sm" data-rm="${p.id}" aria-label="Hapus"><i class="i i-trash"></i></button>
+    </div>`).join('') : `<div class="empty"><i class="i i-cart text-4xl"></i><p class="mt-3">Keranjang masih kosong.</p></div>`;
+  $('#subtotal').textContent = rp(t);
+  $('#ship').style.width = Math.min(100, t / FREE * 100) + '%';
+  $('#shipText').textContent = t >= FREE ? 'Selamat! Anda mendapat gratis ongkir.' : `Belanja ${rp(FREE - t)} lagi untuk gratis ongkir.`;
+  save();
+}
+const change = (id, d) => { const q = (S.cart[id] || 0) + d; q > 0 ? S.cart[id] = q : delete S.cart[id]; drawCart() };
+
+function view(id) {
+  const p = P.find(x => x.id == id);
+  $('#qvBody').innerHTML = `
+    <div class="modal-header"><h3>${esc(p.n)}</h3><button class="modal-close" data-nu-close aria-label="Tutup"><i class="i i-x"></i></button></div>
+    <div class="split">
+      <div class="ph ph-${p.t} rounded-xl aspect-square" data-ph="${p.e}" style="--ph-size:6rem"></div>
+      <div class="stack"><p class="eyebrow">${esc(p.c)}</p><div class="rating"><i class="i i-star"></i> ${p.r} <small>(${p.rv} ulasan)</small></div>
+        <p class="text-muted">${esc(p.d)}</p><p class="price text-2xl">${rp(p.p)}${p.o ? `<del>${rp(p.o)}</del>` : ''}</p>
+        <button class="btn btn-lg btn-gradient btn-block" data-add="${p.id}" data-close><i class="i i-cart"></i> Tambah ke keranjang</button></div>
+    </div>`;
+  Nusa.modal.open('qv');
+}
+
+document.addEventListener('click', async e => {
+  const t = e.target.closest('[data-add],[data-fav],[data-view],[data-inc],[data-dec],[data-rm],[data-cat],#checkout');
+  if (!t) return;
+  const d = t.dataset;
+  if (d.view) { e.preventDefault(); view(d.view) }
+  if (d.add) { change(d.add, 1); Nusa.toast('Ditambahkan ke keranjang', { type: 'success', ms: 1800, pos: 'top' }); if ('close' in d) Nusa.modal.close('qv') }
+  if (d.inc) change(d.inc, 1);
+  if (d.dec) change(d.dec, -1);
+  if (d.rm) change(d.rm, -(S.cart[d.rm] || 0));
+  if (d.fav) { const id = +d.fav; S.fav.has(id) ? S.fav.delete(id) : S.fav.add(id); save(); render() }
+  if (d.cat) { S.cat = d.cat; render() }
+  if (t.id === 'checkout') {
+    if (!total()) return Nusa.toast('Keranjang masih kosong', { type: 'error' });
+    if (!await Nusa.confirmBox(`Bayar ${rp(total())} sekarang?`, { title: 'Konfirmasi pesanan' })) return;
+    Nusa.modal.close('cart'); Nusa.loading.show('Memproses pesanan…');
+    await new Promise(r => setTimeout(r, 1600));
+    Nusa.loading.hide(); S.cart = {}; drawCart();
+    Nusa.alertBox('Pesanan Anda sudah kami terima. Terima kasih sudah berbelanja!', { type: 'success', title: 'Pembayaran berhasil' });
+  }
+});
+$('#q').oninput = e => { S.q = e.target.value.trim().toLowerCase(); render() };
+$('#sort').onchange = e => { S.sort = e.target.value; render() };
+$('#nl').onsubmit = e => { e.preventDefault(); const b = e.target.querySelector('button'); Nusa.loading.button(b, new Promise(r => setTimeout(r, 1200))).then(() => { e.target.reset(); Nusa.toast('Berhasil berlangganan!', { type: 'success' }) }) };
+
+$('#grid').innerHTML = Array(8).fill(skeleton()).join('');
+drawCart();
+setTimeout(render, 900);
+</script>
+</body>
+</html>

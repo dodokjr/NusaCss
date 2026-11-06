@@ -1,0 +1,641 @@
+<!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Dokumentasi — Nusa CSS v1.4</title><link rel="stylesheet" href="assets/nusa.min.css"><style>.cw{position:relative}.cw .copy{position:absolute;top:.5rem;right:.5rem}.code{margin:0;background:var(--surface-2);border-radius:var(--r);padding:1rem;overflow-x:auto;font:.82rem/1.6 ui-monospace,Menlo,Consolas,monospace;white-space:pre;tab-size:2}.preview{padding:1rem;border:1px dashed var(--line);border-radius:var(--r)}.doc section{scroll-margin-top:5rem}
+  .demo{overflow:hidden;border:1px solid var(--line);border-radius:calc(var(--r)*1.5);background:var(--surface)}.demo-bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.5rem;padding:.5rem .75rem;border-bottom:1px solid var(--line);background:var(--surface-2)}.demo-view{padding:1.25rem;overflow-x:auto}.demo .code{border-radius:0}
+  .frame-stage{display:grid;justify-items:center;overflow:auto;padding:.75rem;background:var(--surface-2)}.frame-stage iframe{max-width:100%;border:1px solid var(--line);border-radius:var(--r);background:var(--bg);transition:width .35s cubic-bezier(.2,.7,.2,1)}
+  .clsref{display:flex;flex-wrap:wrap;gap:.4rem}.clsref .chip{font-family:ui-monospace,Menlo,monospace;font-size:.75rem;padding:.2rem .6rem;cursor:pointer}.clsref>p{flex:0 0 100%}/* tombol tab pratinjau: yang tidak aktif tampil netral */.demo-bar .btn[aria-pressed=false]{background:var(--surface);color:var(--text);border-color:var(--line)}.demo-bar .btn-group .btn[aria-pressed=true]{background:var(--brand);color:var(--brand-fg)}@media(min-width:768px){#sb{position:sticky;top:0;align-self:start;height:100dvh;overflow-y:auto}}</style><script>try{var t=localStorage.getItem("nusa-theme");document.documentElement.classList.toggle("dark",t==="dark"||(!t&&matchMedia("(prefers-color-scheme:dark)").matches));var p=localStorage.getItem("nusa-palette");p&&p!=="default"&&document.documentElement.setAttribute("data-palette",p)}catch(e){}</script></head><body class="has-bottom-nav"><div class="scroll-bar"></div><div class="app"><aside class="sidebar overflow-auto" id="sb"><a href="index.html" class="text-xl font-extrabold text-gradient">Nusa CSS</a><input class="input mt-4" id="q" placeholder="Cari dokumentasi…"><nav class="stack stack-sm mt-4" id="nv"><p class="eyebrow mt-4 px-2 text-2xs">Mulai</p><a class="nav-link" href="#mulai">Mulai cepat</a><a class="nav-link" href="#vite">Vite</a><a class="nav-link" href="#react">React</a><a class="nav-link" href="#astro">Astro</a><p class="eyebrow mt-4 px-2 text-2xs">Dasar</p><a class="nav-link" href="#warna">Warna &amp; background</a><a class="nav-link" href="#tipografi">Font &amp; teks</a><a class="nav-link" href="#ukuran">Ukuran</a><a class="nav-link" href="#spasi">Padding &amp; gap</a><a class="nav-link" href="#flexgrid">Flex &amp; grid</a><a class="nav-link" href="#posisi">Posisi &amp; z-index</a><a class="nav-link" href="#efek">Efek &amp; transisi</a><a class="nav-link" href="#layout">Layout otomatis</a><a class="nav-link" href="#utility">Utility</a><p class="eyebrow mt-4 px-2 text-2xs">Komponen</p><a class="nav-link" href="#card">Card</a><a class="nav-link" href="#gambar">Gambar</a><a class="nav-link" href="#navbar">Navbar &amp; hamburger</a><a class="nav-link" href="#footer">Footer &amp; main</a><a class="nav-link" href="#tabel">Tabel</a><a class="nav-link" href="#tombol">Tombol</a><a class="nav-link" href="#alert">Alert dan banner</a><a class="nav-link" href="#modal">Modal dan dialog</a><a class="nav-link" href="#toast">Toast</a><a class="nav-link" href="#form">Form</a><a class="nav-link" href="#komponen">Komponen lain</a><p class="eyebrow mt-4 px-2 text-2xs">Efek</p><a class="nav-link" href="#loading">Loading</a><a class="nav-link" href="#scroll">Efek scroll</a><a class="nav-link" href="#animasi">Animasi</a><a class="nav-link" href="#ikon">Ikon (45)</a><p class="eyebrow mt-4 px-2 text-2xs">Lanjutan</p><a class="nav-link" href="#template">Template</a><a class="nav-link" href="#tema">Tema &amp; dark mode</a><a class="nav-link" href="#api">API JavaScript</a><a class="nav-link" href="#api14">API baru v1.4</a><a class="nav-link" href="#mobile">Aplikasi mobile</a></nav></aside>
+  <div><header class="appbar"><button class="btn btn-ghost btn-icon md-hide" data-nu-toggle="sb" aria-label="Menu"><i class="i i-menu"></i></button><h1>Dokumentasi</h1><a class="btn btn-ghost btn-sm" href="index.html">Beranda</a><button class="btn btn-ghost btn-icon" data-nu-theme aria-label="Tema"><i class="i i-moon"></i></button></header>
+  <main class="main doc stack stack-lg" style="max-width:68rem"><header class="card card-xl aurora gborder stack stack-lg" id="atas">
+  <div class="stack"><span class="badge badge-dot">v1.4 · baru</span><h1 class="display text-balance">Dokumentasi <span class="text-gradient">Nusa CSS</span></h1><p class="lead">Utility-first, komponen siap pakai, dark mode, animasi, dan template lengkap. Satu CSS, satu JS, tanpa build.</p>
+  <div class="row"><a class="btn btn-lg btn-gradient btn-pill" href="#mulai">Mulai cepat <i class="i i-arrow-right"></i></a><a class="btn btn-lg btn-outline btn-pill" href="#template">Lihat template</a><a class="btn btn-lg btn-ghost btn-pill" href="store.html">Demo Store</a></div></div>
+  <div class="grid-auto grid-sm gap-fluid"><div class="stat"><span class="stat-value text-gradient" data-count="9031">0</span><span class="stat-label">class tersedia</span></div><div class="stat"><span class="stat-value text-gradient" data-count="9212">0</span><span class="stat-label">aturan CSS</span></div><div class="stat"><span class="stat-value text-gradient">63 KB</span><span class="stat-label">gzip (penuh)</span></div><div class="stat"><span class="stat-value text-gradient">~46 KB</span><span class="stat-label">setelah purge (3 halaman, 10 KB gzip)</span></div></div>
+  <div class="divider-text">Jelajahi</div><div class="grid-auto grid-sm gap-3"><a class="card card-hover card-sm row gap-3" href="#warna"><span class="icon-box"><i class="i i-eye"></i></span><b>Warna</b></a><a class="card card-hover card-sm row gap-3" href="#tipografi"><span class="icon-box"><i class="i i-edit"></i></span><b>Font &amp; teks</b></a><a class="card card-hover card-sm row gap-3" href="#ukuran"><span class="icon-box"><i class="i i-grid"></i></span><b>Ukuran</b></a><a class="card card-hover card-sm row gap-3" href="#spasi"><span class="icon-box"><i class="i i-box"></i></span><b>Padding &amp; gap</b></a><a class="card card-hover card-sm row gap-3" href="#flexgrid"><span class="icon-box"><i class="i i-filter"></i></span><b>Flex &amp; grid</b></a><a class="card card-hover card-sm row gap-3" href="#posisi"><span class="icon-box"><i class="i i-link"></i></span><b>Z-index</b></a><a class="card card-hover card-sm row gap-3" href="#efek"><span class="icon-box"><i class="i i-star"></i></span><b>Efek</b></a><a class="card card-hover card-sm row gap-3" href="#card"><span class="icon-box"><i class="i i-wallet"></i></span><b>Card</b></a><a class="card card-hover card-sm row gap-3" href="#gambar"><span class="icon-box"><i class="i i-image"></i></span><b>Gambar</b></a><a class="card card-hover card-sm row gap-3" href="#navbar"><span class="icon-box"><i class="i i-menu"></i></span><b>Navbar</b></a><a class="card card-hover card-sm row gap-3" href="#footer"><span class="icon-box"><i class="i i-home"></i></span><b>Footer &amp; main</b></a><a class="card card-hover card-sm row gap-3" href="#tabel"><span class="icon-box"><i class="i i-receipt"></i></span><b>Tabel</b></a><a class="card card-hover card-sm row gap-3" href="#loading"><span class="icon-box"><i class="i i-clock"></i></span><b>Loading</b></a><a class="card card-hover card-sm row gap-3" href="#scroll"><span class="icon-box"><i class="i i-play"></i></span><b>Scroll</b></a><a class="card card-hover card-sm row gap-3" href="#template"><span class="icon-box"><i class="i i-code"></i></span><b>Template</b></a></div>
+  <details class="acc"><summary>Yang baru di v1.4</summary><ul class="checklist mt-3 text-sm"><li>Navbar responsif dengan hamburger animasi</li><li>Card: header/footer, gambar, horizontal, overlay, produk, harga, profil, kutipan</li><li>Gambar: placeholder gradient, zoom, frame, galeri, masonry, avatar</li><li>Loading: spinner, dots, equalizer, skeleton, shimmer, overlay, bar</li><li>Efek scroll: reveal 6 arah, scroll-driven, parallax, to-top, carousel</li><li>Utilitas baru: ukuran, z-index, flex/grid, padding fluid, warna alpha, font, background, tabel</li><li>Alat purge untuk memangkas CSS yang tidak dipakai</li><li>Template Tentang dan Store</li></ul></details></header><section id="mulai" class="stack"><h2 class="title">Mulai cepat</h2><p class="text-muted">Tidak perlu build. Salin dua file dari folder assets, lalu pasang di halaman mana pun.</p><div class="cw"><button class="btn btn-ghost btn-xs copy" data-copy="&lt;link rel=&quot;stylesheet&quot; href=&quot;nusa.min.css&quot;&gt;
+  &lt;script src=&quot;nusa.js&quot;&gt;&lt;/script&gt;"><i class="i i-copy"></i> Salin</button><pre class="code">&lt;link rel=&quot;stylesheet&quot; href=&quot;nusa.min.css&quot;&gt;
+  &lt;script src=&quot;nusa.js&quot;&gt;&lt;/script&gt;</pre></div><h3 class="font-bold">Vite, React, Astro, Vue</h3><p class="text-muted">Salin <b>nusa.min.css</b> dan <b>nusa.mjs</b> ke proyek, lalu impor.</p><div class="cw"><button class="btn btn-ghost btn-xs copy" data-copy="import &#x27;./nusa.min.css&#x27;
+  import { toast, theme, palette } from &#x27;./nusa.mjs&#x27;
+  
+  toast(&#x27;Halo!&#x27;, { type: &#x27;success&#x27; })"><i class="i i-copy"></i> Salin</button><pre class="code">import &#x27;./nusa.min.css&#x27;
+  import { toast, theme, palette } from &#x27;./nusa.mjs&#x27;
+  
+  toast(&#x27;Halo!&#x27;, { type: &#x27;success&#x27; })</pre></div><h3 class="font-bold">Cegah kedip dark mode</h3><p class="text-muted">Taruh skrip ini di &lt;head&gt;.</p><div class="cw"><button class="btn btn-ghost btn-xs copy" data-copy="&lt;script&gt;try{var t=localStorage.getItem(&quot;nusa-theme&quot;);document.documentElement.classList.toggle(&quot;dark&quot;,t===&quot;dark&quot;||(!t&amp;&amp;matchMedia(&quot;(prefers-color-scheme:dark)&quot;).matches))}catch(e){}&lt;/script&gt;"><i class="i i-copy"></i> Salin</button><pre class="code">&lt;script&gt;try{var t=localStorage.getItem(&quot;nusa-theme&quot;);document.documentElement.classList.toggle(&quot;dark&quot;,t===&quot;dark&quot;||(!t&amp;&amp;matchMedia(&quot;(prefers-color-scheme:dark)&quot;).matches))}catch(e){}&lt;/script&gt;</pre></div></section><section id="vite" class="stack"><h2 class="title">Vite (JavaScript / TypeScript)</h2><p class="text-muted">Cara tercepat untuk SPA dan situs statis. Nusa CSS aktif otomatis begitu diimpor.</p><h3 class="font-bold">1. Buat proyek</h3><div class="cw"><button class="btn btn-ghost btn-xs copy" data-copy="npm create vite@latest app -- --template vanilla-ts
+  cd app &amp;&amp; npm install"><i class="i i-copy"></i> Salin</button><pre class="code">npm create vite@latest app -- --template vanilla-ts
+  cd app &amp;&amp; npm install</pre></div><h3 class="font-bold">2. Salin file dari folder assets</h3><div class="cw"><button class="btn btn-ghost btn-xs copy" data-copy="src/
+    lib/
+      nusa.min.css
+      nusa.mjs
+      nusa.d.mts      &lt;- salin dari nusa.d.ts, agar TypeScript mengenali tipe
+    main.ts
+  index.html"><i class="i i-copy"></i> Salin</button><pre class="code">src/
+    lib/
+      nusa.min.css
+      nusa.mjs
+      nusa.d.mts      &lt;- salin dari nusa.d.ts, agar TypeScript mengenali tipe
+    main.ts
+  index.html</pre></div><h3 class="font-bold">3. Impor di main.ts</h3><div class="cw"><button class="btn btn-ghost btn-xs copy" data-copy="import &#x27;./lib/nusa.min.css&#x27;
+  import { toast, theme, palette, confirmBox } from &#x27;./lib/nusa.mjs&#x27;
+  
+  document.querySelector(&#x27;#app&#x27;)!.innerHTML = `
+    &lt;header class=&quot;navbar&quot;&gt;&lt;b class=&quot;text-gradient&quot;&gt;Aplikasi saya&lt;/b&gt;&lt;/header&gt;
+    &lt;main class=&quot;container section stack&quot;&gt;
+      &lt;h1 class=&quot;display&quot;&gt;Halo Vite&lt;/h1&gt;
+      &lt;button class=&quot;btn btn-gradient&quot; id=&quot;hi&quot;&gt;Sapa&lt;/button&gt;
+    &lt;/main&gt;`
+  
+  document.querySelector(&#x27;#hi&#x27;)!.addEventListener(&#x27;click&#x27;, () =&gt; toast(&#x27;Halo!&#x27;, { type: &#x27;success&#x27; }))"><i class="i i-copy"></i> Salin</button><pre class="code">import &#x27;./lib/nusa.min.css&#x27;
+  import { toast, theme, palette, confirmBox } from &#x27;./lib/nusa.mjs&#x27;
+  
+  document.querySelector(&#x27;#app&#x27;)!.innerHTML = `
+    &lt;header class=&quot;navbar&quot;&gt;&lt;b class=&quot;text-gradient&quot;&gt;Aplikasi saya&lt;/b&gt;&lt;/header&gt;
+    &lt;main class=&quot;container section stack&quot;&gt;
+      &lt;h1 class=&quot;display&quot;&gt;Halo Vite&lt;/h1&gt;
+      &lt;button class=&quot;btn btn-gradient&quot; id=&quot;hi&quot;&gt;Sapa&lt;/button&gt;
+    &lt;/main&gt;`
+  
+  document.querySelector(&#x27;#hi&#x27;)!.addEventListener(&#x27;click&#x27;, () =&gt; toast(&#x27;Halo!&#x27;, { type: &#x27;success&#x27; }))</pre></div><h3 class="font-bold">4. Ubah token tema</h3><div class="cw"><button class="btn btn-ghost btn-xs copy" data-copy="/* src/theme.css */
+  @import &#x27;./lib/nusa.min.css&#x27;;
+  :root { --brand: var(--c-teal-600); --r: .5rem }"><i class="i i-copy"></i> Salin</button><pre class="code">/* src/theme.css */
+  @import &#x27;./lib/nusa.min.css&#x27;;
+  :root { --brand: var(--c-teal-600); --r: .5rem }</pre></div><h3 class="font-bold">Alternatif tanpa bundler</h3><p class="text-muted">Taruh file di folder <b>public/</b>, lalu pasang di index.html. Objek global <b>Nusa</b> tersedia.</p><div class="cw"><button class="btn btn-ghost btn-xs copy" data-copy="&lt;link rel=&quot;stylesheet&quot; href=&quot;/nusa.min.css&quot;&gt;
+  &lt;script src=&quot;/nusa.js&quot;&gt;&lt;/script&gt;"><i class="i i-copy"></i> Salin</button><pre class="code">&lt;link rel=&quot;stylesheet&quot; href=&quot;/nusa.min.css&quot;&gt;
+  &lt;script src=&quot;/nusa.js&quot;&gt;&lt;/script&gt;</pre></div><div class="alert alert-info"><i class="i i-info"></i><div class="grow">Taruh skrip anti-kedip dark mode dari bagian <a class="text-brand" href="#mulai">Mulai cepat</a> di &lt;head&gt; index.html.</div></div></section><section id="react" class="stack"><h2 class="title">React (Vite + TypeScript)</h2><p class="text-muted">Pakai <code>className</code> seperti biasa. Atribut <code>data-nu-*</code> juga jalan di JSX. Di bawah ini ada pembungkus komponen yang bisa langsung disalin.</p><h3 class="font-bold">1. Buat proyek dan salin file</h3><div class="cw"><button class="btn btn-ghost btn-xs copy" data-copy="npm create vite@latest app -- --template react-ts
+  cd app &amp;&amp; npm install
+  # salin nusa.min.css, nusa.mjs, nusa.d.mts ke src/lib/"><i class="i i-copy"></i> Salin</button><pre class="code">npm create vite@latest app -- --template react-ts
+  cd app &amp;&amp; npm install
+  # salin nusa.min.css, nusa.mjs, nusa.d.mts ke src/lib/</pre></div><h3 class="font-bold">2. Impor sekali di main.tsx</h3><div class="cw"><button class="btn btn-ghost btn-xs copy" data-copy="import &#x27;./lib/nusa.min.css&#x27;
+  import &#x27;./lib/nusa.mjs&#x27;   // tema, klik modal, tab, salin, dan lainnya aktif otomatis"><i class="i i-copy"></i> Salin</button><pre class="code">import &#x27;./lib/nusa.min.css&#x27;
+  import &#x27;./lib/nusa.mjs&#x27;   // tema, klik modal, tab, salin, dan lainnya aktif otomatis</pre></div><h3 class="font-bold">3. Hook dan komponen animasi: src/lib/useNusa.tsx</h3><div class="cw"><button class="btn btn-ghost btn-xs copy" data-copy="import { useEffect, useRef } from &#x27;react&#x27;
+  import { reveal, countUp } from &#x27;./nusa.mjs&#x27;
+  
+  // Efek muncul saat di-scroll untuk semua .reveal di dalam elemen
+  export function useReveal&lt;T extends HTMLElement&gt;() {
+    const ref = useRef&lt;T&gt;(null)
+    useEffect(() =&gt; { ref.current &amp;&amp; reveal(ref.current) }, [])
+    return ref
+  }
+  
+  // Angka menghitung naik
+  export function Count({ to, prefix = &#x27;&#x27; }: { to: number; prefix?: string }) {
+    const ref = useRef&lt;HTMLSpanElement&gt;(null)
+    useEffect(() =&gt; { ref.current &amp;&amp; countUp(ref.current, to) }, [to])
+    return &lt;span ref={ref} data-prefix={prefix}&gt;0&lt;/span&gt;
+  }"><i class="i i-copy"></i> Salin</button><pre class="code">import { useEffect, useRef } from &#x27;react&#x27;
+  import { reveal, countUp } from &#x27;./nusa.mjs&#x27;
+  
+  // Efek muncul saat di-scroll untuk semua .reveal di dalam elemen
+  export function useReveal&lt;T extends HTMLElement&gt;() {
+    const ref = useRef&lt;T&gt;(null)
+    useEffect(() =&gt; { ref.current &amp;&amp; reveal(ref.current) }, [])
+    return ref
+  }
+  
+  // Angka menghitung naik
+  export function Count({ to, prefix = &#x27;&#x27; }: { to: number; prefix?: string }) {
+    const ref = useRef&lt;HTMLSpanElement&gt;(null)
+    useEffect(() =&gt; { ref.current &amp;&amp; countUp(ref.current, to) }, [to])
+    return &lt;span ref={ref} data-prefix={prefix}&gt;0&lt;/span&gt;
+  }</pre></div><h3 class="font-bold">4. Tombol: src/components/Button.tsx</h3><div class="cw"><button class="btn btn-ghost btn-xs copy" data-copy="type Props = React.ButtonHTMLAttributes&lt;HTMLButtonElement&gt; &amp; {
+    color?: string
+    variant?: &#x27;solid&#x27; | &#x27;outline&#x27; | &#x27;soft&#x27;
+    size?: &#x27;xs&#x27; | &#x27;sm&#x27; | &#x27;lg&#x27; | &#x27;xl&#x27;
+    loading?: boolean
+  }
+  
+  export function Button({ color, variant = &#x27;solid&#x27;, size, loading, className = &#x27;&#x27;, ...p }: Props) {
+    const k = variant === &#x27;solid&#x27; ? (color ? `btn-${color}` : &#x27;&#x27;) : `btn-${variant}${color ? &#x27;-&#x27; + color : &#x27;&#x27;}`
+    return &lt;button {...p} className={[&#x27;btn&#x27;, k, size &amp;&amp; `btn-${size}`, loading &amp;&amp; &#x27;btn-loading&#x27;, className].filter(Boolean).join(&#x27; &#x27;)} /&gt;
+  }"><i class="i i-copy"></i> Salin</button><pre class="code">type Props = React.ButtonHTMLAttributes&lt;HTMLButtonElement&gt; &amp; {
+    color?: string
+    variant?: &#x27;solid&#x27; | &#x27;outline&#x27; | &#x27;soft&#x27;
+    size?: &#x27;xs&#x27; | &#x27;sm&#x27; | &#x27;lg&#x27; | &#x27;xl&#x27;
+    loading?: boolean
+  }
+  
+  export function Button({ color, variant = &#x27;solid&#x27;, size, loading, className = &#x27;&#x27;, ...p }: Props) {
+    const k = variant === &#x27;solid&#x27; ? (color ? `btn-${color}` : &#x27;&#x27;) : `btn-${variant}${color ? &#x27;-&#x27; + color : &#x27;&#x27;}`
+    return &lt;button {...p} className={[&#x27;btn&#x27;, k, size &amp;&amp; `btn-${size}`, loading &amp;&amp; &#x27;btn-loading&#x27;, className].filter(Boolean).join(&#x27; &#x27;)} /&gt;
+  }</pre></div><h3 class="font-bold">5. Modal terkontrol state: src/components/Modal.tsx</h3><div class="cw"><button class="btn btn-ghost btn-xs copy" data-copy="import { useEffect, type ReactNode } from &#x27;react&#x27;
+  
+  type Props = { open: boolean; onClose: () =&gt; void; title: string; size?: string; children: ReactNode }
+  
+  export function Modal({ open, onClose, title, size = &#x27;&#x27;, children }: Props) {
+    useEffect(() =&gt; {
+      if (!open) return
+      const esc = (e: KeyboardEvent) =&gt; e.key === &#x27;Escape&#x27; &amp;&amp; onClose()
+      addEventListener(&#x27;keydown&#x27;, esc)
+      document.body.classList.add(&#x27;nu-lock&#x27;)
+      return () =&gt; { removeEventListener(&#x27;keydown&#x27;, esc); document.body.classList.remove(&#x27;nu-lock&#x27;) }
+    }, [open])
+  
+    return (
+      &lt;div className={`modal ${size} ${open ? &#x27;open&#x27; : &#x27;&#x27;}`} onClick={e =&gt; e.target === e.currentTarget &amp;&amp; onClose()}&gt;
+        &lt;div className=&quot;card&quot;&gt;
+          &lt;div className=&quot;modal-header&quot;&gt;&lt;h3&gt;{title}&lt;/h3&gt;
+            &lt;button className=&quot;modal-close&quot; onClick={onClose} aria-label=&quot;Tutup&quot;&gt;&lt;i className=&quot;i i-x&quot; /&gt;&lt;/button&gt;&lt;/div&gt;
+          &lt;div className=&quot;modal-body&quot;&gt;{children}&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    )
+  }"><i class="i i-copy"></i> Salin</button><pre class="code">import { useEffect, type ReactNode } from &#x27;react&#x27;
+  
+  type Props = { open: boolean; onClose: () =&gt; void; title: string; size?: string; children: ReactNode }
+  
+  export function Modal({ open, onClose, title, size = &#x27;&#x27;, children }: Props) {
+    useEffect(() =&gt; {
+      if (!open) return
+      const esc = (e: KeyboardEvent) =&gt; e.key === &#x27;Escape&#x27; &amp;&amp; onClose()
+      addEventListener(&#x27;keydown&#x27;, esc)
+      document.body.classList.add(&#x27;nu-lock&#x27;)
+      return () =&gt; { removeEventListener(&#x27;keydown&#x27;, esc); document.body.classList.remove(&#x27;nu-lock&#x27;) }
+    }, [open])
+  
+    return (
+      &lt;div className={`modal ${size} ${open ? &#x27;open&#x27; : &#x27;&#x27;}`} onClick={e =&gt; e.target === e.currentTarget &amp;&amp; onClose()}&gt;
+        &lt;div className=&quot;card&quot;&gt;
+          &lt;div className=&quot;modal-header&quot;&gt;&lt;h3&gt;{title}&lt;/h3&gt;
+            &lt;button className=&quot;modal-close&quot; onClick={onClose} aria-label=&quot;Tutup&quot;&gt;&lt;i className=&quot;i i-x&quot; /&gt;&lt;/button&gt;&lt;/div&gt;
+          &lt;div className=&quot;modal-body&quot;&gt;{children}&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    )
+  }</pre></div><h3 class="font-bold">6. Dipakai di App.tsx</h3><div class="cw"><button class="btn btn-ghost btn-xs copy" data-copy="import { useState } from &#x27;react&#x27;
+  import { toast, theme, confirmBox } from &#x27;./lib/nusa.mjs&#x27;
+  import { Button } from &#x27;./components/Button&#x27;
+  import { Modal } from &#x27;./components/Modal&#x27;
+  import { Count, useReveal } from &#x27;./lib/useNusa&#x27;
+  
+  export default function App() {
+    const [open, setOpen] = useState(false)
+    const ref = useReveal&lt;HTMLElement&gt;()
+    return (
+      &lt;main className=&quot;container section stack&quot; ref={ref}&gt;
+        &lt;h1 className=&quot;display&quot;&gt;Dashboard&lt;/h1&gt;
+        &lt;div className=&quot;grid-auto grid-sm&quot;&gt;
+          &lt;div className=&quot;card reveal&quot;&gt;&lt;p className=&quot;text-muted&quot;&gt;Pesanan&lt;/p&gt;&lt;b className=&quot;text-2xl&quot;&gt;&lt;Count to={1284} /&gt;&lt;/b&gt;&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div className=&quot;row&quot;&gt;
+          &lt;Button onClick={() =&gt; setOpen(true)}&gt;Buka modal&lt;/Button&gt;
+          &lt;Button variant=&quot;outline&quot; color=&quot;red&quot; onClick={async () =&gt; (await confirmBox(&#x27;Hapus?&#x27;)) &amp;&amp; toast(&#x27;Dihapus&#x27;, { type: &#x27;success&#x27; })}&gt;Hapus&lt;/Button&gt;
+          &lt;Button variant=&quot;soft&quot; onClick={() =&gt; theme.toggle()}&gt;Tema&lt;/Button&gt;
+        &lt;/div&gt;
+        &lt;Modal open={open} onClose={() =&gt; setOpen(false)} title=&quot;Tambah produk&quot;&gt;Isi formulir di sini.&lt;/Modal&gt;
+      &lt;/main&gt;
+    )
+  }"><i class="i i-copy"></i> Salin</button><pre class="code">import { useState } from &#x27;react&#x27;
+  import { toast, theme, confirmBox } from &#x27;./lib/nusa.mjs&#x27;
+  import { Button } from &#x27;./components/Button&#x27;
+  import { Modal } from &#x27;./components/Modal&#x27;
+  import { Count, useReveal } from &#x27;./lib/useNusa&#x27;
+  
+  export default function App() {
+    const [open, setOpen] = useState(false)
+    const ref = useReveal&lt;HTMLElement&gt;()
+    return (
+      &lt;main className=&quot;container section stack&quot; ref={ref}&gt;
+        &lt;h1 className=&quot;display&quot;&gt;Dashboard&lt;/h1&gt;
+        &lt;div className=&quot;grid-auto grid-sm&quot;&gt;
+          &lt;div className=&quot;card reveal&quot;&gt;&lt;p className=&quot;text-muted&quot;&gt;Pesanan&lt;/p&gt;&lt;b className=&quot;text-2xl&quot;&gt;&lt;Count to={1284} /&gt;&lt;/b&gt;&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div className=&quot;row&quot;&gt;
+          &lt;Button onClick={() =&gt; setOpen(true)}&gt;Buka modal&lt;/Button&gt;
+          &lt;Button variant=&quot;outline&quot; color=&quot;red&quot; onClick={async () =&gt; (await confirmBox(&#x27;Hapus?&#x27;)) &amp;&amp; toast(&#x27;Dihapus&#x27;, { type: &#x27;success&#x27; })}&gt;Hapus&lt;/Button&gt;
+          &lt;Button variant=&quot;soft&quot; onClick={() =&gt; theme.toggle()}&gt;Tema&lt;/Button&gt;
+        &lt;/div&gt;
+        &lt;Modal open={open} onClose={() =&gt; setOpen(false)} title=&quot;Tambah produk&quot;&gt;Isi formulir di sini.&lt;/Modal&gt;
+      &lt;/main&gt;
+    )
+  }</pre></div><div class="alert alert-warn"><i class="i i-alert"></i><div class="grow"><b>Jangan panggil <code>init()</code> lagi.</b> Fungsi itu sudah jalan saat impor, dan memanggilnya dua kali menggandakan pendengar klik. Untuk elemen yang dirender belakangan, panggil fungsi spesifik: <code>reveal(el)</code>, <code>countUp(el, n)</code>, <code>typewriter(el, [...])</code>, <code>sparkline(el, data)</code>, <code>donut(el, data)</code>. Klik modal, tab, tema, salin, dan tutup alert memakai delegasi, jadi tetap jalan di elemen dinamis.</div></div><div class="alert alert-info"><i class="i i-info"></i><div class="grow"><b>Next.js:</b> impor CSS di <code>layout.tsx</code>, lalu panggil fungsi Nusa hanya di komponen dengan <code>"use client"</code>. Modul ini aman untuk SSR.</div></div></section><section id="astro" class="stack"><h2 class="title">Astro</h2><p class="text-muted">Nusa CSS cocok dengan Astro: CSS dimuat di layout, skrip dibundel otomatis, dan komponen .astro tidak butuh JavaScript tambahan.</p><h3 class="font-bold">1. Buat proyek dan salin file</h3><div class="cw"><button class="btn btn-ghost btn-xs copy" data-copy="npm create astro@latest app
+  cd app
+  # salin nusa.min.css ke src/styles/ dan nusa.mjs ke src/scripts/"><i class="i i-copy"></i> Salin</button><pre class="code">npm create astro@latest app
+  cd app
+  # salin nusa.min.css ke src/styles/ dan nusa.mjs ke src/scripts/</pre></div><h3 class="font-bold">2. Layout dasar: src/layouts/Base.astro</h3><div class="cw"><button class="btn btn-ghost btn-xs copy" data-copy="---
+  import &#x27;../styles/nusa.min.css&#x27;
+  const { title = &#x27;Situs saya&#x27; } = Astro.props
+  ---
+  &lt;html lang=&quot;id&quot;&gt;
+    &lt;head&gt;
+      &lt;meta charset=&quot;utf-8&quot; /&gt;
+      &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1,viewport-fit=cover&quot; /&gt;
+      &lt;title&gt;{title}&lt;/title&gt;
+      &lt;!-- is:inline agar jalan sebelum halaman tampil (tanpa kedip) --&gt;
+      &lt;script is:inline&gt;
+        try {
+          var t = localStorage.getItem(&#x27;nusa-theme&#x27;)
+          document.documentElement.classList.toggle(&#x27;dark&#x27;, t === &#x27;dark&#x27; || (!t &amp;&amp; matchMedia(&#x27;(prefers-color-scheme:dark)&#x27;).matches))
+          var p = localStorage.getItem(&#x27;nusa-palette&#x27;)
+          p &amp;&amp; p !== &#x27;default&#x27; &amp;&amp; document.documentElement.setAttribute(&#x27;data-palette&#x27;, p)
+        } catch (e) {}
+      &lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;slot /&gt;
+      &lt;script&gt;import &#x27;../scripts/nusa.mjs&#x27;&lt;/script&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;"><i class="i i-copy"></i> Salin</button><pre class="code">---
+  import &#x27;../styles/nusa.min.css&#x27;
+  const { title = &#x27;Situs saya&#x27; } = Astro.props
+  ---
+  &lt;html lang=&quot;id&quot;&gt;
+    &lt;head&gt;
+      &lt;meta charset=&quot;utf-8&quot; /&gt;
+      &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1,viewport-fit=cover&quot; /&gt;
+      &lt;title&gt;{title}&lt;/title&gt;
+      &lt;!-- is:inline agar jalan sebelum halaman tampil (tanpa kedip) --&gt;
+      &lt;script is:inline&gt;
+        try {
+          var t = localStorage.getItem(&#x27;nusa-theme&#x27;)
+          document.documentElement.classList.toggle(&#x27;dark&#x27;, t === &#x27;dark&#x27; || (!t &amp;&amp; matchMedia(&#x27;(prefers-color-scheme:dark)&#x27;).matches))
+          var p = localStorage.getItem(&#x27;nusa-palette&#x27;)
+          p &amp;&amp; p !== &#x27;default&#x27; &amp;&amp; document.documentElement.setAttribute(&#x27;data-palette&#x27;, p)
+        } catch (e) {}
+      &lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;slot /&gt;
+      &lt;script&gt;import &#x27;../scripts/nusa.mjs&#x27;&lt;/script&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;</pre></div><h3 class="font-bold">3. Halaman: src/pages/index.astro</h3><div class="cw"><button class="btn btn-ghost btn-xs copy" data-copy="---
+  import Base from &#x27;../layouts/Base.astro&#x27;
+  import Button from &#x27;../components/Button.astro&#x27;
+  ---
+  &lt;Base title=&quot;Beranda&quot;&gt;
+    &lt;header class=&quot;navbar glass&quot;&gt;&lt;b class=&quot;text-gradient&quot;&gt;Situs saya&lt;/b&gt;
+      &lt;button class=&quot;btn btn-ghost btn-icon ml-auto&quot; data-nu-theme aria-label=&quot;Tema&quot;&gt;&lt;i class=&quot;i i-moon&quot;&gt;&lt;/i&gt;&lt;/button&gt;&lt;/header&gt;
+    &lt;main class=&quot;container section stack stack-lg&quot;&gt;
+      &lt;h1 class=&quot;display&quot;&gt;Halo &lt;span class=&quot;text-gradient&quot; data-type=&quot;Astro|Nusa CSS&quot;&gt;&lt;/span&gt;&lt;/h1&gt;
+      &lt;div class=&quot;grid-auto stagger&quot;&gt;
+        &lt;div class=&quot;card card-hover reveal&quot;&gt;&lt;b&gt;Cepat&lt;/b&gt;&lt;p class=&quot;text-muted&quot;&gt;Nol JavaScript untuk halaman statis.&lt;/p&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;row&quot;&gt;&lt;Button&gt;Mulai&lt;/Button&gt;&lt;Button variant=&quot;outline&quot; color=&quot;pink&quot;&gt;Pelajari&lt;/Button&gt;&lt;/div&gt;
+    &lt;/main&gt;
+  &lt;/Base&gt;"><i class="i i-copy"></i> Salin</button><pre class="code">---
+  import Base from &#x27;../layouts/Base.astro&#x27;
+  import Button from &#x27;../components/Button.astro&#x27;
+  ---
+  &lt;Base title=&quot;Beranda&quot;&gt;
+    &lt;header class=&quot;navbar glass&quot;&gt;&lt;b class=&quot;text-gradient&quot;&gt;Situs saya&lt;/b&gt;
+      &lt;button class=&quot;btn btn-ghost btn-icon ml-auto&quot; data-nu-theme aria-label=&quot;Tema&quot;&gt;&lt;i class=&quot;i i-moon&quot;&gt;&lt;/i&gt;&lt;/button&gt;&lt;/header&gt;
+    &lt;main class=&quot;container section stack stack-lg&quot;&gt;
+      &lt;h1 class=&quot;display&quot;&gt;Halo &lt;span class=&quot;text-gradient&quot; data-type=&quot;Astro|Nusa CSS&quot;&gt;&lt;/span&gt;&lt;/h1&gt;
+      &lt;div class=&quot;grid-auto stagger&quot;&gt;
+        &lt;div class=&quot;card card-hover reveal&quot;&gt;&lt;b&gt;Cepat&lt;/b&gt;&lt;p class=&quot;text-muted&quot;&gt;Nol JavaScript untuk halaman statis.&lt;/p&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;row&quot;&gt;&lt;Button&gt;Mulai&lt;/Button&gt;&lt;Button variant=&quot;outline&quot; color=&quot;pink&quot;&gt;Pelajari&lt;/Button&gt;&lt;/div&gt;
+    &lt;/main&gt;
+  &lt;/Base&gt;</pre></div><h3 class="font-bold">4. Komponen: src/components/Button.astro</h3><div class="cw"><button class="btn btn-ghost btn-xs copy" data-copy="---
+  const { color = &#x27;&#x27;, variant = &#x27;solid&#x27;, size = &#x27;&#x27;, class: cls = &#x27;&#x27; } = Astro.props
+  const k = variant === &#x27;solid&#x27; ? (color ? `btn-${color}` : &#x27;&#x27;) : `btn-${variant}${color ? &#x27;-&#x27; + color : &#x27;&#x27;}`
+  ---
+  &lt;button class:list={[&#x27;btn&#x27;, k, size &amp;&amp; `btn-${size}`, cls]}&gt;&lt;slot /&gt;&lt;/button&gt;"><i class="i i-copy"></i> Salin</button><pre class="code">---
+  const { color = &#x27;&#x27;, variant = &#x27;solid&#x27;, size = &#x27;&#x27;, class: cls = &#x27;&#x27; } = Astro.props
+  const k = variant === &#x27;solid&#x27; ? (color ? `btn-${color}` : &#x27;&#x27;) : `btn-${variant}${color ? &#x27;-&#x27; + color : &#x27;&#x27;}`
+  ---
+  &lt;button class:list={[&#x27;btn&#x27;, k, size &amp;&amp; `btn-${size}`, cls]}&gt;&lt;slot /&gt;&lt;/button&gt;</pre></div><h3 class="font-bold">5. Pulau React (opsional)</h3><div class="cw"><button class="btn btn-ghost btn-xs copy" data-copy="npx astro add react
+  # lalu pakai komponen Modal dan Button dari bagian React:
+  # &lt;Modal client:load open={...} /&gt;"><i class="i i-copy"></i> Salin</button><pre class="code">npx astro add react
+  # lalu pakai komponen Modal dan Button dari bagian React:
+  # &lt;Modal client:load open={...} /&gt;</pre></div><h3 class="font-bold">6. Jika memakai View Transitions</h3><p class="text-muted">Halaman diganti tanpa muat ulang, jadi terapkan ulang tema dan efek scroll setiap navigasi.</p><div class="cw"><button class="btn btn-ghost btn-xs copy" data-copy="&lt;script&gt;
+  import { theme, palette, reveal } from &#x27;../scripts/nusa.mjs&#x27;
+  document.addEventListener(&#x27;astro:after-swap&#x27;, () =&gt; {
+    theme.apply()
+    const p = localStorage.getItem(&#x27;nusa-palette&#x27;); p &amp;&amp; palette.set(p)
+  })
+  document.addEventListener(&#x27;astro:page-load&#x27;, () =&gt; reveal())
+  &lt;/script&gt;"><i class="i i-copy"></i> Salin</button><pre class="code">&lt;script&gt;
+  import { theme, palette, reveal } from &#x27;../scripts/nusa.mjs&#x27;
+  document.addEventListener(&#x27;astro:after-swap&#x27;, () =&gt; {
+    theme.apply()
+    const p = localStorage.getItem(&#x27;nusa-palette&#x27;); p &amp;&amp; palette.set(p)
+  })
+  document.addEventListener(&#x27;astro:page-load&#x27;, () =&gt; reveal())
+  &lt;/script&gt;</pre></div><div class="alert alert-info"><i class="i i-info"></i><div class="grow">Atribut seperti <code>data-count</code>, <code>data-type</code>, <code>data-spark</code>, dan <code>data-tilt</code> dibaca saat halaman dimuat. Pada navigasi View Transitions, panggil <code>countUp</code>, <code>typewriter</code>, dan fungsi lain secara manual.</div></div></section><section id="warna" class="stack"><span class="eyebrow">Dasar · Warna</span><h2 class="title">Teks, warna &amp; background</h2>
+  <p class="text-muted">Warna semantik otomatis menyesuaikan dark mode. Tambahkan <code>/10</code> sampai <code>/90</code> untuk transparansi, atau akhiran <code>-soft</code> untuk latar lembut.</p>
+  <div class="demo" data-title="Warna teks">
+    <div class="row gap-4 text-lg font-semibold">
+      <span class="text-brand">brand</span><span class="text-success">success</span><span class="text-danger">danger</span><span class="text-warning">warning</span><span class="text-info">info</span><span class="text-muted">muted</span><span class="text-brand/50">brand/50</span><span class="text-pink-500">pink-500</span><span class="text-teal-600">teal-600</span>
+    </div>
+  </div>
+  <div class="demo" data-title="Background soft dan alpha">
+    <div class="grid-auto grid-sm gap-3 text-sm font-semibold">
+      <div class="p-4 rounded-lg bg-brand-soft text-brand">bg-brand-soft</div>
+      <div class="p-4 rounded-lg bg-success-soft text-success">bg-success-soft</div>
+      <div class="p-4 rounded-lg bg-danger-soft text-danger">bg-danger-soft</div>
+      <div class="p-4 rounded-lg bg-warning-soft text-warning">bg-warning-soft</div>
+      <div class="p-4 rounded-lg bg-info-soft text-info">bg-info-soft</div>
+      <div class="p-4 rounded-lg bg-black/80 text-white">bg-black/80</div>
+      <div class="p-4 rounded-lg bg-brand/20 border border-brand/40">bg-brand/20</div>
+      <div class="p-4 rounded-lg bg-surface-2 text-muted">bg-surface-2</div>
+    </div>
+  </div>
+  <div class="demo" data-title="Gradient preset (bg-grad-*)">
+    <div class="grid-auto grid-sm gap-3 text-white text-sm font-bold">
+      <div class="h-20 rounded-xl bg-grad-sunset p-3">sunset</div><div class="h-20 rounded-xl bg-grad-ocean p-3">ocean</div><div class="h-20 rounded-xl bg-grad-forest p-3">forest</div><div class="h-20 rounded-xl bg-grad-royal p-3">royal</div>
+      <div class="h-20 rounded-xl bg-grad-rose p-3">rose</div><div class="h-20 rounded-xl bg-grad-mint p-3 text-black">mint</div><div class="h-20 rounded-xl bg-grad-fire p-3">fire</div><div class="h-20 rounded-xl bg-grad-night p-3">night</div>
+    </div>
+  </div>
+  <div class="demo" data-title="Gradient kustom dan pola latar">
+    <div class="grid-auto grid-sm gap-3 text-sm font-bold">
+      <div class="h-24 rounded-xl bg-gradient-to-br from-pink-400 to-indigo-600 p-3 text-white">from-pink-400 to-indigo-600</div>
+      <div class="h-24 rounded-xl bg-gradient-to-t from-brand to-transparent border p-3">to-t</div>
+      <div class="h-24 rounded-xl border bg-dots p-3">bg-dots</div>
+      <div class="h-24 rounded-xl border bg-grid p-3">bg-grid</div>
+      <div class="h-24 rounded-xl border bg-stripes p-3">bg-stripes</div>
+      <div class="h-24 rounded-xl border bg-checker p-3">bg-checker</div>
+      <div class="h-24 rounded-xl border bg-mesh p-3">bg-mesh</div>
+    </div>
+  </div>
+  <div class="clsref" data-cls="text-brand text-success text-danger text-warning text-info text-muted bg-brand-soft bg-success-soft bg-black/50 bg-white/20 border-brand/30 bg-grad-sunset bg-grad-ocean bg-dots bg-grid bg-mesh from-pink-400 to-indigo-600 bg-gradient-to-r bg-clip-text decoration-brand accent-brand ring-brand"></div></section>
+  
+  <section id="tipografi" class="stack"><span class="eyebrow">Dasar · Teks</span><h2 class="title">Font: ukuran, keluarga &amp; gaya</h2>
+  <p class="text-muted">Ukuran dari <code>text-2xs</code> sampai <code>text-9xl</code>, ukuran fluid yang mengikuti lebar layar, enam keluarga font, dan efek teks siap pakai.</p>
+  <div class="demo" data-title="Skala ukuran font">
+    <div class="stack stack-sm"><p class="text-2xs">text-2xs — Nusantara</p><p class="text-xs">text-xs — Nusantara</p><p class="text-sm">text-sm — Nusantara</p><p class="text-base">text-base — Nusantara</p><p class="text-xl">text-xl — Nusantara</p><p class="text-3xl">text-3xl — Nusantara</p><p class="text-5xl font-bold">text-5xl</p><p class="text-fluid-xl font-extrabold leading-none">text-fluid-xl</p></div>
+  </div>
+  <div class="demo" data-title="Keluarga font">
+    <div class="stack stack-sm text-xl"><p class="font-sans">font-sans — Kopi dari kebun Nusantara</p><p class="font-serif">font-serif — Kopi dari kebun Nusantara</p><p class="font-display">font-display — Kopi dari kebun Nusantara</p><p class="font-rounded">font-rounded — Kopi dari kebun Nusantara</p><p class="font-hand">font-hand — Kopi dari kebun Nusantara</p><p class="font-mono">font-mono — Kopi dari kebun Nusantara</p></div>
+  </div>
+  <div class="demo" data-title="Berat, transformasi, dekorasi, dan jarak huruf">
+    <div class="stack stack-sm"><p class="font-light">font-light</p><p class="font-medium">font-medium</p><p class="font-black">font-black</p><p class="uppercase tracking-widest text-sm">uppercase tracking-widest</p><p class="capitalize">capitalize teks ini</p><p class="underline decoration-wavy decoration-danger underline-offset-4">underline wavy</p><p class="line-through text-muted">line-through</p><p class="italic">italic</p><p class="leading-loose max-w-md text-muted">leading-loose membuat paragraf panjang terasa lebih lega dan nyaman dibaca di layar besar maupun kecil.</p></div>
+  </div>
+  <div class="demo" data-title="Efek teks">
+    <div class="stack"><p class="text-4xl font-black text-gradient">text-gradient</p><p class="text-4xl font-black text-shimmer">text-shimmer</p><p class="text-4xl font-black text-glow text-brand">text-glow</p><p class="text-5xl font-black text-outline">text-outline</p><p class="text-xl">Beri sorotan dengan <span class="marker">marker</span> dan <a href="#tipografi" class="link-underline text-brand font-semibold">link-underline</a> animasi.</p><p class="text-xl"><span class="caret">Efek kursor berkedip</span></p><p class="drop-cap max-w-md text-muted">Drop cap memberi kesan editorial pada paragraf pembuka artikel, buku, atau halaman cerita.</p><p class="scroll-fill text-xl font-bold w-fit">scroll-fill: garis bawah terisi saat di-scroll</p></div>
+  </div>
+  <div class="clsref" data-cls="text-2xs text-xs text-sm text-base text-lg text-xl text-2xl text-3xl text-4xl text-5xl text-6xl text-7xl text-8xl text-9xl text-fluid-sm text-fluid-md text-fluid-lg text-fluid-xl text-fluid-2xl font-sans font-serif font-display font-rounded font-hand font-mono font-thin font-light font-normal font-medium font-semibold font-bold font-extrabold font-black leading-none leading-tight leading-snug leading-relaxed leading-loose tracking-tighter tracking-tight tracking-wide tracking-widest text-left text-center text-right text-justify uppercase lowercase capitalize italic underline line-through truncate line-clamp-3 text-balance text-pretty text-shadow text-stroke-1 eyebrow"></div></section>
+  
+  <section id="ukuran" class="stack"><span class="eyebrow">Dasar · Ukuran</span><h2 class="title">Width, min/max, height &amp; size</h2>
+  <p class="text-muted">Pecahan (<code>w-1/2</code>), skala rem (<code>w-64</code>), kata kunci (<code>w-fit</code>), serta batas <code>min-*</code> dan <code>max-*</code>. Semua <code>w-</code> dan <code>max-w-</code> punya varian <code>sm:</code> sampai <code>xl:</code>.</p>
+  <div class="demo" data-title="Width pecahan dan responsif">
+    <div class="stack stack-sm text-sm font-semibold text-center"><div class="w-full bg-brand-soft text-brand p-2 rounded">w-full</div><div class="w-3/4 bg-brand-soft text-brand p-2 rounded">w-3/4</div><div class="w-1/2 bg-brand-soft text-brand p-2 rounded">w-1/2</div><div class="w-1/3 bg-brand-soft text-brand p-2 rounded">w-1/3</div><div class="w-full md:w-1/4 bg-brand text-white p-2 rounded">w-full md:w-1/4</div><div class="w-fit bg-brand-soft text-brand p-2 rounded">w-fit</div></div>
+  </div>
+  <div class="demo" data-title="min-width, max-width, dan min-height">
+    <div class="stack stack-sm text-sm"><div class="max-w-xs bg-surface-2 p-3 rounded">max-w-xs — teks panjang akan berhenti melebar di 20rem sehingga baris tetap nyaman dibaca.</div><div class="max-w-prose bg-surface-2 p-3 rounded">max-w-prose — lebar ideal untuk paragraf artikel, sekitar 65 karakter per baris.</div><div class="row"><div class="min-w-32 bg-brand-soft p-3 rounded">min-w-32</div><div class="min-h-24 bg-brand-soft p-3 rounded">min-h-24</div><div class="max-h-16 overflow-auto bg-surface-2 p-3 rounded w-48">max-h-16 overflow-auto: konten lebih tinggi dari batas akan bisa di-scroll di dalam kotak ini, jadi tata letak tidak ikut memanjang.</div></div></div>
+  </div>
+  <div class="demo" data-title="Height, size, dan rasio aspek">
+    <div class="row items-end gap-4 text-xs font-bold text-white text-center"><div class="h-8 w-16 bg-brand rounded">h-8</div><div class="h-16 w-16 bg-brand rounded">h-16</div><div class="h-24 w-16 bg-brand rounded">h-24</div><div class="size-16 bg-pink-500 rounded grid place-items-center">size-16</div><div class="aspect-video w-32 bg-teal-600 rounded grid place-items-center">16/9</div><div class="aspect-4/3 w-24 bg-amber-500 rounded grid place-items-center">4/3</div><div class="aspect-square w-20 bg-violet-500 rounded-full grid place-items-center">1/1</div></div>
+  </div>
+  <div class="clsref" data-cls="w-1/2 w-1/3 w-2/3 w-3/4 w-full w-screen w-fit w-auto w-64 w-96 min-w-0 min-w-full min-w-32 max-w-xs max-w-md max-w-2xl max-w-7xl max-w-prose max-w-screen-lg h-full h-screen h-dvh h-fit h-64 min-h-screen min-h-dvh min-h-24 max-h-screen max-h-64 size-8 size-12 size-full aspect-square aspect-video aspect-4/3 aspect-3/4 aspect-21/9 basis-1/2 basis-1/3"></div></section>
+  
+  <section id="spasi" class="stack"><span class="eyebrow">Dasar · Ruang</span><h2 class="title">Padding, margin &amp; gap yang lebih luas</h2>
+  <p class="text-muted">Skala <code>0</code> sampai <code>96</code> (1 satuan = 0,25rem), margin negatif, <code>space-x/y</code>, serta padding fluid yang otomatis menyesuaikan layar: <code>pad</code>, <code>pad-lg</code>, <code>pad-xl</code>, dan <code>section-xl</code>.</p>
+  <div class="demo" data-title="Skala padding (area lembut = padding)">
+    <div class="row gap-4 items-start text-xs font-bold text-white">
+      <div class="bg-brand/20 rounded-lg p-2"><span class="bg-brand px-2 py-1 rounded inline-block">p-2</span></div>
+      <div class="bg-brand/20 rounded-lg p-5"><span class="bg-brand px-2 py-1 rounded inline-block">p-5</span></div>
+      <div class="bg-brand/20 rounded-lg p-8"><span class="bg-brand px-2 py-1 rounded inline-block">p-8</span></div>
+      <div class="bg-brand/20 rounded-lg p-14"><span class="bg-brand px-2 py-1 rounded inline-block">p-14</span></div>
+      <div class="bg-brand/20 rounded-lg px-20 py-4"><span class="bg-brand px-2 py-1 rounded inline-block">px-20 py-4</span></div>
+    </div>
+  </div>
+  <div class="demo" data-title="Padding fluid (berubah mengikuti layar)">
+    <div class="stack text-sm"><div class="pad bg-surface-2 rounded-lg">pad — clamp(1rem, 3vw, 2rem)</div><div class="pad-lg bg-surface-2 rounded-lg">pad-lg — clamp(1.5rem, 5vw, 3rem)</div><div class="pad-xl bg-surface-2 rounded-lg">pad-xl — clamp(2rem, 8vw, 5rem)</div><div class="pad-x-lg py-3 bg-surface-2 rounded-lg">pad-x-lg — lega di sisi kiri dan kanan</div></div>
+  </div>
+  <div class="demo" data-title="space, gap, dan margin negatif">
+    <div class="stack"><div class="flex space-x-6 text-xs font-bold text-white"><div class="bg-brand p-3 rounded">space-x-6</div><div class="bg-brand p-3 rounded">a</div><div class="bg-brand p-3 rounded">b</div></div><div class="grid grid-cols-3 gap-8 text-xs font-bold text-white text-center"><div class="bg-pink-500 p-3 rounded">gap-8</div><div class="bg-pink-500 p-3 rounded">gap-8</div><div class="bg-pink-500 p-3 rounded">gap-8</div></div><div class="gap-fluid grid grid-cols-2 text-xs font-bold text-white text-center"><div class="bg-teal-600 p-3 rounded">gap-fluid</div><div class="bg-teal-600 p-3 rounded -mt-3 relative">-mt-3</div></div></div>
+  </div>
+  <div class="clsref" data-cls="p-0 p-4 p-8 p-14 p-20 p-32 px-6 py-10 pt-16 pb-24 m-4 mx-auto my-12 mt-20 -mt-4 -ml-2 gap-2 gap-6 gap-x-8 gap-y-4 gap-fluid gap-fluid-lg space-x-4 space-y-6 divide-y pad pad-lg pad-xl pad-x pad-y pad-x-lg pad-y-lg section-sm section section-lg section-xl md:p-8 lg:px-16"></div></section>
+  
+  <section id="flexgrid" class="stack"><span class="eyebrow">Dasar · Layout</span><h2 class="title">Flex, grid &amp; gap</h2>
+  <p class="text-muted">Flexbox lengkap, grid 1–12 kolom, baris, <code>order</code>, <code>col-start</code>, kolom otomatis <code>grid-fit-*</code>, dan masonry lewat <code>columns-*</code>.</p>
+  <div class="demo" data-title="Flex: arah, perataan, dan gap">
+    <div class="stack text-xs font-bold text-white"><div class="flex justify-between items-center gap-3 bg-surface-2 p-3 rounded"><span class="bg-brand p-2 rounded">justify-between</span><span class="bg-brand p-3 rounded">items-center</span><span class="bg-brand p-2 rounded">gap-3</span></div><div class="flex justify-center gap-2 bg-surface-2 p-3 rounded"><span class="bg-pink-500 p-2 rounded">justify-center</span><span class="bg-pink-500 p-2 rounded">A</span></div><div class="flex flex-col sm:flex-row gap-2 bg-surface-2 p-3 rounded"><span class="bg-teal-600 p-2 rounded grow">flex-col sm:flex-row</span><span class="bg-teal-600 p-2 rounded grow">grow</span><span class="bg-teal-600 p-2 rounded">shrink-0</span></div></div>
+  </div>
+  <div class="demo" data-title="Grid kolom, col-span, order">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs font-bold text-white text-center"><div class="bg-brand p-4 rounded md:col-span-2">md:col-span-2</div><div class="bg-brand p-4 rounded">1</div><div class="bg-brand p-4 rounded order-last md:order-none">order-last</div><div class="bg-pink-500 p-4 rounded col-span-full">col-span-full</div><div class="bg-teal-600 p-4 rounded md:col-start-2">md:col-start-2</div><div class="bg-teal-600 p-4 rounded">3</div></div>
+  </div>
+  <div class="demo" data-title="Grid otomatis (grid-fit-sm) dan grid-rows">
+    <div class="stack"><div class="grid-fit-sm gap-3 text-xs font-bold text-white text-center"><div class="bg-brand p-4 rounded">1</div><div class="bg-brand p-4 rounded">2</div><div class="bg-brand p-4 rounded">3</div><div class="bg-brand p-4 rounded">4</div><div class="bg-brand p-4 rounded">5</div></div><div class="grid grid-cols-3 grid-rows-2 gap-3 h-40 text-xs font-bold text-white text-center"><div class="bg-pink-500 rounded row-span-2 grid place-items-center">row-span-2</div><div class="bg-pink-500 rounded grid place-items-center col-span-2">col-span-2</div><div class="bg-pink-500 rounded grid place-items-center">3</div><div class="bg-pink-500 rounded grid place-items-center">4</div></div></div>
+  </div>
+  <div class="demo" data-title="Masonry dengan columns-*">
+    <div class="columns-3 gap-3 text-xs font-bold text-white"><div class="bg-brand h-24 rounded mb-3 break-inside-avoid p-2">1</div><div class="bg-pink-500 h-40 rounded mb-3 break-inside-avoid p-2">2</div><div class="bg-teal-600 h-28 rounded mb-3 break-inside-avoid p-2">3</div><div class="bg-amber-500 h-36 rounded mb-3 break-inside-avoid p-2">4</div><div class="bg-violet-500 h-20 rounded mb-3 break-inside-avoid p-2">5</div><div class="bg-sky-500 h-32 rounded mb-3 break-inside-avoid p-2">6</div></div>
+  </div>
+  <div class="clsref" data-cls="flex inline-flex grid inline-grid flex-row flex-col flex-wrap flex-1 flex-none grow shrink-0 basis-1/2 items-start items-center items-end items-stretch justify-start justify-center justify-between justify-around justify-evenly self-center place-items-center grid-cols-1 grid-cols-12 grid-rows-3 col-span-2 col-span-full col-start-2 row-span-2 order-1 order-first order-last grid-flow-dense grid-fit-sm grid-fit-md grid-fill-lg columns-2 columns-3 md:grid-cols-3 lg:flex-row"></div></section>
+  
+  <section id="posisi" class="stack"><span class="eyebrow">Dasar · Posisi</span><h2 class="title">Posisi &amp; z-index</h2>
+  <p class="text-muted">Nilai <code>z-0</code> sampai <code>z-100</code> dengan langkah 10, ditambah <code>z-max</code> dan <code>-z-10</code>. Nusa memakai z-index: navbar 40, modal 60, toast 70, loading 100.</p>
+  <div class="demo" data-title="z-index pada elemen bertumpuk">
+    <div class="relative h-40 text-xs font-bold text-white"><div class="absolute top-0 left-0 size-28 rounded-xl bg-brand z-10 p-3 shadow-lg">z-10</div><div class="absolute top-6 left-16 size-28 rounded-xl bg-pink-500 z-30 p-3 shadow-lg">z-30</div><div class="absolute top-12 left-32 size-28 rounded-xl bg-teal-600 z-20 p-3 shadow-lg">z-20</div><div class="absolute right-0 top-0 bg-black/70 rounded p-2 -z-10">-z-10 (di belakang)</div></div>
+  </div>
+  <div class="demo" data-title="Tengah mutlak, sticky, dan inset">
+    <div class="grid-auto grid-sm gap-3 text-xs font-bold"><div class="relative h-28 rounded-xl bg-surface-2"><span class="center-abs bg-brand text-white px-3 py-1 rounded-full">center-abs</span></div><div class="relative h-28 rounded-xl bg-surface-2"><span class="absolute inset-0 rounded-xl border-2 border-dashed border-brand"></span><span class="absolute bottom-2 right-2 text-brand">inset-0</span></div><div class="h-28 rounded-xl bg-surface-2 overflow-auto"><div class="sticky top-0 bg-brand text-white p-2">sticky top-0</div><div class="p-3 text-muted">Gulir kotak ini. Header di atas akan menempel.<br><br>Baris kosong<br><br>Baris kosong<br><br>Baris kosong</div></div></div>
+  </div>
+  <div class="clsref" data-cls="static relative absolute fixed sticky inset-0 inset-x-0 inset-y-0 top-0 right-0 bottom-0 left-0 top-1/2 left-1/2 -top-2 translate-center center-abs z-0 z-10 z-20 z-30 z-40 z-50 z-60 z-100 z-max -z-10 isolate sticky-top overflow-hidden overflow-auto overflow-x-auto overscroll-contain"></div></section>
+  
+  <section id="efek" class="stack"><span class="eyebrow">Dasar · Efek</span><h2 class="title">Shadow, ring, filter &amp; transisi</h2>
+  <p class="text-muted">Gabungkan varian <code>hover:</code>, <code>focus:</code>, <code>active:</code>, <code>group-hover:</code>, dan <code>dark:</code> untuk interaksi tanpa menulis CSS.</p>
+  <div class="demo" data-title="Shadow dan ring">
+    <div class="grid-auto grid-sm gap-5 text-xs font-bold text-center"><div class="p-5 rounded-xl bg-surface shadow-sm">shadow-sm</div><div class="p-5 rounded-xl bg-surface shadow-md">shadow-md</div><div class="p-5 rounded-xl bg-surface shadow-lg">shadow-lg</div><div class="p-5 rounded-xl bg-surface shadow-2xl">shadow-2xl</div><div class="p-5 rounded-xl bg-surface shadow-brand">shadow-brand</div><div class="p-5 rounded-xl bg-surface ring-2 ring-brand">ring-2 ring-pink</div></div>
+  </div>
+  <div class="demo" data-title="Hover, transform, dan transisi">
+    <div class="grid-auto grid-sm gap-4 text-xs font-bold text-center"><div class="p-6 rounded-xl bg-brand text-white transition duration-300 hover:scale-110 cursor-pointer">hover:scale-110</div><div class="p-6 rounded-xl bg-pink-500 text-white transition duration-300 hover:-translate-y-2 hover:shadow-xl cursor-pointer">hover:-translate-y-2</div><div class="p-6 rounded-xl bg-teal-600 text-white transition duration-500 hover:rotate-6 cursor-pointer">hover:rotate-6</div><div class="group p-6 rounded-xl bg-surface-2 cursor-pointer">group <span class="block opacity-0 group-hover:opacity-100 transition duration-300 text-brand">muncul saat hover grup</span></div><div class="hover-lift p-6 rounded-xl bg-surface border cursor-pointer">hover-lift</div></div>
+  </div>
+  <div class="demo" data-title="Filter dan backdrop">
+    <div class="relative rounded-xl overflow-hidden bg-grad-sunset p-6 h-40 text-white font-bold"><div class="ph ph-6 absolute right-4 top-4 size-20 rounded-xl blur-sm" data-ph="☕" style="--ph-size:2rem"></div><div class="relative backdrop-blur-md bg-white/20 border border-white/30 rounded-xl p-4 max-w-xs">backdrop-blur-md + bg-white/20 — efek kaca</div></div>
+  </div>
+  <div class="clsref" data-cls="shadow-none shadow-sm shadow-md shadow-lg shadow-xl shadow-2xl shadow-inner shadow-brand ring-1 ring-2 ring-4 ring-brand ring-inset opacity-0 opacity-50 opacity-100 blur-sm blur-md backdrop-blur-md grayscale brightness-110 contrast-125 saturate-150 drop-shadow transition transition-all transition-colors duration-150 duration-300 duration-700 ease-in-out ease-spring scale-95 scale-105 scale-110 rotate-3 -rotate-6 translate-y-2 -translate-y-1 skew-x-3 origin-top-left hover:scale-105 hover:shadow-lg hover:-translate-y-1 focus:ring-2 active:scale-95 group-hover:opacity-100 dark:bg-black"></div></section>
+  <section id="layout" class="stack"><h2 class="title">Layout otomatis</h2><p class="text-muted">Tanpa menghitung padding dan lebar. Container, jarak section, dan grid sudah responsif.</p><div class="overflow-x-auto"><table class="table"><thead><tr><th>Nama</th><th>Keterangan</th></tr></thead><tbody><tr><td><code>container</code></td><td>Lebar maksimum + padding mengikuti layar (<code>container-sm</code>, <code>container-xs</code>)</td></tr><tr><td><code>section</code></td><td>Jarak vertikal antar bagian halaman</td></tr><tr><td><code>stack</code></td><td>Jarak vertikal antar anak (<code>stack-sm</code>, <code>stack-lg</code>)</td></tr><tr><td><code>row</code></td><td>Baris flex yang membungkus dengan jarak rapi</td></tr><tr><td><code>grid-auto</code></td><td>Kolom otomatis menyesuaikan lebar layar</td></tr><tr><td><code>split</code></td><td>Dua kolom, jadi satu kolom di ponsel</td></tr></tbody></table></div><div class="preview"><div class="grid-auto grid-sm"><div class="card">Satu</div><div class="card">Dua</div><div class="card">Tiga</div></div></div><div class="cw"><button class="btn btn-ghost btn-xs copy" data-copy="&lt;div class=&quot;grid-auto grid-sm&quot;&gt;&lt;div class=&quot;card&quot;&gt;Satu&lt;/div&gt;&lt;div class=&quot;card&quot;&gt;Dua&lt;/div&gt;&lt;div class=&quot;card&quot;&gt;Tiga&lt;/div&gt;&lt;/div&gt;"><i class="i i-copy"></i> Salin</button><pre class="code">&lt;div class=&quot;grid-auto grid-sm&quot;&gt;&lt;div class=&quot;card&quot;&gt;Satu&lt;/div&gt;&lt;div class=&quot;card&quot;&gt;Dua&lt;/div&gt;&lt;div class=&quot;card&quot;&gt;Tiga&lt;/div&gt;&lt;/div&gt;</pre></div><div class="preview"><div class="stack"><h3 class="title">Judul</h3><p class="text-muted">Paragraf ini otomatis berjarak.</p><div class="row"><button class="btn">Simpan</button><button class="btn btn-ghost">Batal</button></div></div></div><div class="cw"><button class="btn btn-ghost btn-xs copy" data-copy="&lt;div class=&quot;stack&quot;&gt;&lt;h3 class=&quot;title&quot;&gt;Judul&lt;/h3&gt;&lt;p class=&quot;text-muted&quot;&gt;Paragraf ini otomatis berjarak.&lt;/p&gt;&lt;div class=&quot;row&quot;&gt;&lt;button class=&quot;btn&quot;&gt;Simpan&lt;/button&gt;&lt;button class=&quot;btn btn-ghost&quot;&gt;Batal&lt;/button&gt;&lt;/div&gt;&lt;/div&gt;"><i class="i i-copy"></i> Salin</button><pre class="code">&lt;div class=&quot;stack&quot;&gt;&lt;h3 class=&quot;title&quot;&gt;Judul&lt;/h3&gt;&lt;p class=&quot;text-muted&quot;&gt;Paragraf ini otomatis berjarak.&lt;/p&gt;&lt;div class=&quot;row&quot;&gt;&lt;button class=&quot;btn&quot;&gt;Simpan&lt;/button&gt;&lt;button class=&quot;btn btn-ghost&quot;&gt;Batal&lt;/button&gt;&lt;/div&gt;&lt;/div&gt;</pre></div></section><section id="utility" class="stack"><h2 class="title">Utility</h2><p class="text-muted">Gaya Tailwind: ukuran angka dikali 0,25rem. Prefix tersedia untuk responsif, hover, dan dark mode.</p><div class="overflow-x-auto"><table class="table"><thead><tr><th>Nama</th><th>Keterangan</th></tr></thead><tbody><tr><td><code>p-4 px-6 mt-2 gap-3</code></td><td>Padding, margin, jarak (0–64, 80)</td></tr><tr><td><code>bg-indigo-500 text-gray-700</code></td><td>12 warna × 10 tingkat (50–900)</td></tr><tr><td><code>bg-brand/10 text-red-500/60</code></td><td>Opacity warna: 5, 10, 20, 40, 60, 80</td></tr><tr><td><code>md:flex lg:grid-cols-3</code></td><td>Responsif: <code>sm:</code> <code>md:</code> <code>lg:</code> <code>xl:</code></td></tr><tr><td><code>hover:bg-teal-500 dark:bg-gray-800</code></td><td>Varian hover dan dark</td></tr><tr><td><code>text-xl font-bold rounded-xl shadow-lg</code></td><td>Tipografi, radius, bayangan</td></tr></tbody></table></div><div class="preview"><div class="grid grid-cols-1 md:grid-cols-3 gap-4"><div class="p-4 rounded-xl bg-indigo-500/10 text-indigo-500 hover:bg-indigo-500 hover:text-white transition">Hover saya</div><div class="p-4 rounded-xl bg-teal-500/10 text-teal-500">Teal</div><div class="p-4 rounded-xl bg-pink-500/10 text-pink-500">Pink</div></div></div><div class="cw"><button class="btn btn-ghost btn-xs copy" data-copy="&lt;div class=&quot;grid grid-cols-1 md:grid-cols-3 gap-4&quot;&gt;&lt;div class=&quot;p-4 rounded-xl bg-indigo-500/10 text-indigo-500 hover:bg-indigo-500 hover:text-white transition&quot;&gt;Hover saya&lt;/div&gt;&lt;div class=&quot;p-4 rounded-xl bg-teal-500/10 text-teal-500&quot;&gt;Teal&lt;/div&gt;&lt;div class=&quot;p-4 rounded-xl bg-pink-500/10 text-pink-500&quot;&gt;Pink&lt;/div&gt;&lt;/div&gt;"><i class="i i-copy"></i> Salin</button><pre class="code">&lt;div class=&quot;grid grid-cols-1 md:grid-cols-3 gap-4&quot;&gt;&lt;div class=&quot;p-4 rounded-xl bg-indigo-500/10 text-indigo-500 hover:bg-indigo-500 hover:text-white transition&quot;&gt;Hover saya&lt;/div&gt;&lt;div class=&quot;p-4 rounded-xl bg-teal-500/10 text-teal-500&quot;&gt;Teal&lt;/div&gt;&lt;div class=&quot;p-4 rounded-xl bg-pink-500/10 text-pink-500&quot;&gt;Pink&lt;/div&gt;&lt;/div&gt;</pre></div></section><section id="card" class="stack"><span class="eyebrow">Komponen · Card</span><h2 class="title">Card untuk segala keperluan</h2>
+  <p class="text-muted">Mulai dari <code>card</code> sederhana, tambahkan <code>card-header</code>, <code>card-footer</code>, <code>card-img</code>, atau gunakan varian siap pakai: horizontal, overlay, flat, outline, elevated, brand, produk, harga, profil, kutipan, dan statistik.</p>
+  <div class="demo" data-title="Header, body, footer">
+    <div class="card card-lg max-w-md"><div class="card-header">Laporan mingguan</div><h3 class="card-title">Penjualan naik 12%</h3><p class="card-text mt-2">Kopi Gayo menjadi produk terlaris minggu ini dengan 214 transaksi.</p><div class="card-footer row row-between"><span class="text-muted text-sm">Diperbarui hari ini</span><button class="btn btn-sm">Lihat detail</button></div></div>
+  </div>
+  <div class="demo" data-title="Card dengan gambar (card-flush + card-img)">
+    <div class="grid-auto gap-5">
+      <article class="card card-flush card-hover"><div class="card-img"><div class="ph ph-3" data-ph="☕" style="--ph-size:3.5rem"></div></div><div class="card-content stack stack-sm"><span class="badge badge-green">Baru</span><h3 class="card-title">Arabika Gayo</h3><p class="card-text">Cokelat gelap dan rempah manis.</p><div class="row row-between"><span class="price">Rp 85.000</span><button class="btn btn-sm">Beli</button></div></div></article>
+      <article class="card card-flush card-hover"><div class="card-img"><div class="ph ph-2" data-ph="🫖" style="--ph-size:3.5rem"></div></div><div class="card-content stack stack-sm"><h3 class="card-title">Teko leher angsa</h3><p class="card-text">Kontrol tuang presisi.</p><div class="row row-between"><span class="price">Rp 289.000<del>Rp 330.000</del></span><span class="rating"><i class="i i-star"></i> 4.7</span></div></div></article>
+      <article class="card card-overlay card-hover"><div class="ph ph-6" data-ph="🏔️" style="--ph-size:4rem"></div><div class="card-content"><h3 class="card-title">card-overlay</h3><p class="card-text">Teks di atas gambar penuh.</p></div></article>
+    </div>
+  </div>
+  <div class="demo" data-title="Horizontal">
+    <article class="card card-flush card-horizontal max-w-2xl"><div class="card-img"><div class="ph ph-4" data-ph="🌱" style="--ph-size:3.5rem"></div></div><div class="card-content-lg stack stack-sm"><span class="eyebrow">Artikel</span><h3 class="card-title text-xl">Cara memilih biji kopi segar</h3><p class="card-text">Perhatikan tanggal sangrai, aroma, dan kondisi kemasan sebelum membeli.</p><a class="btn btn-link w-fit" href="#card">Baca selengkapnya</a></div></article>
+  </div>
+  <div class="demo" data-title="Varian gaya dan ukuran">
+    <div class="grid-auto grid-sm gap-4 text-sm"><div class="card card-flat">card-flat</div><div class="card card-outline">card-outline</div><div class="card card-elevated">card-elevated</div><div class="card card-brand">card-brand</div><div class="card glass">glass</div><div class="card gborder">gborder</div><div class="card card-sm">card-sm</div><div class="card card-xl">card-xl</div></div>
+  </div>
+  <div class="demo" data-title="Statistik, profil, kutipan, harga">
+    <div class="grid-auto gap-4">
+      <div class="card stat"><span class="stat-label">Pendapatan</span><span class="stat-value">Rp 12,8 jt</span><span class="trend-up text-sm font-semibold">▲ 12% minggu ini</span></div>
+      <div class="card profile"><span class="avatar avatar-xl">RA</span><h3 class="card-title mt-3">Rama Aditya</h3><p class="card-text">Pendiri</p></div>
+      <figure class="card quote"><p>Layout selesai dalam sehari, tanpa menulis CSS sendiri.</p><figcaption class="text-muted text-sm mt-3">— Arini, Frontend</figcaption></figure>
+      <div class="card pricing featured"><p class="eyebrow">Pro</p><p class="price-big mt-2">Rp 99rb</p><ul class="checklist text-left mt-3 text-sm"><li>Semua fitur</li><li>Dukungan prioritas</li></ul><button class="btn btn-block mt-4">Pilih paket</button></div>
+    </div>
+  </div>
+  <div class="clsref" data-cls="card card-header card-title card-text card-footer card-content card-content-lg card-img card-flush card-horizontal card-overlay card-flat card-outline card-elevated card-brand card-link card-hover card-sm card-lg card-xl glass gborder shine glow icon-box icon-box-lg stat stat-value stat-label profile quote pricing price-big checklist product product-badge product-fav product-actions price rating"></div></section>
+  
+  <section id="gambar" class="stack"><span class="eyebrow">Komponen · Gambar</span><h2 class="title">Gambar, galeri &amp; avatar</h2>
+  <p class="text-muted">Efek untuk <code>&lt;img&gt;</code> maupun placeholder <code>.ph</code> (gradient + emoji, tanpa file gambar). Gunakan <code>aspect-*</code> agar rasio tetap stabil.</p>
+  <div class="demo" data-title="Placeholder ph-1 sampai ph-6">
+    <div class="grid-auto grid-sm gap-3"><div class="ph ph-1 aspect-square rounded-xl" data-ph="🌅"></div><div class="ph ph-2 aspect-square rounded-xl" data-ph="🌊"></div><div class="ph ph-3 aspect-square rounded-xl" data-ph="☀️"></div><div class="ph ph-4 aspect-square rounded-xl" data-ph="🌿"></div><div class="ph ph-5 aspect-square rounded-xl" data-ph="🌸"></div><div class="ph ph-6 aspect-square rounded-xl" data-ph="🌌"></div></div>
+  </div>
+  <div class="demo" data-title="Efek gambar">
+    <div class="grid-auto grid-sm gap-5 text-xs font-bold text-center"><div><div class="img-zoom"><div class="ph ph-3 aspect-4/3" data-ph="🔍"></div></div><p class="mt-2">img-zoom</p></div><div><div class="ph ph-2 aspect-4/3 rounded-xl img-gray" data-ph="🎨"></div><p class="mt-2">img-gray</p></div><div class="px-3"><div class="ph ph-5 aspect-4/3 rounded-xl img-frame" data-ph="🖼️"></div><p class="mt-5">img-frame</p></div><div><div class="ph ph-6 aspect-4/3 rounded-xl img-shadow" data-ph="🌑"></div><p class="mt-2">img-shadow</p></div><div><div class="ph ph-4 size-24 rounded-full mx-auto" data-ph="🙂" style="--ph-size:2rem"></div><p class="mt-2">rounded-full</p></div></div>
+  </div>
+  <div class="demo" data-title="Avatar, figure, dan galeri">
+    <div class="stack"><div class="row"><span class="avatar avatar-sm">S</span><span class="avatar">M</span><span class="avatar avatar-lg">L</span><span class="avatar avatar-xl">XL</span><div class="avatars"><span class="avatar">A</span><span class="avatar" style="--brand:var(--c-pink-600)">B</span><span class="avatar" style="--brand:var(--c-teal-600)">C</span></div></div>
+    <figure class="figure max-w-xs"><div class="ph ph-1 aspect-video rounded-xl" data-ph="🏞️"></div><figcaption class="figcaption">figure + figcaption untuk keterangan foto</figcaption></figure>
+    <div class="gallery"><div class="ph ph-1 aspect-square" data-ph="1"></div><div class="ph ph-2 aspect-square" data-ph="2"></div><div class="ph ph-3 aspect-square" data-ph="3"></div><div class="ph ph-4 aspect-square" data-ph="4"></div></div></div>
+  </div>
+  <p class="text-muted">Untuk foto sungguhan, ganti <code>.ph</code> dengan <code>&lt;img&gt;</code> ber-class <code>img-cover</code>. Atribut <code>loading="lazy"</code> menunda unduhan sampai gambar terlihat.</p>
+  <pre class="code" data-auto>&lt;div class="card card-flush max-w-xs"&gt;
+    &lt;div class="card-img"&gt;&lt;img src="foto.jpg" alt="Deskripsi gambar" loading="lazy" class="img-cover"&gt;&lt;/div&gt;
+    &lt;div class="card-content"&gt;&lt;p class="card-text"&gt;Keterangan&lt;/p&gt;&lt;/div&gt;
+  &lt;/div&gt;</pre>
+  <div class="clsref" data-cls="img img-cover img-contain img-round img-circle img-thumb img-shadow img-zoom img-gray img-frame figure figcaption gallery gallery-masonry avatar avatar-sm avatar-lg avatar-xl avatars ph ph-1 ph-2 ph-3 ph-4 ph-5 ph-6 object-cover object-contain object-center aspect-square aspect-video aspect-4/3 aspect-3/4 aspect-21/9 rounded-xl rounded-2xl rounded-full"></div></section>
+  
+  <section id="navbar" class="stack"><span class="eyebrow">Komponen · Navbar</span><h2 class="title">Navbar dengan hamburger</h2>
+  <p class="text-muted">Di layar kecil menu disembunyikan dan tombol hamburger muncul, lalu berubah menjadi tanda silang saat dibuka. Menu menutup otomatis saat tautan diklik, di luar navbar diklik, atau tombol Esc ditekan. Tambahkan <code>aria-expanded</code> pada tombol, sisanya diurus <code>nusa.js</code>.</p>
+  <template class="frame" data-title="Navbar (coba tekan hamburger)" data-h="300" data-w="375">
+    <header class="navbar">
+      <a class="navbar-brand" href="#"><i class="i i-box text-brand"></i> Merek</a>
+      <div class="navbar-end">
+        <button class="btn btn-ghost btn-icon" data-nu-theme aria-label="Tema"><i class="i i-moon"></i></button>
+        <button class="navbar-toggle" data-nu-toggle="menu" aria-expanded="false" aria-controls="menu" aria-label="Menu"><span class="hamburger"></span></button>
+      </div>
+      <nav class="navbar-menu" id="menu"><a class="active" href="#">Beranda</a><a href="#">Produk</a><a href="#">Tentang</a><a href="#">Kontak</a></nav>
+    </header>
+    <main class="main stack"><h1 class="title">Halaman contoh</h1><p class="text-muted">Konten di bawah navbar.</p></main>
+  </template>
+  <div class="demo" data-title="Varian navbar">
+    <div class="stack stack-sm"><header class="navbar navbar-dark rounded-xl" style="position:static"><a class="navbar-brand" href="#docs">navbar-dark</a><nav class="navbar-menu"><a href="#navbar">Satu</a><a href="#navbar">Dua</a></nav><div class="navbar-end"><button class="navbar-toggle" aria-label="Menu"><span class="hamburger"></span></button></div></header>
+    <header class="navbar navbar-center rounded-xl border" style="position:static"><a class="navbar-brand" href="#navbar">navbar-center</a><nav class="navbar-menu"><a href="#navbar">Satu</a><a href="#navbar">Dua</a></nav><div class="navbar-end"><a class="btn btn-sm btn-gradient btn-pill" href="#navbar">Masuk</a></div></header></div>
+  </div>
+  <div class="clsref" data-cls="navbar navbar-brand navbar-menu navbar-end navbar-toggle hamburger navbar-center navbar-dark navbar-transparent scrolled nav-link appbar bottom-nav sidebar breadcrumb pagination steps tabs dropdown banner"></div></section>
+  
+  <section id="footer" class="stack"><span class="eyebrow">Komponen · Footer &amp; Main</span><h2 class="title">Footer, main, section &amp; hero</h2>
+  <p class="text-muted"><code>page</code> menjaga footer tetap di bawah, <code>main</code> memberi padding fluid, dan <code>section</code>, <code>section-lg</code>, <code>section-xl</code> mengatur jarak vertikal antar bagian. Jarak kontainer: <code>container</code>, <code>container-md</code>, <code>container-lg</code>, <code>container-fluid</code>.</p>
+  <template class="frame" data-title="Footer gelap + hero + section" data-h="620" data-w="100%" data-body="page">
+    <header class="hero aurora hero-sm"><div class="container stack center"><span class="eyebrow">hero</span><h1 class="text-fluid-xl font-extrabold tracking-tighter text-balance">Judul besar yang responsif</h1><p class="lead">Subjudul pendek untuk menjelaskan produk Anda.</p><a class="btn btn-gradient btn-pill" href="#">Mulai</a></div></header>
+    <main class="grow"><section class="section section-alt"><div class="container grid-auto gap-fluid"><div class="card card-hover">section-alt</div><div class="card card-hover">section-alt</div><div class="card card-hover">section-alt</div></div></section></main>
+    <footer class="footer footer-dark footer-lg"><div class="container"><div class="footer-grid"><div class="stack"><b class="text-xl text-white">Merek</b><p class="text-sm">Deskripsi singkat perusahaan Anda.</p><div class="social"><a href="#" aria-label="Situs"><i class="i i-globe"></i></a><a href="#" aria-label="Email"><i class="i i-mail"></i></a></div></div><div><p class="footer-title">Produk</p><nav class="footer-links"><a href="#">Fitur</a><a href="#">Harga</a></nav></div><div><p class="footer-title">Perusahaan</p><nav class="footer-links"><a href="#">Tentang</a><a href="#">Kontak</a></nav></div><div><p class="footer-title">Bantuan</p><nav class="footer-links"><a href="#">FAQ</a><a href="#">Status</a></nav></div></div><div class="footer-bottom"><span>© 2026 Merek</span><span>Syarat · Privasi</span></div></div></footer>
+  </template>
+  <div class="clsref" data-cls="page main main-narrow main-wide section section-sm section-lg section-xl section-alt section-dark container container-sm container-md container-lg container-xl container-fluid hero hero-sm hero-full hero-media footer footer-lg footer-dark footer-grid footer-title footer-links footer-bottom social newsletter divider-text"></div></section>
+  
+  <section id="tabel" class="stack"><span class="eyebrow">Komponen · Tabel</span><h2 class="title">Tabel</h2>
+  <p class="text-muted">Bungkus dengan <code>table-card</code> untuk sudut membulat, atau <code>table-responsive</code> agar bisa digulir ke samping. Pada layar kecil, <code>table-stack</code> mengubah baris menjadi kartu (isi <code>data-label</code> pada tiap <code>&lt;td&gt;</code>).</p>
+  <div class="demo" data-title="table-card + table-striped + sortir + filter">
+    <div class="stack stack-sm"><input class="input max-w-xs" placeholder="Filter pesanan…" data-filter="#t1"><div class="table-card table-responsive"><table class="table table-striped table-sort" id="t1"><thead><tr><th>Pesanan</th><th>Pelanggan</th><th>Status</th><th class="num">Total</th></tr></thead><tbody><tr><td>#1042</td><td>Arini</td><td><span class="badge badge-green">Lunas</span></td><td class="num">Rp 285.000</td></tr><tr><td>#1043</td><td>Dimas</td><td><span class="badge badge-amber">Menunggu</span></td><td class="num">Rp 98.000</td></tr><tr><td>#1044</td><td>Sari</td><td><span class="badge badge-green">Lunas</span></td><td class="num">Rp 1.250.000</td></tr><tr><td>#1045</td><td>Budi</td><td><span class="badge badge-red">Batal</span></td><td class="num">Rp 62.000</td></tr></tbody></table></div><p class="text-xs text-muted">Klik judul kolom untuk mengurutkan.</p></div>
+  </div>
+  <div class="demo" data-title="Varian: bordered, kecil, gelap, status baris">
+    <div class="grid-auto gap-4"><div class="table-responsive"><table class="table table-bordered table-sm"><thead><tr><th>Item</th><th class="num">Qty</th></tr></thead><tbody><tr><td>Kopi</td><td class="num">3</td></tr><tr class="row-ok"><td>Gelas</td><td class="num">1</td></tr><tr class="row-bad"><td>Filter</td><td class="num">0</td></tr></tbody></table></div><div class="table-card"><table class="table table-dark"><thead><tr><th>Kota</th><th class="num">Order</th></tr></thead><tbody><tr><td>Bandung</td><td class="num">120</td></tr><tr class="row-active"><td>Jakarta</td><td class="num">340</td></tr></tbody></table></div></div>
+  </div>
+  <template class="frame" data-title="table-stack (ubah lebar ke Mobile)" data-h="360" data-w="375">
+    <main class="main"><table class="table table-stack"><thead><tr><th>Pesanan</th><th>Status</th><th>Total</th></tr></thead><tbody><tr><td data-label="Pesanan">#1042</td><td data-label="Status">Lunas</td><td data-label="Total">Rp 285.000</td></tr><tr><td data-label="Pesanan">#1043</td><td data-label="Status">Menunggu</td><td data-label="Total">Rp 98.000</td></tr></tbody></table></main>
+  </template>
+  <div class="clsref" data-cls="table table-card table-responsive table-striped table-bordered table-sm table-lg table-dark table-sticky table-center table-flat table-stack table-sort row-active row-ok row-bad num"></div></section>
+  
+  <section id="loading" class="stack"><span class="eyebrow">Efek · Loading</span><h2 class="title">Efek loading</h2>
+  <p class="text-muted">Spinner, titik, equalizer, skeleton, shimmer, progress bar, dan overlay layar penuh. Kendalikan dari JavaScript dengan <code>Nusa.loading</code>.</p>
+  <div class="demo" data-title="Indikator">
+    <div class="row gap-8"><span class="spinner"></span><span class="spinner spinner-lg"></span><span class="dots"><i></i><i></i><i></i></span><span class="eq"><i></i><i></i><i></i><i></i></span><span class="orbit"></span><button class="btn btn-loading">Menyimpan</button><span class="text-shimmer font-bold">Memuat data…</span></div>
+  </div>
+  <div class="demo" data-title="Skeleton dan shimmer">
+    <div class="card max-w-sm stack"><div class="row"><div class="skeleton skeleton-circle"></div><div class="grow"><div class="skeleton skeleton-title"></div><div class="skeleton skeleton-text mt-3"></div></div></div><div class="skeleton skeleton-img"></div><div><div class="skeleton skeleton-text"></div><div class="skeleton skeleton-text"></div><div class="skeleton skeleton-text"></div></div><div class="shimmer bg-surface-2 h-10 rounded-lg"></div></div>
+  </div>
+  <div class="demo" data-title="Progress: indeterminate dan striped">
+    <div class="stack max-w-md"><div class="progress progress-indeterminate"><i></i></div><div class="progress progress-striped"><i style="width:65%"></i></div><div class="progress"><i style="width:30%"></i></div></div>
+  </div>
+  <div class="demo" data-title="Dikendalikan lewat JavaScript">
+    <div class="row"><button class="btn" onclick="Nusa.loading.show('Memproses…');setTimeout(Nusa.loading.hide,1800)">Overlay penuh</button><button class="btn btn-outline" onclick="Nusa.loading.bar();setTimeout(()=>Nusa.loading.bar(false),2200)">Bar di atas halaman</button><button class="btn btn-soft-teal" onclick="Nusa.loading.button(this,new Promise(r=>setTimeout(r,1500)))">Tombol loading</button><button class="btn btn-ghost" onclick="Nusa.loading.box(document.getElementById('lb'),new Promise(r=>setTimeout(r,1800)))">Loading kotak</button></div>
+    <div class="card mt-3 max-w-xs" id="lb"><b>Kotak konten</b><p class="card-text">Kelas <code>is-loading</code> menampilkan spinner di tengah.</p></div>
+  </div>
+  <div class="clsref" data-cls="spinner spinner-sm spinner-lg dots eq orbit skeleton skeleton-text skeleton-title skeleton-circle skeleton-img shimmer pulse blink text-shimmer caret is-loading btn-loading loader-bar loading-overlay progress progress-indeterminate progress-striped animate-spin animate-pulse"></div></section>
+  
+  <section id="scroll" class="stack"><span class="eyebrow">Efek · Scroll</span><h2 class="title">Efek scroll</h2>
+  <p class="text-muted">Elemen muncul saat terlihat (<code>reveal</code>), efek bawaan browser tanpa JavaScript (<code>scroll-fade</code>, <code>scroll-scale</code>, <code>scroll-slide</code>), parallax, navbar yang berubah saat digulir, tombol kembali ke atas, dan carousel snap. Semua mematuhi <code>prefers-reduced-motion</code>.</p>
+  <template class="frame" data-title="Gulir halaman di dalam bingkai ini" data-h="460" data-w="100%">
+    <div class="scroll-bar"></div>
+    <header class="navbar"><a class="navbar-brand" href="#">Navbar berubah saat digulir</a></header>
+    <main class="main stack stack-lg">
+      <div class="ph ph-6 h-40 rounded-xl parallax" data-parallax=".15" data-ph="parallax" style="--ph-size:1.4rem"></div>
+      <div class="grid-auto gap-4"><div class="card reveal">reveal</div><div class="card reveal reveal-left rd-1">reveal-left</div><div class="card reveal reveal-right rd-2">reveal-right</div><div class="card reveal reveal-zoom rd-3">reveal-zoom</div></div>
+      <div class="card reveal reveal-blur">reveal-blur</div>
+      <div class="grid-auto gap-4"><div class="card scroll-fade">scroll-fade</div><div class="card scroll-scale">scroll-scale</div><div class="card scroll-slide">scroll-slide</div></div>
+      <div class="carousel hide-scrollbar"><div class="card">Geser →</div><div class="card">Kartu 2</div><div class="card">Kartu 3</div><div class="card">Kartu 4</div></div>
+      <div class="h-40"></div>
+    </main>
+    <button class="btn btn-circle btn-gradient to-top" aria-label="Ke atas"><i class="i i-arrow-right" style="rotate:-90deg"></i></button>
+  </template>
+  <div class="clsref" data-cls="reveal reveal-left reveal-right reveal-zoom reveal-flip reveal-blur rd-1 rd-2 rd-3 rd-4 rd-5 rd-6 scroll-fade scroll-scale scroll-slide scroll-fill parallax scroll-bar to-top scroll-hint sticky-top carousel snap-x snap-y snap-start snap-center scroll-smooth hide-scrollbar marquee stagger delay-200 data-tilt data-count data-parallax"></div></section>
+  
+  <section id="template" class="stack"><span class="eyebrow">Template</span><h2 class="title">Template siap pakai</h2>
+  <p class="text-muted">Dua halaman lengkap yang dibangun 100% dengan Nusa CSS. Buka, salin, lalu ganti isinya.</p>
+  <div class="grid-auto gap-5">
+    <a class="card card-flush card-hover card-link" href="about.html"><div class="card-img"><div class="ph ph-1" data-ph="👥" style="--ph-size:4rem"></div></div><div class="card-content stack stack-sm"><span class="badge">Template</span><h3 class="card-title">Tentang</h3><p class="card-text">Hero, statistik, cerita, nilai, timeline, tim, FAQ, dan ajakan bertindak.</p></div></a>
+    <a class="card card-flush card-hover card-link" href="store.html"><div class="card-img"><div class="ph ph-3" data-ph="🛍️" style="--ph-size:4rem"></div></div><div class="card-content stack stack-sm"><span class="badge badge-green">Template</span><h3 class="card-title">Store</h3><p class="card-text">Katalog produk, filter, pencarian, keranjang, detail produk, dan checkout.</p></div></a>
+  </div></section>
+  <section id="tombol" class="stack"><h2 class="title">Tombol</h2><p class="text-muted">Tiga gaya untuk 12 warna, plus ukuran dan bentuk.</p><div class="preview"><div class="row"><button class="btn btn-indigo">indigo</button><button class="btn btn-teal">teal</button><button class="btn btn-pink">pink</button><button class="btn btn-orange">orange</button></div><div class="row"><button class="btn btn-outline-indigo">indigo</button><button class="btn btn-outline-teal">teal</button><button class="btn btn-outline-pink">pink</button><button class="btn btn-outline-orange">orange</button></div><div class="row"><button class="btn btn-soft-indigo">indigo</button><button class="btn btn-soft-teal">teal</button><button class="btn btn-soft-pink">pink</button><button class="btn btn-soft-orange">orange</button></div></div><div class="cw"><button class="btn btn-ghost btn-xs copy" data-copy="&lt;div class=&quot;row&quot;&gt;&lt;button class=&quot;btn btn-indigo&quot;&gt;indigo&lt;/button&gt;&lt;button class=&quot;btn btn-teal&quot;&gt;teal&lt;/button&gt;&lt;button class=&quot;btn btn-pink&quot;&gt;pink&lt;/button&gt;&lt;button class=&quot;btn btn-orange&quot;&gt;orange&lt;/button&gt;&lt;/div&gt;&lt;div class=&quot;row&quot;&gt;&lt;button class=&quot;btn btn-outline-indigo&quot;&gt;indigo&lt;/button&gt;&lt;button class=&quot;btn btn-outline-teal&quot;&gt;teal&lt;/button&gt;&lt;button class=&quot;btn btn-outline-pink&quot;&gt;pink&lt;/button&gt;&lt;button class=&quot;btn btn-outline-orange&quot;&gt;orange&lt;/button&gt;&lt;/div&gt;&lt;div class=&quot;row&quot;&gt;&lt;button class=&quot;btn btn-soft-indigo&quot;&gt;indigo&lt;/button&gt;&lt;button class=&quot;btn btn-soft-teal&quot;&gt;teal&lt;/button&gt;&lt;button class=&quot;btn btn-soft-pink&quot;&gt;pink&lt;/button&gt;&lt;button class=&quot;btn btn-soft-orange&quot;&gt;orange&lt;/button&gt;&lt;/div&gt;"><i class="i i-copy"></i> Salin</button><pre class="code">&lt;div class=&quot;row&quot;&gt;&lt;button class=&quot;btn btn-indigo&quot;&gt;indigo&lt;/button&gt;&lt;button class=&quot;btn btn-teal&quot;&gt;teal&lt;/button&gt;&lt;button class=&quot;btn btn-pink&quot;&gt;pink&lt;/button&gt;&lt;button class=&quot;btn btn-orange&quot;&gt;orange&lt;/button&gt;&lt;/div&gt;&lt;div class=&quot;row&quot;&gt;&lt;button class=&quot;btn btn-outline-indigo&quot;&gt;indigo&lt;/button&gt;&lt;button class=&quot;btn btn-outline-teal&quot;&gt;teal&lt;/button&gt;&lt;button class=&quot;btn btn-outline-pink&quot;&gt;pink&lt;/button&gt;&lt;button class=&quot;btn btn-outline-orange&quot;&gt;orange&lt;/button&gt;&lt;/div&gt;&lt;div class=&quot;row&quot;&gt;&lt;button class=&quot;btn btn-soft-indigo&quot;&gt;indigo&lt;/button&gt;&lt;button class=&quot;btn btn-soft-teal&quot;&gt;teal&lt;/button&gt;&lt;button class=&quot;btn btn-soft-pink&quot;&gt;pink&lt;/button&gt;&lt;button class=&quot;btn btn-soft-orange&quot;&gt;orange&lt;/button&gt;&lt;/div&gt;</pre></div><div class="preview"><div class="row"><button class="btn btn-xs">xs</button><button class="btn btn-sm">sm</button><button class="btn">md</button><button class="btn btn-lg">lg</button><button class="btn btn-xl">xl</button></div></div><div class="cw"><button class="btn btn-ghost btn-xs copy" data-copy="&lt;div class=&quot;row&quot;&gt;&lt;button class=&quot;btn btn-xs&quot;&gt;xs&lt;/button&gt;&lt;button class=&quot;btn btn-sm&quot;&gt;sm&lt;/button&gt;&lt;button class=&quot;btn&quot;&gt;md&lt;/button&gt;&lt;button class=&quot;btn btn-lg&quot;&gt;lg&lt;/button&gt;&lt;button class=&quot;btn btn-xl&quot;&gt;xl&lt;/button&gt;&lt;/div&gt;"><i class="i i-copy"></i> Salin</button><pre class="code">&lt;div class=&quot;row&quot;&gt;&lt;button class=&quot;btn btn-xs&quot;&gt;xs&lt;/button&gt;&lt;button class=&quot;btn btn-sm&quot;&gt;sm&lt;/button&gt;&lt;button class=&quot;btn&quot;&gt;md&lt;/button&gt;&lt;button class=&quot;btn btn-lg&quot;&gt;lg&lt;/button&gt;&lt;button class=&quot;btn btn-xl&quot;&gt;xl&lt;/button&gt;&lt;/div&gt;</pre></div><div class="preview"><div class="row"><button class="btn btn-gradient btn-pill">Gradient</button><button class="btn btn-3d">3D</button><button class="btn btn-loading">Memuat</button><button class="btn" disabled>Nonaktif</button><button class="btn btn-circle" aria-label="Suka"><i class="i i-heart"></i></button><div class="btn-group"><button class="btn btn-outline">A</button><button class="btn btn-outline">B</button><button class="btn btn-outline">C</button></div></div></div><div class="cw"><button class="btn btn-ghost btn-xs copy" data-copy="&lt;div class=&quot;row&quot;&gt;&lt;button class=&quot;btn btn-gradient btn-pill&quot;&gt;Gradient&lt;/button&gt;&lt;button class=&quot;btn btn-3d&quot;&gt;3D&lt;/button&gt;&lt;button class=&quot;btn btn-loading&quot;&gt;Memuat&lt;/button&gt;&lt;button class=&quot;btn&quot; disabled&gt;Nonaktif&lt;/button&gt;&lt;button class=&quot;btn btn-circle&quot; aria-label=&quot;Suka&quot;&gt;&lt;i class=&quot;i i-heart&quot;&gt;&lt;/i&gt;&lt;/button&gt;&lt;div class=&quot;btn-group&quot;&gt;&lt;button class=&quot;btn btn-outline&quot;&gt;A&lt;/button&gt;&lt;button class=&quot;btn btn-outline&quot;&gt;B&lt;/button&gt;&lt;button class=&quot;btn btn-outline&quot;&gt;C&lt;/button&gt;&lt;/div&gt;&lt;/div&gt;"><i class="i i-copy"></i> Salin</button><pre class="code">&lt;div class=&quot;row&quot;&gt;&lt;button class=&quot;btn btn-gradient btn-pill&quot;&gt;Gradient&lt;/button&gt;&lt;button class=&quot;btn btn-3d&quot;&gt;3D&lt;/button&gt;&lt;button class=&quot;btn btn-loading&quot;&gt;Memuat&lt;/button&gt;&lt;button class=&quot;btn&quot; disabled&gt;Nonaktif&lt;/button&gt;&lt;button class=&quot;btn btn-circle&quot; aria-label=&quot;Suka&quot;&gt;&lt;i class=&quot;i i-heart&quot;&gt;&lt;/i&gt;&lt;/button&gt;&lt;div class=&quot;btn-group&quot;&gt;&lt;button class=&quot;btn btn-outline&quot;&gt;A&lt;/button&gt;&lt;button class=&quot;btn btn-outline&quot;&gt;B&lt;/button&gt;&lt;button class=&quot;btn btn-outline&quot;&gt;C&lt;/button&gt;&lt;/div&gt;&lt;/div&gt;</pre></div></section><section id="alert" class="stack"><h2 class="title">Alert dan banner</h2><p class="text-muted">Ikon, judul, dan tombol tutup otomatis dengan <code>data-dismiss</code>.</p><div class="preview"><div class="alert alert-info"><i class="i i-info"></i><div class="grow"><b class="alert-title">Informasi</b><p>Pembaruan dijadwalkan malam ini.</p></div><button class="alert-close" data-dismiss aria-label="Tutup"><i class="i i-x"></i></button></div><div class="alert alert-success"><i class="i i-check"></i><div class="grow"><b class="alert-title">Berhasil</b><p>Data tersimpan.</p></div><button class="alert-close" data-dismiss aria-label="Tutup"><i class="i i-x"></i></button></div><div class="alert alert-error"><i class="i i-x"></i><div class="grow"><b class="alert-title">Gagal</b><p>Pembayaran ditolak.</p></div><button class="alert-close" data-dismiss aria-label="Tutup"><i class="i i-x"></i></button></div><div class="alert alert-solid alert-violet"><i class="i i-star"></i><b>Alert solid</b></div><div class="alert alert-bar alert-pink"><i class="i i-heart"></i><span>Alert bergaris tepi</span></div></div><div class="cw"><button class="btn btn-ghost btn-xs copy" data-copy="&lt;div class=&quot;alert alert-info&quot;&gt;&lt;i class=&quot;i i-info&quot;&gt;&lt;/i&gt;&lt;div class=&quot;grow&quot;&gt;&lt;b class=&quot;alert-title&quot;&gt;Informasi&lt;/b&gt;&lt;p&gt;Pembaruan dijadwalkan malam ini.&lt;/p&gt;&lt;/div&gt;&lt;button class=&quot;alert-close&quot; data-dismiss aria-label=&quot;Tutup&quot;&gt;&lt;i class=&quot;i i-x&quot;&gt;&lt;/i&gt;&lt;/button&gt;&lt;/div&gt;&lt;div class=&quot;alert alert-success&quot;&gt;&lt;i class=&quot;i i-check&quot;&gt;&lt;/i&gt;&lt;div class=&quot;grow&quot;&gt;&lt;b class=&quot;alert-title&quot;&gt;Berhasil&lt;/b&gt;&lt;p&gt;Data tersimpan.&lt;/p&gt;&lt;/div&gt;&lt;button class=&quot;alert-close&quot; data-dismiss aria-label=&quot;Tutup&quot;&gt;&lt;i class=&quot;i i-x&quot;&gt;&lt;/i&gt;&lt;/button&gt;&lt;/div&gt;&lt;div class=&quot;alert alert-error&quot;&gt;&lt;i class=&quot;i i-x&quot;&gt;&lt;/i&gt;&lt;div class=&quot;grow&quot;&gt;&lt;b class=&quot;alert-title&quot;&gt;Gagal&lt;/b&gt;&lt;p&gt;Pembayaran ditolak.&lt;/p&gt;&lt;/div&gt;&lt;button class=&quot;alert-close&quot; data-dismiss aria-label=&quot;Tutup&quot;&gt;&lt;i class=&quot;i i-x&quot;&gt;&lt;/i&gt;&lt;/button&gt;&lt;/div&gt;&lt;div class=&quot;alert alert-solid alert-violet&quot;&gt;&lt;i class=&quot;i i-star&quot;&gt;&lt;/i&gt;&lt;b&gt;Alert solid&lt;/b&gt;&lt;/div&gt;&lt;div class=&quot;alert alert-bar alert-pink&quot;&gt;&lt;i class=&quot;i i-heart&quot;&gt;&lt;/i&gt;&lt;span&gt;Alert bergaris tepi&lt;/span&gt;&lt;/div&gt;"><i class="i i-copy"></i> Salin</button><pre class="code">&lt;div class=&quot;alert alert-info&quot;&gt;&lt;i class=&quot;i i-info&quot;&gt;&lt;/i&gt;&lt;div class=&quot;grow&quot;&gt;&lt;b class=&quot;alert-title&quot;&gt;Informasi&lt;/b&gt;&lt;p&gt;Pembaruan dijadwalkan malam ini.&lt;/p&gt;&lt;/div&gt;&lt;button class=&quot;alert-close&quot; data-dismiss aria-label=&quot;Tutup&quot;&gt;&lt;i class=&quot;i i-x&quot;&gt;&lt;/i&gt;&lt;/button&gt;&lt;/div&gt;&lt;div class=&quot;alert alert-success&quot;&gt;&lt;i class=&quot;i i-check&quot;&gt;&lt;/i&gt;&lt;div class=&quot;grow&quot;&gt;&lt;b class=&quot;alert-title&quot;&gt;Berhasil&lt;/b&gt;&lt;p&gt;Data tersimpan.&lt;/p&gt;&lt;/div&gt;&lt;button class=&quot;alert-close&quot; data-dismiss aria-label=&quot;Tutup&quot;&gt;&lt;i class=&quot;i i-x&quot;&gt;&lt;/i&gt;&lt;/button&gt;&lt;/div&gt;&lt;div class=&quot;alert alert-error&quot;&gt;&lt;i class=&quot;i i-x&quot;&gt;&lt;/i&gt;&lt;div class=&quot;grow&quot;&gt;&lt;b class=&quot;alert-title&quot;&gt;Gagal&lt;/b&gt;&lt;p&gt;Pembayaran ditolak.&lt;/p&gt;&lt;/div&gt;&lt;button class=&quot;alert-close&quot; data-dismiss aria-label=&quot;Tutup&quot;&gt;&lt;i class=&quot;i i-x&quot;&gt;&lt;/i&gt;&lt;/button&gt;&lt;/div&gt;&lt;div class=&quot;alert alert-solid alert-violet&quot;&gt;&lt;i class=&quot;i i-star&quot;&gt;&lt;/i&gt;&lt;b&gt;Alert solid&lt;/b&gt;&lt;/div&gt;&lt;div class=&quot;alert alert-bar alert-pink&quot;&gt;&lt;i class=&quot;i i-heart&quot;&gt;&lt;/i&gt;&lt;span&gt;Alert bergaris tepi&lt;/span&gt;&lt;/div&gt;</pre></div></section><section id="modal" class="stack"><h2 class="title">Modal dan dialog</h2><p class="text-muted">Esc atau klik latar menutup modal. Variasi: <code>modal-sm</code>, <code>modal-lg</code>, <code>modal-full</code>, <code>modal-blur</code>, <code>drawer</code>, <code>drawer-left</code>, <code>sheet</code>.</p><div class="preview row"><button class="btn" data-nu-open="dm">Buka modal</button><button class="btn btn-outline" data-nu-open="dd">Drawer</button><button class="btn btn-soft-amber" onclick="Nusa.confirmBox('Hapus item ini?').then(v=>Nusa.toast(v?'Dihapus':'Dibatalkan'))">Konfirmasi</button><button class="btn btn-soft-sky" onclick="Nusa.promptBox('Nama Anda').then(v=>v&&Nusa.toast('Halo '+v,{type:'success'}))">Input</button></div><div class="cw"><button class="btn btn-ghost btn-xs copy" data-copy="&lt;button class=&quot;btn&quot; data-nu-open=&quot;m1&quot;&gt;Buka&lt;/button&gt;
+  
+  &lt;div class=&quot;modal&quot; id=&quot;m1&quot;&gt;&lt;div class=&quot;card&quot;&gt;
+    &lt;div class=&quot;modal-header&quot;&gt;&lt;h3&gt;Judul&lt;/h3&gt;
+      &lt;button class=&quot;modal-close&quot; data-nu-close&gt;✕&lt;/button&gt;&lt;/div&gt;
+    &lt;div class=&quot;modal-body&quot;&gt;Isi modal&lt;/div&gt;
+    &lt;div class=&quot;modal-footer&quot;&gt;&lt;button class=&quot;btn&quot; data-nu-close&gt;OK&lt;/button&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/div&gt;"><i class="i i-copy"></i> Salin</button><pre class="code">&lt;button class=&quot;btn&quot; data-nu-open=&quot;m1&quot;&gt;Buka&lt;/button&gt;
+  
+  &lt;div class=&quot;modal&quot; id=&quot;m1&quot;&gt;&lt;div class=&quot;card&quot;&gt;
+    &lt;div class=&quot;modal-header&quot;&gt;&lt;h3&gt;Judul&lt;/h3&gt;
+      &lt;button class=&quot;modal-close&quot; data-nu-close&gt;✕&lt;/button&gt;&lt;/div&gt;
+    &lt;div class=&quot;modal-body&quot;&gt;Isi modal&lt;/div&gt;
+    &lt;div class=&quot;modal-footer&quot;&gt;&lt;button class=&quot;btn&quot; data-nu-close&gt;OK&lt;/button&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/div&gt;</pre></div><div class="cw"><button class="btn btn-ghost btn-xs copy" data-copy="const ok = await Nusa.confirmBox(&#x27;Hapus?&#x27;)
+  const nama = await Nusa.promptBox(&#x27;Nama pelanggan&#x27;)
+  await Nusa.alertBox(&#x27;Tersimpan&#x27;, { type: &#x27;success&#x27; })"><i class="i i-copy"></i> Salin</button><pre class="code">const ok = await Nusa.confirmBox(&#x27;Hapus?&#x27;)
+  const nama = await Nusa.promptBox(&#x27;Nama pelanggan&#x27;)
+  await Nusa.alertBox(&#x27;Tersimpan&#x27;, { type: &#x27;success&#x27; })</pre></div></section><section id="toast" class="stack"><h2 class="title">Toast</h2><p class="text-muted">Notifikasi singkat dengan ikon dan tombol tutup.</p><div class="preview row"><button class="btn btn-soft-sky" onclick="Nusa.toast('Pesan info',{type:'info'})">info</button><button class="btn btn-soft-green" onclick="Nusa.toast('Pesan success',{type:'success'})">success</button><button class="btn btn-soft-amber" onclick="Nusa.toast('Pesan warn',{type:'warn'})">warn</button><button class="btn btn-soft-red" onclick="Nusa.toast('Pesan error',{type:'error'})">error</button></div><div class="cw"><button class="btn btn-ghost btn-xs copy" data-copy="Nusa.toast(&#x27;Tersimpan&#x27;, { type: &#x27;success&#x27;, ms: 3000, pos: &#x27;top&#x27; })"><i class="i i-copy"></i> Salin</button><pre class="code">Nusa.toast(&#x27;Tersimpan&#x27;, { type: &#x27;success&#x27;, ms: 3000, pos: &#x27;top&#x27; })</pre></div></section><section id="form" class="stack"><h2 class="title">Form</h2><p class="text-muted"><code>field</code> menyusun label dan input dengan jarak otomatis.</p><div class="preview"><div class="stack"><label class="field"><span>Email</span><input class="input" type="email" placeholder="nama@email.com"><small>Kami tidak mengirim spam.</small></label><label class="row"><input type="checkbox" class="check" checked> Ingat saya</label><label class="row"><input type="checkbox" class="switch"> Notifikasi</label></div></div><div class="cw"><button class="btn btn-ghost btn-xs copy" data-copy="&lt;div class=&quot;stack&quot;&gt;&lt;label class=&quot;field&quot;&gt;&lt;span&gt;Email&lt;/span&gt;&lt;input class=&quot;input&quot; type=&quot;email&quot; placeholder=&quot;nama@email.com&quot;&gt;&lt;small&gt;Kami tidak mengirim spam.&lt;/small&gt;&lt;/label&gt;&lt;label class=&quot;row&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;check&quot; checked&gt; Ingat saya&lt;/label&gt;&lt;label class=&quot;row&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;switch&quot;&gt; Notifikasi&lt;/label&gt;&lt;/div&gt;"><i class="i i-copy"></i> Salin</button><pre class="code">&lt;div class=&quot;stack&quot;&gt;&lt;label class=&quot;field&quot;&gt;&lt;span&gt;Email&lt;/span&gt;&lt;input class=&quot;input&quot; type=&quot;email&quot; placeholder=&quot;nama@email.com&quot;&gt;&lt;small&gt;Kami tidak mengirim spam.&lt;/small&gt;&lt;/label&gt;&lt;label class=&quot;row&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;check&quot; checked&gt; Ingat saya&lt;/label&gt;&lt;label class=&quot;row&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;switch&quot;&gt; Notifikasi&lt;/label&gt;&lt;/div&gt;</pre></div></section><section id="komponen" class="stack"><h2 class="title">Komponen</h2><p class="text-muted">Kartu, badge, tab, accordion, dropdown, tabel, progres, paginasi, dan lainnya.</p><div class="preview"><div class="card card-hover"><h3 class="font-bold">Kartu</h3><p class="text-muted">Naik sedikit saat disentuh.</p><div class="row mt-3"><span class="badge badge-green badge-dot">Aktif</span><span class="badge badge-amber">Menunggu</span><span class="badge badge-red">Batal</span></div><div class="progress mt-4"><i style="width:65%"></i></div></div></div><div class="cw"><button class="btn btn-ghost btn-xs copy" data-copy="&lt;div class=&quot;card card-hover&quot;&gt;&lt;h3 class=&quot;font-bold&quot;&gt;Kartu&lt;/h3&gt;&lt;p class=&quot;text-muted&quot;&gt;Naik sedikit saat disentuh.&lt;/p&gt;&lt;div class=&quot;row mt-3&quot;&gt;&lt;span class=&quot;badge badge-green badge-dot&quot;&gt;Aktif&lt;/span&gt;&lt;span class=&quot;badge badge-amber&quot;&gt;Menunggu&lt;/span&gt;&lt;span class=&quot;badge badge-red&quot;&gt;Batal&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;progress mt-4&quot;&gt;&lt;i style=&quot;width:65%&quot;&gt;&lt;/i&gt;&lt;/div&gt;&lt;/div&gt;"><i class="i i-copy"></i> Salin</button><pre class="code">&lt;div class=&quot;card card-hover&quot;&gt;&lt;h3 class=&quot;font-bold&quot;&gt;Kartu&lt;/h3&gt;&lt;p class=&quot;text-muted&quot;&gt;Naik sedikit saat disentuh.&lt;/p&gt;&lt;div class=&quot;row mt-3&quot;&gt;&lt;span class=&quot;badge badge-green badge-dot&quot;&gt;Aktif&lt;/span&gt;&lt;span class=&quot;badge badge-amber&quot;&gt;Menunggu&lt;/span&gt;&lt;span class=&quot;badge badge-red&quot;&gt;Batal&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;progress mt-4&quot;&gt;&lt;i style=&quot;width:65%&quot;&gt;&lt;/i&gt;&lt;/div&gt;&lt;/div&gt;</pre></div><div class="preview"><div class="tabs"><button class="tab active" data-tab="x1">Satu</button><button class="tab" data-tab="x2">Dua</button></div><div id="x1" class="mt-3">Panel satu</div><div id="x2" class="mt-3" hidden>Panel dua</div></div><div class="cw"><button class="btn btn-ghost btn-xs copy" data-copy="&lt;div class=&quot;tabs&quot;&gt;&lt;button class=&quot;tab active&quot; data-tab=&quot;x1&quot;&gt;Satu&lt;/button&gt;&lt;button class=&quot;tab&quot; data-tab=&quot;x2&quot;&gt;Dua&lt;/button&gt;&lt;/div&gt;&lt;div id=&quot;x1&quot; class=&quot;mt-3&quot;&gt;Panel satu&lt;/div&gt;&lt;div id=&quot;x2&quot; class=&quot;mt-3&quot; hidden&gt;Panel dua&lt;/div&gt;"><i class="i i-copy"></i> Salin</button><pre class="code">&lt;div class=&quot;tabs&quot;&gt;&lt;button class=&quot;tab active&quot; data-tab=&quot;x1&quot;&gt;Satu&lt;/button&gt;&lt;button class=&quot;tab&quot; data-tab=&quot;x2&quot;&gt;Dua&lt;/button&gt;&lt;/div&gt;&lt;div id=&quot;x1&quot; class=&quot;mt-3&quot;&gt;Panel satu&lt;/div&gt;&lt;div id=&quot;x2&quot; class=&quot;mt-3&quot; hidden&gt;Panel dua&lt;/div&gt;</pre></div><div class="preview"><details class="acc"><summary>Apa itu Nusa CSS?</summary><p class="text-muted mt-2">Framework CSS utility-first yang ringan.</p></details></div><div class="cw"><button class="btn btn-ghost btn-xs copy" data-copy="&lt;details class=&quot;acc&quot;&gt;&lt;summary&gt;Apa itu Nusa CSS?&lt;/summary&gt;&lt;p class=&quot;text-muted mt-2&quot;&gt;Framework CSS utility-first yang ringan.&lt;/p&gt;&lt;/details&gt;"><i class="i i-copy"></i> Salin</button><pre class="code">&lt;details class=&quot;acc&quot;&gt;&lt;summary&gt;Apa itu Nusa CSS?&lt;/summary&gt;&lt;p class=&quot;text-muted mt-2&quot;&gt;Framework CSS utility-first yang ringan.&lt;/p&gt;&lt;/details&gt;</pre></div><div class="overflow-x-auto"><table class="table"><thead><tr><th>Nama</th><th>Keterangan</th></tr></thead><tbody><tr><td><code>table table-sort</code></td><td>Klik judul kolom untuk mengurutkan</td></tr><tr><td><code>data-filter="#id"</code></td><td>Kotak pencarian untuk baris tabel</td></tr><tr><td><code>data-spark="3,5,9"</code></td><td>Grafik garis mini</td></tr><tr><td><code>data-donut="40,30,30"</code></td><td>Grafik donat</td></tr><tr><td><code>pagination breadcrumb steps timeline</code></td><td>Navigasi dan alur</td></tr></tbody></table></div></section><section id="animasi" class="stack"><h2 class="title">Animasi</h2><p class="text-muted">Animasi CSS murni dan beberapa atribut JS tanpa kode tambahan.</p><div class="preview"><div class="row stagger"><div class="card animate-up">Naik</div><div class="card animate-zoom">Zoom</div><div class="card animate-float">Melayang</div><div class="card animate-pulse">Berdenyut</div></div></div><div class="cw"><button class="btn btn-ghost btn-xs copy" data-copy="&lt;div class=&quot;row stagger&quot;&gt;&lt;div class=&quot;card animate-up&quot;&gt;Naik&lt;/div&gt;&lt;div class=&quot;card animate-zoom&quot;&gt;Zoom&lt;/div&gt;&lt;div class=&quot;card animate-float&quot;&gt;Melayang&lt;/div&gt;&lt;div class=&quot;card animate-pulse&quot;&gt;Berdenyut&lt;/div&gt;&lt;/div&gt;"><i class="i i-copy"></i> Salin</button><pre class="code">&lt;div class=&quot;row stagger&quot;&gt;&lt;div class=&quot;card animate-up&quot;&gt;Naik&lt;/div&gt;&lt;div class=&quot;card animate-zoom&quot;&gt;Zoom&lt;/div&gt;&lt;div class=&quot;card animate-float&quot;&gt;Melayang&lt;/div&gt;&lt;div class=&quot;card animate-pulse&quot;&gt;Berdenyut&lt;/div&gt;&lt;/div&gt;</pre></div><div class="overflow-x-auto"><table class="table"><thead><tr><th>Nama</th><th>Keterangan</th></tr></thead><tbody><tr><td><code>animate-fade|up|down|left|right|zoom</code></td><td>Masuk sekali</td></tr><tr><td><code>animate-float|pulse|bounce|spin|wiggle</code></td><td>Berulang</td></tr><tr><td><code>delay-100 … delay-700</code></td><td>Tunda animasi</td></tr><tr><td><code>reveal</code></td><td>Muncul saat di-scroll</td></tr><tr><td><code>stagger</code></td><td>Anak muncul bergantian</td></tr><tr><td><code>data-count="1200"</code></td><td>Angka menghitung naik</td></tr><tr><td><code>data-type="a|b|c"</code></td><td>Efek mengetik</td></tr><tr><td><code>data-tilt</code></td><td>Miring 3D mengikuti kursor</td></tr></tbody></table></div><div class="preview"><p class="text-2xl font-bold">Kami membuat <span class="text-gradient" data-type="web|aplikasi|dashboard"></span></p></div><div class="cw"><button class="btn btn-ghost btn-xs copy" data-copy="&lt;p class=&quot;text-2xl font-bold&quot;&gt;Kami membuat &lt;span class=&quot;text-gradient&quot; data-type=&quot;web|aplikasi|dashboard&quot;&gt;&lt;/span&gt;&lt;/p&gt;"><i class="i i-copy"></i> Salin</button><pre class="code">&lt;p class=&quot;text-2xl font-bold&quot;&gt;Kami membuat &lt;span class=&quot;text-gradient&quot; data-type=&quot;web|aplikasi|dashboard&quot;&gt;&lt;/span&gt;&lt;/p&gt;</pre></div></section><section id="ikon" class="stack"><h2 class="title">Ikon (45)</h2><p class="text-muted">Pakai <code>&lt;i class="i i-home"&gt;</code>. Warna dan ukuran mengikuti teks. Klik untuk menyalin.</p><div class="grid-auto grid-sm" style="--min:7rem"><button class="card btn-ghost center card-hover" style="padding:.8rem" data-copy="i i-alert"><i class="i i-alert text-2xl"></i><small class="text-muted">alert</small></button><button class="card btn-ghost center card-hover" style="padding:.8rem" data-copy="i i-arrow-right"><i class="i i-arrow-right text-2xl"></i><small class="text-muted">arrow-right</small></button><button class="card btn-ghost center card-hover" style="padding:.8rem" data-copy="i i-bell"><i class="i i-bell text-2xl"></i><small class="text-muted">bell</small></button><button class="card btn-ghost center card-hover" style="padding:.8rem" data-copy="i i-box"><i class="i i-box text-2xl"></i><small class="text-muted">box</small></button><button class="card btn-ghost center card-hover" style="padding:.8rem" data-copy="i i-calendar"><i class="i i-calendar text-2xl"></i><small class="text-muted">calendar</small></button><button class="card btn-ghost center card-hover" style="padding:.8rem" data-copy="i i-cart"><i class="i i-cart text-2xl"></i><small class="text-muted">cart</small></button><button class="card btn-ghost center card-hover" style="padding:.8rem" data-copy="i i-chart"><i class="i i-chart text-2xl"></i><small class="text-muted">chart</small></button><button class="card btn-ghost center card-hover" style="padding:.8rem" data-copy="i i-check"><i class="i i-check text-2xl"></i><small class="text-muted">check</small></button><button class="card btn-ghost center card-hover" style="padding:.8rem" data-copy="i i-clock"><i class="i i-clock text-2xl"></i><small class="text-muted">clock</small></button><button class="card btn-ghost center card-hover" style="padding:.8rem" data-copy="i i-code"><i class="i i-code text-2xl"></i><small class="text-muted">code</small></button><button class="card btn-ghost center card-hover" style="padding:.8rem" data-copy="i i-copy"><i class="i i-copy text-2xl"></i><small class="text-muted">copy</small></button><button class="card btn-ghost center card-hover" style="padding:.8rem" data-copy="i i-download"><i class="i i-download text-2xl"></i><small class="text-muted">download</small></button><button class="card btn-ghost center card-hover" style="padding:.8rem" data-copy="i i-edit"><i class="i i-edit text-2xl"></i><small class="text-muted">edit</small></button><button class="card btn-ghost center card-hover" style="padding:.8rem" data-copy="i i-eye"><i class="i i-eye text-2xl"></i><small class="text-muted">eye</small></button><button class="card btn-ghost center card-hover" style="padding:.8rem" data-copy="i i-filter"><i class="i i-filter text-2xl"></i><small class="text-muted">filter</small></button><button class="card btn-ghost center card-hover" style="padding:.8rem" data-copy="i i-globe"><i class="i i-globe text-2xl"></i><small class="text-muted">globe</small></button><button class="card btn-ghost center card-hover" style="padding:.8rem" data-copy="i i-grid"><i class="i i-grid text-2xl"></i><small class="text-muted">grid</small></button><button class="card btn-ghost center card-hover" style="padding:.8rem" data-copy="i i-heart"><i class="i i-heart text-2xl"></i><small class="text-muted">heart</small></button><button class="card btn-ghost center card-hover" style="padding:.8rem" data-copy="i i-home"><i class="i i-home text-2xl"></i><small class="text-muted">home</small></button><button class="card btn-ghost center card-hover" style="padding:.8rem" data-copy="i i-image"><i class="i i-image text-2xl"></i><small class="text-muted">image</small></button><button class="card btn-ghost center card-hover" style="padding:.8rem" data-copy="i i-info"><i class="i i-info text-2xl"></i><small class="text-muted">info</small></button><button class="card btn-ghost center card-hover" style="padding:.8rem" data-copy="i i-link"><i class="i i-link text-2xl"></i><small class="text-muted">link</small></button><button class="card btn-ghost center card-hover" style="padding:.8rem" data-copy="i i-lock"><i class="i i-lock text-2xl"></i><small class="text-muted">lock</small></button><button class="card btn-ghost center card-hover" style="padding:.8rem" data-copy="i i-logout"><i class="i i-logout text-2xl"></i><small class="text-muted">logout</small></button><button class="card btn-ghost center card-hover" style="padding:.8rem" data-copy="i i-mail"><i class="i i-mail text-2xl"></i><small class="text-muted">mail</small></button><button class="card btn-ghost center card-hover" style="padding:.8rem" data-copy="i i-menu"><i class="i i-menu text-2xl"></i><small class="text-muted">menu</small></button><button class="card btn-ghost center card-hover" style="padding:.8rem" data-copy="i i-minus"><i class="i i-minus text-2xl"></i><small class="text-muted">minus</small></button><button class="card btn-ghost center card-hover" style="padding:.8rem" data-copy="i i-moon"><i class="i i-moon text-2xl"></i><small class="text-muted">moon</small></button><button class="card btn-ghost center card-hover" style="padding:.8rem" data-copy="i i-phone"><i class="i i-phone text-2xl"></i><small class="text-muted">phone</small></button><button class="card btn-ghost center card-hover" style="padding:.8rem" data-copy="i i-play"><i class="i i-play text-2xl"></i><small class="text-muted">play</small></button><button class="card btn-ghost center card-hover" style="padding:.8rem" data-copy="i i-plus"><i class="i i-plus text-2xl"></i><small class="text-muted">plus</small></button><button class="card btn-ghost center card-hover" style="padding:.8rem" data-copy="i i-printer"><i class="i i-printer text-2xl"></i><small class="text-muted">printer</small></button><button class="card btn-ghost center card-hover" style="padding:.8rem" data-copy="i i-receipt"><i class="i i-receipt text-2xl"></i><small class="text-muted">receipt</small></button><button class="card btn-ghost center card-hover" style="padding:.8rem" data-copy="i i-search"><i class="i i-search text-2xl"></i><small class="text-muted">search</small></button><button class="card btn-ghost center card-hover" style="padding:.8rem" data-copy="i i-settings"><i class="i i-settings text-2xl"></i><small class="text-muted">settings</small></button><button class="card btn-ghost center card-hover" style="padding:.8rem" data-copy="i i-star"><i class="i i-star text-2xl"></i><small class="text-muted">star</small></button><button class="card btn-ghost center card-hover" style="padding:.8rem" data-copy="i i-sun"><i class="i i-sun text-2xl"></i><small class="text-muted">sun</small></button><button class="card btn-ghost center card-hover" style="padding:.8rem" data-copy="i i-tag"><i class="i i-tag text-2xl"></i><small class="text-muted">tag</small></button><button class="card btn-ghost center card-hover" style="padding:.8rem" data-copy="i i-trash"><i class="i i-trash text-2xl"></i><small class="text-muted">trash</small></button><button class="card btn-ghost center card-hover" style="padding:.8rem" data-copy="i i-truck"><i class="i i-truck text-2xl"></i><small class="text-muted">truck</small></button><button class="card btn-ghost center card-hover" style="padding:.8rem" data-copy="i i-upload"><i class="i i-upload text-2xl"></i><small class="text-muted">upload</small></button><button class="card btn-ghost center card-hover" style="padding:.8rem" data-copy="i i-user"><i class="i i-user text-2xl"></i><small class="text-muted">user</small></button><button class="card btn-ghost center card-hover" style="padding:.8rem" data-copy="i i-users"><i class="i i-users text-2xl"></i><small class="text-muted">users</small></button><button class="card btn-ghost center card-hover" style="padding:.8rem" data-copy="i i-wallet"><i class="i i-wallet text-2xl"></i><small class="text-muted">wallet</small></button><button class="card btn-ghost center card-hover" style="padding:.8rem" data-copy="i i-x"><i class="i i-x text-2xl"></i><small class="text-muted">x</small></button></div></section><section id="tema" class="stack"><h2 class="title">Tema dan dark mode</h2><p class="text-muted">Gelap/terang otomatis, lima palet, dan gaya klasik. Coba langsung:</p><div class="preview row"><button class="btn btn-outline" data-nu-theme><i class="i i-moon"></i> Gelap/Terang</button><button class="chip" data-nu-palette="default">default</button><button class="chip" data-nu-palette="ocean">ocean</button><button class="chip" data-nu-palette="sunset">sunset</button><button class="chip" data-nu-palette="forest">forest</button><button class="chip" data-nu-palette="rose">rose</button><button class="chip" data-nu-palette="royal">royal</button></div><div class="cw"><button class="btn btn-ghost btn-xs copy" data-copy="Nusa.theme.toggle()          // gelap/terang
+  Nusa.palette.set(&#x27;ocean&#x27;)     // default | ocean | sunset | forest | rose | royal
+  Nusa.accent.set(&#x27;teal&#x27;)       // ganti warna aksen"><i class="i i-copy"></i> Salin</button><pre class="code">Nusa.theme.toggle()          // gelap/terang
+  Nusa.palette.set(&#x27;ocean&#x27;)     // default | ocean | sunset | forest | rose | royal
+  Nusa.accent.set(&#x27;teal&#x27;)       // ganti warna aksen</pre></div><div class="cw"><button class="btn btn-ghost btn-xs copy" data-copy=":root{ --brand:#4f46e5; --r:.625rem; --font:Inter,system-ui,sans-serif }
+  /* gaya klasik */
+  &lt;html data-style=&quot;classic&quot;&gt;"><i class="i i-copy"></i> Salin</button><pre class="code">:root{ --brand:#4f46e5; --r:.625rem; --font:Inter,system-ui,sans-serif }
+  /* gaya klasik */
+  &lt;html data-style=&quot;classic&quot;&gt;</pre></div></section><section id="api" class="stack"><h2 class="title">API JavaScript</h2><p class="text-muted">Tersedia sebagai <code>window.Nusa</code> atau impor ESM, lengkap dengan tipe TypeScript.</p><div class="overflow-x-auto"><table class="table"><thead><tr><th>Fungsi</th><th>Kegunaan</th></tr></thead><tbody><tr><td><code>theme.toggle() / set()</code></td><td>Mode gelap, terang, sistem</td></tr><tr><td><code>palette.set(nama)</code></td><td>Ganti palet tema</td></tr><tr><td><code>toast(pesan, opsi)</code></td><td>Notifikasi</td></tr><tr><td><code>modal.open(id) / close(id)</code></td><td>Buka dan tutup modal</td></tr><tr><td><code>dialog / alertBox / confirmBox / promptBox</code></td><td>Dialog berbasis Promise</td></tr><tr><td><code>copy(teks)</code></td><td>Salin ke papan klip</td></tr><tr><td><code>fmt.rupiah(n)</code></td><td>Format Rp</td></tr><tr><td><code>sparkline / donut / countUp / typewriter / reveal</code></td><td>Grafik dan animasi</td></tr></tbody></table></div></section><section id="api14" class="stack"><span class="eyebrow">JavaScript · v1.4</span><h2 class="title">API baru v1.4</h2>
+  <p class="text-muted">Tambahan di <code>nusa.js</code> dan <code>nusa.mjs</code> (tipe TypeScript sudah diperbarui di <code>nusa.d.ts</code>).</p>
+  <pre class="code" data-auto>import { loading, scrollFx } from './nusa.mjs'
+  
+  loading.show('Memproses pesanan…')     // overlay layar penuh
+  loading.hide()
+  loading.bar()                          // bar tipis di atas halaman
+  await loading.button(btn, fetch('/api'))   // tombol loading selama promise berjalan
+  await loading.box(el, fetch('/api'))       // spinner di dalam sebuah kotak
+  scrollFx()                             // navbar .scrolled, .to-top, [data-parallax] (otomatis di init)</pre>
+  <div class="table-card table-responsive"><table class="table table-sm"><thead><tr><th>Atribut / kelas</th><th>Fungsi</th></tr></thead><tbody>
+  <tr><td><code>data-nu-toggle="id"</code></td><td>Buka/tutup elemen ber-id tersebut (menu hamburger, sidebar). <code>aria-expanded</code> ikut diperbarui.</td></tr>
+  <tr><td><code>.navbar-menu.open</code></td><td>Menu mobile terbuka. Menutup otomatis saat tautan diklik, klik di luar, atau Esc.</td></tr>
+  <tr><td><code>data-parallax="0.2"</code></td><td>Elemen bergeser mengikuti scroll (dinonaktifkan jika pengguna memilih mengurangi gerakan).</td></tr>
+  <tr><td><code>.to-top</code></td><td>Tombol kembali ke atas, muncul setelah scroll 500px.</td></tr>
+  <tr><td><code>.navbar.scrolled</code></td><td>Ditambahkan otomatis setelah scroll 8px (bayangan dan latar lebih pekat).</td></tr>
+  <tr><td><code>data-filter="#tabel"</code></td><td>Input yang menyaring baris tabel.</td></tr></tbody></table></div></section><section id="mobile" class="stack"><h2 class="title">Aplikasi mobile</h2><p class="text-muted">Pakai <code>appbar</code>, <code>bottom-nav</code>, <code>fab</code>, dan <code>sheet</code>. Tambahkan <code>has-bottom-nav</code> pada body.</p><div class="cw"><button class="btn btn-ghost btn-xs copy" data-copy="&lt;body class=&quot;has-bottom-nav&quot;&gt;
+    &lt;header class=&quot;appbar&quot;&gt;&lt;h1&gt;Dompetku&lt;/h1&gt;&lt;/header&gt;
+    &lt;main class=&quot;main stack&quot;&gt;…&lt;/main&gt;
+    &lt;nav class=&quot;bottom-nav&quot;&gt;&lt;a class=&quot;active&quot; href=&quot;#&quot;&gt;&lt;i class=&quot;i i-home&quot;&gt;&lt;/i&gt;Beranda&lt;/a&gt;&lt;/nav&gt;
+  &lt;/body&gt;"><i class="i i-copy"></i> Salin</button><pre class="code">&lt;body class=&quot;has-bottom-nav&quot;&gt;
+    &lt;header class=&quot;appbar&quot;&gt;&lt;h1&gt;Dompetku&lt;/h1&gt;&lt;/header&gt;
+    &lt;main class=&quot;main stack&quot;&gt;…&lt;/main&gt;
+    &lt;nav class=&quot;bottom-nav&quot;&gt;&lt;a class=&quot;active&quot; href=&quot;#&quot;&gt;&lt;i class=&quot;i i-home&quot;&gt;&lt;/i&gt;Beranda&lt;/a&gt;&lt;/nav&gt;
+  &lt;/body&gt;</pre></div><h3 class="font-bold">Jadi APK</h3><div class="cw"><button class="btn btn-ghost btn-xs copy" data-copy="npm i @capacitor/core @capacitor/cli @capacitor/android
+  npx cap init &amp;&amp; npx cap add android
+  npx cap sync &amp;&amp; npx cap open android"><i class="i i-copy"></i> Salin</button><pre class="code">npm i @capacitor/core @capacitor/cli @capacitor/android
+  npx cap init &amp;&amp; npx cap add android
+  npx cap sync &amp;&amp; npx cap open android</pre></div></section><footer class="footer">Nusa CSS v1.4 · <a class="text-brand" href="index.html">Beranda</a> · <a class="text-brand" href="store.html">Store</a> · <a class="text-brand" href="about.html">Tentang</a></footer></main></div></div><div class="modal" id="dm"><div class="card"><div class="modal-header"><h3>Modal contoh</h3><button class="modal-close" data-nu-close aria-label="Tutup"><i class="i i-x"></i></button></div><div class="modal-body">Tekan Esc atau klik latar untuk menutup.</div><div class="modal-footer"><button class="btn btn-ghost" data-nu-close>Batal</button><button class="btn" data-nu-close>Simpan</button></div></div></div><div class="modal drawer" id="dd"><div class="card stack"><h3 class="title">Drawer</h3><p class="text-muted">Panel dari sisi kanan.</p><button class="btn" data-nu-close>Tutup</button></div></div>
+  <script src="assets/nusa.js"></script><script>
+  const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+  const dedent=h=>{const L=h.replace(/^\n+/,'').replace(/\s+$/,'').split('\n'),n=Math.min(...L.filter(l=>l.trim()).map(l=>l.match(/^ */)[0].length));return L.map(l=>l.slice(n)).join('\n')};
+  const codeBox=code=>{const w=document.createElement('div');w.className='cw';w.innerHTML='<button class="btn btn-ghost btn-xs copy"><i class="i i-copy"></i> Salin</button><pre class="code"></pre>';w.lastChild.textContent=code;w.firstChild.onclick=()=>Nusa.copy(code);return w};
+  $$('pre.code[data-auto]').forEach(p=>{const c=p.textContent,w=codeBox(c);p.replaceWith(w)});
+  $$('.demo').forEach(d=>{const code=dedent(d.innerHTML),bar=document.createElement('div'),view=document.createElement('div'),cb=codeBox(code);
+    bar.className='demo-bar';bar.innerHTML='<b class="text-sm"></b><div class="btn-group"><button class="btn btn-xs" aria-pressed="true">Pratinjau</button><button class="btn btn-xs" aria-pressed="false">Kode</button></div>';bar.firstChild.textContent=d.dataset.title||'Contoh';
+    view.className='demo-view';while(d.firstChild)view.append(d.firstChild);cb.hidden=true;d.append(bar,view,cb);
+    const [a,b]=bar.querySelectorAll('button'),sw=c=>{a.setAttribute('aria-pressed',!c);b.setAttribute('aria-pressed',c);view.hidden=c;cb.hidden=!c};a.onclick=()=>sw(false);b.onclick=()=>sw(true)});
+  const docEl=document.documentElement,sync=f=>{try{const e=f.contentDocument.documentElement;e.className=docEl.className;const p=docEl.getAttribute('data-palette');p?e.setAttribute('data-palette',p):e.removeAttribute('data-palette')}catch{}};
+  $$('template.frame').forEach(t=>{const html=dedent(t.innerHTML),box=document.createElement('div');box.className='demo';
+    box.innerHTML='<div class="demo-bar"><b class="text-sm"></b><div class="row gap-2"><div class="btn-group"><button class="btn btn-xs" data-w="375">Mobile</button><button class="btn btn-xs" data-w="768">Tablet</button><button class="btn btn-xs" data-w="100%">Desktop</button></div><button class="btn btn-xs btn-ghost" data-k aria-pressed="false">Kode</button></div></div><div class="frame-stage"><iframe title=""></iframe></div>';
+    const f=$('iframe',box),stage=$('.frame-stage',box),cb=codeBox(html);cb.hidden=true;box.append(cb);$('b',box).textContent=t.dataset.title||'';f.title=t.dataset.title||'Pratinjau';f.style.height=(t.dataset.h||400)+'px';
+    const setW=w=>{f.style.width=w==='100%'?'100%':w+'px';$$('[data-w]',box).forEach(b=>b.setAttribute('aria-pressed',b.dataset.w===w))};setW(t.dataset.w||'100%');
+    $$('[data-w]',box).forEach(b=>b.onclick=()=>setW(b.dataset.w));
+    $('[data-k]',box).onclick=e=>{const on=cb.hidden;cb.hidden=!on;stage.hidden=on;e.currentTarget.setAttribute('aria-pressed',on)};
+    f.srcdoc='<!doctype html><html lang="id"><head><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="assets/nusa.min.css"></head><body class="'+(t.dataset.body||'')+'">'+html+'<script src="assets/nusa.js"><\/script><button class="btn btn-circle btn-gradient to-top" aria-label="Ke atas"><i class="i i-arrow-right" style="rotate:-90deg"></i></button></body></html>';
+    f.onload=()=>sync(f);t.replaceWith(box)});
+  new MutationObserver(()=>$$('iframe').forEach(sync)).observe(docEl,{attributes:true,attributeFilter:['class','data-palette']});
+  $$('.clsref').forEach(e=>{const L=e.dataset.cls.split(' ');e.innerHTML='<p class="text-xs text-muted">Kelas terkait · klik untuk menyalin</p>'+L.map(c=>'<button class="chip" data-copy="'+c+'">'+c+'</button>').join('')});
+  const L=$$('#nv a');q.oninput=()=>L.forEach(a=>a.hidden=!a.textContent.toLowerCase().includes(q.value.toLowerCase()));
+  L.forEach(a=>a.onclick=()=>sb.classList.remove('open'));
+  addEventListener('keydown',e=>{if(e.key==='/'&&!/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)){e.preventDefault();q.focus()}});
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){L.forEach(a=>a.classList.toggle('active',a.hash==='#'+e.target.id));$('#nv a.active')?.scrollIntoView({block:'nearest'})}}),{rootMargin:'-20% 0px -70% 0px'});$$('.doc section').forEach(s=>io.observe(s));
+  </script><button class="btn btn-circle btn-gradient to-top" aria-label="Ke atas"><i class="i i-arrow-right" style="rotate:-90deg"></i></button></body></html>

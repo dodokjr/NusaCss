@@ -1,0 +1,23 @@
+{
+    "name": "nusa-css",
+    "version": "1.4.0",
+    "description": "Nusa CSS — framework CSS utility-first: komponen, dark mode, animasi, template",
+    "type": "module",
+    "style": "assets/nusa.min.css",
+    "main": "assets/nusa.mjs",
+    "types": "assets/nusa.d.ts",
+    "exports": {
+      ".": {
+        "types": "./assets/nusa.d.ts",
+        "default": "./assets/nusa.mjs"
+      },
+      "./css": "./assets/nusa.min.css",
+      "./purged": "./assets/nusa.purged.min.css"
+    },
+    "scripts": {
+      "build": "node extend.mjs",
+      "purge": "node purge.mjs --content \"index.html,about.html,store.html,assets/nusa.js\" --safe \"ph-1,ph-2,ph-3,ph-4,ph-5,ph-6\"",
+      "check": "node check-classes.mjs index.html about.html store.html docs.html"
+    },
+    "license": "MIT"
+  }
