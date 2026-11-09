@@ -1,53 +1,241 @@
-<!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Nusa CSS v1.4 — Framework CSS utility-first</title><link rel="stylesheet" href="assets/nusa.min.css"><style>.cw{position:relative}.cw .copy{position:absolute;top:.5rem;right:.5rem}.code{margin:0;background:var(--surface-2);border-radius:var(--r);padding:1rem;overflow-x:auto;font:.82rem/1.6 ui-monospace,Menlo,Consolas,monospace;white-space:pre;tab-size:2}.preview{padding:1rem;border:1px dashed var(--line);border-radius:var(--r)}.doc section{scroll-margin-top:5rem}</style><script>try{var t=localStorage.getItem("nusa-theme");document.documentElement.classList.toggle("dark",t==="dark"||(!t&&matchMedia("(prefers-color-scheme:dark)").matches));var p=localStorage.getItem("nusa-palette");p&&p!=="default"&&document.documentElement.setAttribute("data-palette",p)}catch(e){}</script></head><body class="page"><div class="scroll-bar"></div>
-  <header class="navbar glass">
-    <a class="navbar-brand text-gradient" href="index.html">Nusa CSS</a>
-    <div class="navbar-end">
-      <button class="btn btn-ghost btn-icon" data-nu-theme aria-label="Tema"><i class="i i-moon"></i></button>
-      <a class="btn btn-sm btn-gradient btn-pill hidden md:inline-flex" href="docs.html">Mulai</a>
-      <button class="navbar-toggle" data-nu-toggle="menu" aria-expanded="false" aria-controls="menu" aria-label="Menu"><span class="hamburger"></span></button>
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#4f46e5">
+<title>Nusa CSS v1.4 — Framework CSS utility-first untuk UI modern</title>
+<meta name="description" content="Framework CSS utility-first ringan: komponen, dark mode, animasi, dan template siap pakai.">
+<link rel="stylesheet" href="assets/nusa.min.css">
+<style>
+.input[aria-invalid=true],.textarea[aria-invalid=true],.select[aria-invalid=true]{border-color:var(--bad);box-shadow:0 0 0 3px color-mix(in oklch,var(--bad) 20%,transparent)}
+.chip:has(input:checked){background:var(--brand-soft);border-color:var(--brand);color:var(--brand)}
+.chip input{position:absolute;opacity:0;pointer-events:none}.chip{position:relative;cursor:pointer;user-select:none}
+.chip:has(input:focus-visible){outline:2px solid var(--brand);outline-offset:2px}
+.code{margin:0;padding:1rem 1.25rem;overflow-x:auto;font:.82rem/1.7 ui-monospace,Menlo,Consolas,monospace;white-space:pre;tab-size:2;background:var(--surface-2);border-radius:var(--r)}
+.float-card{position:absolute;z-index:2}
+@media(max-width:767px){.float-card{display:none}}
+.hero-visual{position:relative}
+.step-no{display:grid;place-items:center;width:2.75rem;height:2.75rem;border-radius:50%;background:var(--brand);color:var(--brand-fg);font-weight:800}
+</style>
+<script>try{var t=localStorage.getItem("nusa-theme");document.documentElement.classList.toggle("dark",t==="dark"||(!t&&matchMedia("(prefers-color-scheme:dark)").matches));var p=localStorage.getItem("nusa-palette");p&&p!=="default"&&document.documentElement.setAttribute("data-palette",p)}catch(e){}</script>
+</head>
+<body class="page">
+<div class="scroll-bar"></div>
+
+<header class="navbar glass">
+  <a class="navbar-brand text-gradient" href="index.html">Nusa CSS</a>
+  <div class="navbar-end">
+    <button class="btn btn-ghost btn-icon" data-nu-theme aria-label="Ganti tema"><i class="i i-moon"></i></button>
+    <a class="btn btn-sm btn-gradient btn-pill hidden md:inline-flex" href="#kontak">Hubungi kami</a>
+    <button class="navbar-toggle" data-nu-toggle="menu" aria-expanded="false" aria-controls="menu" aria-label="Menu"><span class="hamburger"></span></button>
+  </div>
+  <nav class="navbar-menu" id="menu"><a href="#fitur">Fitur</a><a href="#kode">Kode</a><a href="#template">Template</a><a href="#ulasan">Ulasan</a><a href="docs.html">Dokumentasi</a><a class="btn btn-sm btn-gradient btn-pill md:hidden" href="#kontak">Hubungi kami</a></nav>
+</header>
+
+<main>
+<!-- HERO -->
+<section class="aurora hero">
+  <div class="container split gap-fluid-lg items-center">
+    <div class="stack stack-lg animate-up">
+      <span class="badge badge-dot w-fit">v1.4 · navbar, card, loading, scroll, template</span>
+      <h1 class="display text-balance">Bangun UI modern</h1>
+      <p class="lead max-w-xl">Framework CSS utility-first dengan komponen, dark mode, animasi, dan layout otomatis. Satu file CSS, satu file JS, tanpa proses build.</p>
+      <div class="row">
+        <a class="btn btn-lg btn-gradient btn-pill" href="docs.html">Baca dokumentasi <i class="i i-arrow-right"></i></a>
+        <button class="btn btn-lg btn-outline btn-pill" data-copy='<link rel="stylesheet" href="assets/nusa.min.css">'><i class="i i-copy"></i> Salin tautan CSS</button>
+      </div>
+      <div class="row gap-4 text-sm text-muted">
+        <div class="avatars"><span class="avatar avatar-sm">AR</span><span class="avatar avatar-sm" style="--brand:var(--c-pink-600)">DP</span><span class="avatar avatar-sm" style="--brand:var(--c-teal-600)">SN</span><span class="avatar avatar-sm" style="--brand:var(--c-orange-600)">BH</span></div>
+        <span><span class="rating"><i class="i i-star"></i><i class="i i-star"></i><i class="i i-star"></i><i class="i i-star"></i><i class="i i-star"></i></span> Dipakai 2.400+ developer</span>
+      </div>
     </div>
-    <nav class="navbar-menu" id="menu"><a href="#fitur">Fitur</a><a href="#demo">Demo</a><a href="#template">Template</a><a href="store.html">Store</a><a href="about.html">Tentang</a><a href="docs.html">Dokumentasi</a></nav>
-  </header>
-  <main>
-  <header class="aurora section"><div class="container split"><div class="stack stack-lg animate-up"><span class="badge badge-dot">v1.4 · navbar, card, loading, scroll, template</span><h1 class="display text-balance">Bangun UI modern <span class="text-gradient" data-type="tanpa pusing spacing|untuk dashboard|untuk aplikasi kasir|untuk portofolio"></span></h1><p class="lead">Framework CSS utility-first dengan komponen, ikon, animasi, dark mode, dan layout otomatis. Satu file CSS, satu file JS.</p><div class="row"><a class="btn btn-lg btn-gradient btn-pill" href="docs.html">Baca dokumentasi <i class="i i-arrow-right"></i></a><button class="btn btn-lg btn-outline btn-pill" data-copy='&lt;link rel="stylesheet" href="nusa.min.css"&gt;'><i class="i i-copy"></i> Salin tautan CSS</button></div></div>
-  <div class="card glass stack animate-zoom delay-200" data-tilt><div class="row row-between"><b>Penjualan hari ini</b><span class="badge badge-green">▲ 12%</span></div><p class="text-3xl font-black" data-count="12850000" data-prefix="Rp ">0</p><div class="bars"><i style="height:40%"></i><i style="height:65%"></i><i style="height:50%"></i><i style="height:85%"></i><i style="height:70%"></i><i style="height:100%"></i></div><div class="row"><button class="btn btn-sm" onclick="Nusa.toast('Laporan dibuat',{type:'success'})"><i class="i i-download"></i> Unduh</button><button class="btn btn-sm btn-soft-pink"><i class="i i-heart"></i> Simpan</button></div></div></div></header>
-  <section id="tentang" class="section"><div class="container stack stack-lg">
-  <div class="split"><div class="stack reveal"><span class="badge">Pengenalan</span><h2 class="title">Apa itu Nusa CSS?</h2>
-  <p class="lead">Nusa CSS adalah framework CSS utility-first yang ringan dan lengkap. Ia memadukan kelas utility ala Tailwind, komponen siap pakai ala Bootstrap, dan layout otomatis, sehingga Anda tidak perlu lagi memikirkan padding, container, atau lebar kolom.</p>
-  <p class="text-muted">Nama <b>Nusa</b> berarti pulau. Setiap komponen berdiri sendiri, tetapi semuanya tersusun dalam satu gugusan yang rapi dan saling terhubung.</p>
-  <div class="row"><span class="chip active">Ringan</span><span class="chip active">Tanpa build</span><span class="chip active">Dark mode bawaan</span><span class="chip active">Responsif otomatis</span><span class="chip active">Ramah TypeScript</span><span class="chip active">HTML, React, Vite, Astro</span></div></div>
-  <div class="card stack reveal"><h3 class="font-bold">Isi satu paket</h3><div class="list"><div><i class="i i-code text-xl text-brand"></i><div class="grow"><b>nusa.min.css</b><p class="text-muted text-sm">Stylesheet utama: utility, komponen, ikon, animasi</p></div></div><div><i class="i i-play text-xl text-brand"></i><div class="grow"><b>nusa.js / nusa.mjs</b><p class="text-muted text-sm">Tema, toast, dialog, grafik mini, efek scroll</p></div></div><div><i class="i i-box text-xl text-brand"></i><div class="grow"><b>nusa.d.ts</b><p class="text-muted text-sm">Tipe TypeScript untuk Vite, React, dan Astro</p></div></div></div></div></div>
-  <div class="stack"><h3 class="title center">Cara kerjanya</h3><div class="grid-auto stagger"><div class="card card-hover reveal"><p class="text-3xl font-black text-gradient">1</p><h3 class="font-bold mt-2">Pasang</h3><p class="text-muted">Salin dua file: <b>nusa.min.css</b> dan <b>nusa.js</b>. Tanpa npm, tanpa build.</p></div><div class="card card-hover reveal"><p class="text-3xl font-black text-gradient">2</p><h3 class="font-bold mt-2">Susun</h3><p class="text-muted">Pakai <code>container</code>, <code>stack</code>, <code>grid-auto</code>, dan utility seperti <code>p-4</code> atau <code>md:flex</code>.</p></div><div class="card card-hover reveal"><p class="text-3xl font-black text-gradient">3</p><h3 class="font-bold mt-2">Percantik</h3><p class="text-muted">Tambahkan komponen, ikon, palet tema, animasi, dan dialog dengan satu atribut atau satu baris JS.</p></div></div></div>
-  <div class="card stack reveal"><h3 class="font-bold">Terinspirasi dari yang terbaik</h3><div class="overflow-x-auto"><table class="table"><thead><tr><th>Inspirasi</th><th>Yang diambil</th></tr></thead><tbody><tr><td><b>Tailwind CSS</b></td><td>Kelas utility dan varian (<code>hover:</code>, <code>dark:</code>, <code>md:</code>)</td></tr><tr><td><b>Bootstrap</b></td><td>Komponen siap pakai: tombol, alert, modal, tabel</td></tr><tr><td><b>UnoCSS dan WindiCSS</b></td><td>CSS dihasilkan dari satu skrip generator (<code>build.mjs</code>) yang mudah diubah</td></tr><tr><td><b>Tachyons</b></td><td>Ukuran kecil dan penamaan kelas yang sederhana</td></tr></tbody></table></div></div>
-  <div class="alert alert-info"><i class="i i-info"></i><div class="grow"><b class="alert-title">Catatan browser</b><p>Nusa CSS memakai fitur CSS modern (oklch, color-mix, dan backdrop-filter), jadi paling cocok untuk browser keluaran 2023 ke atas.</p></div></div>
-  </div></section>
-  <section class="section-sm"><div class="container grid-auto grid-sm center stagger"><div class="animate-up"><p class="text-3xl font-black text-gradient" data-count="9208">0</p><p class="text-muted text-sm">aturan CSS</p></div><div class="animate-up"><p class="text-3xl font-black text-gradient" data-count="45">0</p><p class="text-muted text-sm">ikon</p></div><div class="animate-up"><p class="text-3xl font-black text-gradient" data-count="12">0</p><p class="text-muted text-sm">warna × 10 tingkat</p></div><div class="animate-up"><p class="text-3xl font-black text-gradient" data-count="64">0</p><p class="text-muted text-sm">KB gzip penuh (±10 KB setelah purge)</p></div></div></section>
-  <section id="fitur" class="section"><div class="container stack stack-lg"><div class="stack center"><h2 class="title">Semua yang Anda butuhkan</h2><p class="lead">Berhenti menghitung padding. Fokus pada tampilan dan fitur.</p></div><div class="grid-auto stagger"><div class="card card-hover shine reveal"><i class="i i-grid text-3xl text-brand"></i><h3 class="font-bold mt-3">Utility-first</h3><p class="text-muted">Ribuan kelas siap pakai: spacing, warna, tipografi, flex, dan grid.</p></div><div class="card card-hover shine reveal"><i class="i i-moon text-3xl text-brand"></i><h3 class="font-bold mt-3">Dark mode</h3><p class="text-muted">Otomatis mengikuti perangkat, tanpa kedip, dengan lima palet tema.</p></div><div class="card card-hover shine reveal"><i class="i i-globe text-3xl text-brand"></i><h3 class="font-bold mt-3">Responsif otomatis</h3><p class="text-muted">container, section, dan grid-auto mengurus jarak di semua layar.</p></div><div class="card card-hover shine reveal"><i class="i i-play text-3xl text-brand"></i><h3 class="font-bold mt-3">Animasi dan JS/TS</h3><p class="text-muted">Animasi CSS, efek scroll, hitung naik, mengetik, toast, dan dialog.</p></div><div class="card card-hover shine reveal"><i class="i i-box text-3xl text-brand"></i><h3 class="font-bold mt-3">Komponen lengkap</h3><p class="text-muted">Tombol 12 warna, alert, modal, tabel, tab, form, dan grafik mini.</p></div><div class="card card-hover shine reveal"><i class="i i-phone text-3xl text-brand"></i><h3 class="font-bold mt-3">Siap jadi aplikasi</h3><p class="text-muted">Bottom nav, sheet, PWA, dan panduan APK lewat Capacitor.</p></div></div></div></section>
-  <section id="demo" class="section"><div class="container container-sm stack stack-lg"><div class="stack center"><h2 class="title">Coba langsung</h2><p class="lead">Semua komponen di bawah ini memakai Nusa CSS.</p></div>
-  <div class="card stack"><div class="tabs"><button class="tab active" data-tab="p1">Tombol</button><button class="tab" data-tab="p2">Alert</button><button class="tab" data-tab="p3">Modal</button><button class="tab" data-tab="p4">Tema</button></div>
-  <div id="p1" class="row"><button class="btn">Utama</button><button class="btn btn-teal">Teal</button><button class="btn btn-outline-pink">Pink</button><button class="btn btn-soft-orange">Oranye</button><button class="btn btn-3d btn-violet">3D</button><button class="btn btn-gradient btn-pill">Gradient</button></div>
-  <div id="p2" class="stack" hidden><div class="alert alert-success"><i class="i i-check"></i><div class="grow"><b class="alert-title">Berhasil</b><p>Pesanan #1042 sudah dibayar.</p></div><button class="alert-close" data-dismiss aria-label="Tutup"><i class="i i-x"></i></button></div><div class="alert alert-warn"><i class="i i-alert"></i><div class="grow"><b class="alert-title">Perhatian</b><p>Stok kopi tinggal 8.</p></div><button class="alert-close" data-dismiss aria-label="Tutup"><i class="i i-x"></i></button></div></div>
-  <div id="p3" class="row" hidden><button class="btn" data-nu-open="dm">Modal</button><button class="btn btn-outline" data-nu-open="dd">Drawer</button><button class="btn btn-soft-amber" onclick="Nusa.confirmBox('Hapus item ini?')">Konfirmasi</button></div>
-  <div id="p4" class="row" hidden><button class="btn btn-outline" data-nu-theme><i class="i i-moon"></i> Gelap/Terang</button><button class="chip" data-nu-palette="default">default</button><button class="chip" data-nu-palette="ocean">ocean</button><button class="chip" data-nu-palette="sunset">sunset</button><button class="chip" data-nu-palette="forest">forest</button><button class="chip" data-nu-palette="rose">rose</button><button class="chip" data-nu-palette="royal">royal</button></div></div></div></section>
-  <section class="section"><div class="container container-sm stack stack-lg"><div class="stack center"><h2 class="title">Tulis lebih sedikit</h2><p class="lead">Layout yang biasanya butuh belasan kelas, kini cukup beberapa.</p></div><div class="cw"><button class="btn btn-ghost btn-xs copy" data-copy="&lt;section class=&quot;section&quot;&gt;
-    &lt;div class=&quot;container stack&quot;&gt;
-      &lt;h2 class=&quot;title&quot;&gt;Produk&lt;/h2&gt;
-      &lt;div class=&quot;grid-auto&quot;&gt;
-        &lt;div class=&quot;card card-hover&quot;&gt;…&lt;/div&gt;
-      &lt;/div&gt;
+    <div class="hero-visual animate-zoom delay-200">
+      <div class="card glass stack card-lg" data-tilt>
+        <div class="row row-between"><b>Penjualan hari ini</b><span class="badge badge-green">▲ 12%</span></div>
+        <p class="text-4xl font-black tracking-tight" data-count="12850000" data-prefix="Rp ">0</p>
+        <div class="text-brand" data-spark="3,5,4,7,6,9,8,12,10,14" style="min-height:2.5rem"></div>
+        <div class="row row-between items-center"><div data-donut="55,25,20" data-size="84"></div><div class="stack stack-sm text-sm grow"><div class="row row-between"><span class="text-muted">Kopi</span><b>55%</b></div><div class="row row-between"><span class="text-muted">Alat</span><b>25%</b></div><div class="row row-between"><span class="text-muted">Aksesori</span><b>20%</b></div></div></div>
+        <div class="row"><button class="btn btn-sm" onclick="Nusa.toast('Laporan dibuat',{type:'success'})"><i class="i i-download"></i> Unduh</button><button class="btn btn-sm btn-soft-pink"><i class="i i-heart"></i> Simpan</button></div>
+      </div>
+      <div class="float-card card card-sm glass row gap-3 animate-up delay-500" style="right:1.5rem;top:-2.4rem"><span class="icon-box"><i class="i i-check"></i></span><div><b class="text-sm">Pesanan #1042</b><p class="text-muted text-xs">Pembayaran berhasil</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- LOGO / MARQUEE -->
+<section class="section-sm"><div class="container stack center"><p class="eyebrow">Cocok untuk berbagai proyek</p>
+<div class="logo-cloud"><span>Dashboard</span><span>Toko online</span><span>Portofolio</span><span>Landing page</span><span>Aplikasi mobile</span><span>Blog</span></div></div></section>
+
+<!-- STATISTIK -->
+<section class="section-sm"><div class="container grid-auto grid-sm gap-fluid center stagger">
+  <div class="stat animate-up"><span class="stat-value text-gradient" data-count="9031">0</span><span class="stat-label">class siap pakai</span></div>
+  <div class="stat animate-up"><span class="stat-value text-gradient" data-count="45">0</span><span class="stat-label">ikon bawaan</span></div>
+  <div class="stat animate-up"><span class="stat-value text-gradient" data-count="12">0</span><span class="stat-label">warna × 10 tingkat</span></div>
+  <div class="stat animate-up"><span class="stat-value text-gradient" data-count="10">0</span><span class="stat-label">KB gzip setelah purge</span></div>
+</div></section>
+
+<!-- FITUR (bento) -->
+<section id="fitur" class="section"><div class="container stack stack-lg">
+  <div class="stack center"><span class="eyebrow">Fitur</span><h2 class="title text-fluid-lg">Semua yang Anda butuhkan, tanpa ribet</h2><p class="lead max-w-2xl">Berhenti menghitung padding. Fokus pada tampilan dan fitur produk Anda.</p></div>
+  <div class="grid grid-cols-1 md:grid-cols-6 gap-4">
+    <div class="card card-lg card-hover shine reveal md:col-span-4 stack"><span class="icon-box icon-box-lg"><i class="i i-grid"></i></span><h3 class="card-title text-xl">Utility-first yang lengkap</h3><p class="card-text">Ribuan kelas untuk spasi, warna, flex, grid, tipografi, dan efek. Varian <code>hover:</code>, <code>dark:</code>, dan <code>md:</code> tersedia di mana-mana.</p><div class="row"><span class="chip active">p-8</span><span class="chip active">md:grid-cols-3</span><span class="chip active">hover:shadow-lg</span><span class="chip active">dark:bg-black</span></div></div>
+    <div class="card card-lg card-brand card-hover reveal reveal-right md:col-span-2 stack"><span class="icon-box" style="background:#fff3;color:#fff"><i class="i i-moon"></i></span><h3 class="card-title">Dark mode</h3><p class="card-text">Otomatis mengikuti perangkat, tanpa kedip, dengan 6 palet tema.</p></div>
+    <div class="card card-lg card-hover reveal md:col-span-2 stack"><span class="icon-box"><i class="i i-phone"></i></span><h3 class="card-title">Responsif otomatis</h3><p class="card-text"><code>container</code>, <code>section</code>, dan <code>grid-auto</code> mengatur jarak di semua layar.</p></div>
+    <div class="card card-lg card-hover reveal reveal-zoom md:col-span-2 stack"><span class="icon-box"><i class="i i-play"></i></span><h3 class="card-title">Animasi dan efek scroll</h3><p class="card-text">Reveal, parallax, skeleton, shimmer, dan overlay loading.</p></div>
+    <div class="card card-lg card-hover reveal reveal-left md:col-span-2 stack"><span class="icon-box"><i class="i i-box"></i></span><h3 class="card-title">Komponen siap pakai</h3><p class="card-text">Navbar hamburger, card, tabel, modal, toast, form, dan tab.</p></div>
+  </div>
+</div></section>
+
+<!-- KODE -->
+<section id="kode" class="section section-alt"><div class="container split gap-fluid-lg items-center">
+  <div class="stack stack-lg reveal reveal-left"><span class="eyebrow">Tulis lebih sedikit</span><h2 class="title text-fluid-lg">Layout yang biasanya butuh belasan kelas, kini cukup beberapa</h2>
+    <ul class="checklist"><li>Container, jarak, dan grid diurus otomatis</li><li>Ganti tema dengan satu atribut</li><li>Tanpa build, tanpa konfigurasi</li></ul>
+    <div class="row"><a class="btn btn-gradient btn-pill" href="docs.html#flexgrid">Lihat contoh lainnya</a></div></div>
+  <div class="stack reveal reveal-right">
+    <div class="card card-flush"><div class="card-header row row-between" style="margin:0"><span>index.html</span><button class="btn btn-ghost btn-xs" data-copy="&lt;section class=&quot;section&quot;&gt;&#10;  &lt;div class=&quot;container stack&quot;&gt;&#10;    &lt;h2 class=&quot;title&quot;&gt;Produk&lt;/h2&gt;&#10;    &lt;div class=&quot;grid-auto&quot;&gt;&#10;      &lt;div class=&quot;card card-hover&quot;&gt;…&lt;/div&gt;&#10;    &lt;/div&gt;&#10;  &lt;/div&gt;&#10;&lt;/section&gt;"><i class="i i-copy"></i> Salin</button></div>
+<pre class="code" style="border-radius:0">&lt;section class="section"&gt;
+  &lt;div class="container stack"&gt;
+    &lt;h2 class="title"&gt;Produk&lt;/h2&gt;
+    &lt;div class="grid-auto"&gt;
+      &lt;div class="card card-hover"&gt;…&lt;/div&gt;
     &lt;/div&gt;
-  &lt;/section&gt;"><i class="i i-copy"></i> Salin</button><pre class="code">&lt;section class=&quot;section&quot;&gt;
-    &lt;div class=&quot;container stack&quot;&gt;
-      &lt;h2 class=&quot;title&quot;&gt;Produk&lt;/h2&gt;
-      &lt;div class=&quot;grid-auto&quot;&gt;
-        &lt;div class=&quot;card card-hover&quot;&gt;…&lt;/div&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/section&gt;</pre></div></div></section>
-  <section id="template" class="section section-alt"><div class="container stack stack-lg"><div class="stack center"><span class="eyebrow">Template</span><h2 class="title">Mulai dari halaman jadi</h2><p class="lead">Dua template lengkap yang dibuat 100% dengan Nusa CSS.</p></div>
-  <div class="grid-auto gap-fluid"><a class="card card-flush card-hover card-link reveal reveal-left" href="store.html"><div class="card-img"><div class="ph ph-3" data-ph="🛍️" style="--ph-size:4rem"></div></div><div class="card-content stack stack-sm"><span class="badge badge-green">Template</span><h3 class="card-title">Store</h3><p class="card-text">Katalog, filter, pencarian, keranjang, dan checkout dengan efek loading.</p></div></a>
-  <a class="card card-flush card-hover card-link reveal reveal-right" href="about.html"><div class="card-img"><div class="ph ph-1" data-ph="👥" style="--ph-size:4rem"></div></div><div class="card-content stack stack-sm"><span class="badge">Template</span><h3 class="card-title">Tentang</h3><p class="card-text">Hero, statistik, cerita, nilai, timeline, tim, FAQ, dan ajakan bertindak.</p></div></a></div></div></section>
-  <section class="section"><div class="container stack stack-lg"><h2 class="title center">Cocok untuk</h2><div class="grid-auto grid-sm"><div class="card center card-hover reveal"><i class="i i-chart text-3xl text-brand"></i><b class="mt-2">Dashboard</b></div><div class="card center card-hover reveal"><i class="i i-cart text-3xl text-brand"></i><b class="mt-2">Kasir</b></div><div class="card center card-hover reveal"><i class="i i-user text-3xl text-brand"></i><b class="mt-2">Portofolio</b></div><div class="card center card-hover reveal"><i class="i i-phone text-3xl text-brand"></i><b class="mt-2">Aplikasi mobile</b></div></div></div></section>
-  <section class="section"><div class="container container-sm"><div class="card gborder aurora center stack stack-lg" style="padding:clamp(2rem,6vw,4rem)"><h2 class="title">Siap membangun?</h2><p class="lead">Buka dokumentasi dan mulai dalam hitungan menit.</p><a class="btn btn-lg btn-gradient btn-pill" href="docs.html">Buka dokumentasi</a></div></div></section>
-  </main><footer class="footer"><div class="container row row-between"><span>© 2026 Nusa CSS · v1.4</span><span class="row"><a class="text-brand" href="store.html">Store</a><a class="text-brand" href="about.html">Tentang</a><a class="text-brand" href="docs.html">Dokumentasi</a></span></div></footer>
-  <div class="modal" id="dm"><div class="card"><div class="modal-header"><h3>Modal contoh</h3><button class="modal-close" data-nu-close aria-label="Tutup"><i class="i i-x"></i></button></div><div class="modal-body">Tekan Esc atau klik latar untuk menutup.</div><div class="modal-footer"><button class="btn btn-ghost" data-nu-close>Batal</button><button class="btn" data-nu-close>Simpan</button></div></div></div><div class="modal drawer" id="dd"><div class="card stack"><h3 class="title">Drawer</h3><p class="text-muted">Panel dari sisi kanan.</p><button class="btn" data-nu-close>Tutup</button></div></div><button class="btn btn-circle btn-gradient to-top" aria-label="Kembali ke atas"><i class="i i-arrow-right" style="rotate:-90deg"></i></button><script src="assets/nusa.js"></script></body></html>
+  &lt;/div&gt;
+&lt;/section&gt;</pre></div>
+    <div class="divider-text">hasilnya</div>
+    <div class="grid-auto grid-sm gap-3"><div class="card card-hover card-sm center">Satu</div><div class="card card-hover card-sm center">Dua</div><div class="card card-hover card-sm center">Tiga</div></div>
+  </div>
+</div></section>
+
+<!-- LANGKAH -->
+<section class="section"><div class="container stack stack-lg">
+  <div class="stack center"><span class="eyebrow">Cara kerja</span><h2 class="title text-fluid-lg">Mulai dalam tiga langkah</h2></div>
+  <div class="grid-auto gap-fluid stagger">
+    <div class="stack animate-up"><span class="step-no">1</span><h3 class="card-title">Pasang</h3><p class="text-muted">Salin <code>nusa.min.css</code> dan <code>nusa.js</code>. Tanpa npm, tanpa build.</p></div>
+    <div class="stack animate-up"><span class="step-no">2</span><h3 class="card-title">Susun</h3><p class="text-muted">Pakai <code>container</code>, <code>stack</code>, <code>grid-auto</code>, dan utilitas seperti <code>p-4</code>.</p></div>
+    <div class="stack animate-up"><span class="step-no">3</span><h3 class="card-title">Percantik</h3><p class="text-muted">Tambahkan komponen, ikon, palet, dan animasi dengan satu atribut.</p></div>
+  </div>
+</div></section>
+
+<!-- TEMPLATE -->
+<section id="template" class="section section-alt"><div class="container stack stack-lg">
+  <div class="stack center"><span class="eyebrow">Template</span><h2 class="title text-fluid-lg">Mulai dari halaman jadi</h2><p class="lead">Dibuat 100% dengan Nusa CSS. Buka, salin, ganti isinya.</p></div>
+  <div class="grid-auto gap-fluid">
+    <a class="card card-flush card-hover card-link reveal reveal-left" href="store.html"><div class="card-img"><div class="ph ph-3" data-ph="🛍️" style="--ph-size:4rem"></div></div><div class="card-content stack stack-sm"><span class="badge badge-green w-fit">Template</span><h3 class="card-title">Store</h3><p class="card-text">Katalog, filter, pencarian, keranjang, dan checkout dengan efek loading.</p></div></a>
+    <a class="card card-flush card-hover card-link reveal" href="about.html"><div class="card-img"><div class="ph ph-1" data-ph="👥" style="--ph-size:4rem"></div></div><div class="card-content stack stack-sm"><span class="badge w-fit">Template</span><h3 class="card-title">Tentang</h3><p class="card-text">Hero, statistik, cerita, nilai, timeline, tim, FAQ, dan ajakan bertindak.</p></div></a>
+    <a class="card card-flush card-hover card-link reveal reveal-right" href="docs.html"><div class="card-img"><div class="ph ph-6" data-ph="📚" style="--ph-size:4rem"></div></div><div class="card-content stack stack-sm"><span class="badge badge-amber w-fit">Docs</span><h3 class="card-title">Dokumentasi</h3><p class="card-text">43 contoh langsung dengan kode, pratinjau mobile, tablet, dan desktop.</p></div></a>
+  </div>
+</div></section>
+
+<!-- ULASAN -->
+<section id="ulasan" class="section"><div class="container stack stack-lg">
+  <div class="stack center"><span class="eyebrow">Ulasan</span><h2 class="title text-fluid-lg">Kata mereka yang sudah mencoba</h2></div>
+  <div class="carousel hide-scrollbar" tabindex="0" aria-label="Ulasan pengguna">
+    <figure class="card quote reveal"><p>Layout selesai dalam sehari tanpa menulis CSS sendiri. Dark mode langsung jalan.</p><figcaption class="row mt-4"><span class="avatar">AR</span><div><b>Arini R.</b><p class="text-muted text-sm">Frontend, Bandung</p></div></figcaption></figure>
+    <figure class="card quote reveal rd-1"><p>Ukurannya kecil setelah purge dan dokumentasinya enak dibaca. Cocok untuk proyek klien.</p><figcaption class="row mt-4"><span class="avatar" style="--brand:var(--c-teal-600)">DP</span><div><b>Dimas P.</b><p class="text-muted text-sm">Freelancer, Yogyakarta</p></div></figcaption></figure>
+    <figure class="card quote reveal rd-2"><p>Template Store membantu saya meluncurkan toko dalam akhir pekan.</p><figcaption class="row mt-4"><span class="avatar" style="--brand:var(--c-pink-600)">SN</span><div><b>Sari N.</b><p class="text-muted text-sm">Pemilik toko, Jakarta</p></div></figcaption></figure>
+    <figure class="card quote reveal rd-3"><p>Komponennya konsisten, jadi tim tidak lagi berdebat soal jarak dan warna.</p><figcaption class="row mt-4"><span class="avatar" style="--brand:var(--c-orange-600)">BH</span><div><b>Budi H.</b><p class="text-muted text-sm">Tech lead, Surabaya</p></div></figcaption></figure>
+  </div>
+</div></section>
+
+<!-- KONTAK / FORM -->
+<section id="kontak" class="section section-alt"><div class="container split gap-fluid-lg items-start">
+  <div class="stack stack-lg reveal reveal-left">
+    <span class="eyebrow">Hubungi kami</span>
+    <h2 class="title text-fluid-lg">Ada pertanyaan atau ingin berkolaborasi?</h2>
+    <p class="lead">Ceritakan kebutuhan Anda. Kami balas dalam 1 hari kerja.</p>
+    <div class="stack">
+      <div class="row gap-3"><span class="icon-box"><i class="i i-mail"></i></span><div><b>Email</b><p class="text-muted text-sm">halo@nusa-css.dev</p></div></div>
+      <div class="row gap-3"><span class="icon-box"><i class="i i-phone"></i></span><div><b>WhatsApp</b><p class="text-muted text-sm">+62 812-0000-0000</p></div></div>
+      <div class="row gap-3"><span class="icon-box"><i class="i i-clock"></i></span><div><b>Jam layanan</b><p class="text-muted text-sm">Senin–Jumat, 09.00–17.00 WIB</p></div></div>
+    </div>
+  </div>
+
+  <div class="card card-xl reveal reveal-right" id="formBox">
+    <form id="form" class="stack" novalidate>
+      <div class="grid-auto grid-sm gap-4">
+        <div class="field"><label class="label" for="nama">Nama lengkap</label><input class="input" id="nama" name="nama" autocomplete="name" placeholder="Arini Rahma" required><p class="text-sm text-danger mt-1" data-err hidden></p></div>
+        <div class="field"><label class="label" for="email">Email</label><input class="input" id="email" name="email" type="email" autocomplete="email" placeholder="nama@email.com" required><p class="text-sm text-danger mt-1" data-err hidden></p></div>
+      </div>
+      <div class="field"><label class="label" for="topik">Topik</label><select class="select" id="topik" name="topik" required><option value="">Pilih topik…</option><option>Pertanyaan umum</option><option>Kerja sama</option><option>Laporan bug</option><option>Permintaan fitur</option></select><p class="text-sm text-danger mt-1" data-err hidden></p></div>
+      <fieldset class="stack stack-sm" style="border:0;padding:0;min-width:0"><legend class="label">Minat (opsional)</legend>
+        <div class="row"><label class="chip"><input type="checkbox" name="minat" value="store"> Toko online</label><label class="chip"><input type="checkbox" name="minat" value="dashboard"> Dashboard</label><label class="chip"><input type="checkbox" name="minat" value="landing"> Landing page</label><label class="chip"><input type="checkbox" name="minat" value="mobile"> Aplikasi mobile</label></div></fieldset>
+      <div class="field"><div class="row row-between"><label class="label" for="pesan">Pesan</label><span class="text-xs text-muted" id="hitung">0/500</span></div><textarea class="textarea" id="pesan" name="pesan" maxlength="500" placeholder="Ceritakan kebutuhan Anda (minimal 10 karakter)…" required></textarea><p class="text-sm text-danger mt-1" data-err hidden></p></div>
+      <label class="row gap-3 items-center"><span class="switch"><input type="checkbox" name="kabar"><span></span></span><span class="text-sm">Kirim kabar rilis terbaru lewat email</span></label>
+      <label class="row gap-3 items-start text-sm text-muted"><input class="check mt-1" type="checkbox" name="setuju" required> <span>Saya setuju data ini dipakai untuk menanggapi pesan saya.</span></label><p class="text-sm text-danger" data-err hidden></p>
+      <button class="btn btn-lg btn-gradient btn-block" type="submit">Kirim pesan <i class="i i-arrow-right"></i></button>
+    </form>
+    <div id="ok" class="stack center" hidden role="status"><span class="icon-box icon-box-lg" style="margin-inline:auto;background:color-mix(in oklch,var(--ok) 15%,transparent);color:var(--ok)"><i class="i i-check"></i></span><h3 class="title">Pesan terkirim</h3><p class="text-muted" id="okText"></p><button class="btn btn-outline btn-pill" id="again" style="margin-inline:auto">Kirim pesan lain</button></div>
+  </div>
+</div></section>
+
+<!-- FAQ -->
+<section class="section"><div class="container container-sm stack stack-lg">
+  <div class="stack center"><span class="eyebrow">FAQ</span><h2 class="title text-fluid-lg">Pertanyaan yang sering muncul</h2></div>
+  <div class="reveal">
+    <details class="acc" open><summary>Apakah gratis?</summary><p class="text-muted mt-2">Ya, lisensi MIT. Pakai untuk proyek pribadi maupun komersial.</p></details>
+    <details class="acc"><summary>Perlu proses build?</summary><p class="text-muted mt-2">Tidak. Cukup tautkan satu CSS dan satu JS. Untuk produksi, jalankan <code>purge.mjs</code> agar ukurannya sekitar 10 KB gzip.</p></details>
+    <details class="acc"><summary>Bisa dipakai dengan React, Vite, atau Astro?</summary><p class="text-muted mt-2">Bisa. Impor <code>nusa.min.css</code> dan <code>nusa.mjs</code>; tipe TypeScript sudah disertakan.</p></details>
+    <details class="acc"><summary>Browser apa yang didukung?</summary><p class="text-muted mt-2">Browser 2023 ke atas, karena memakai <code>oklch</code>, <code>color-mix</code>, dan <code>backdrop-filter</code>.</p></details>
+  </div>
+</div></section>
+
+<!-- CTA -->
+<section class="section"><div class="container container-md"><div class="card card-xl aurora gborder center stack stack-lg reveal reveal-zoom">
+  <h2 class="title text-fluid-lg text-balance">Siap membangun sesuatu yang rapi?</h2><p class="lead">Buka dokumentasi dan mulai dalam hitungan menit.</p>
+  <div class="row justify-center"><a class="btn btn-lg btn-gradient btn-pill" href="docs.html">Buka dokumentasi</a><a class="btn btn-lg btn-outline btn-pill" href="store.html">Lihat demo Store</a></div>
+</div></div></section>
+</main>
+
+<footer class="footer footer-dark footer-lg"><div class="container">
+  <div class="footer-grid">
+    <div class="stack"><b class="text-xl text-white">Nusa CSS</b><p class="text-sm">Framework CSS utility-first yang ringan, lengkap, dan rapi.</p>
+      <form class="newsletter" id="nl" novalidate><input class="input" type="email" required placeholder="Email untuk kabar rilis" aria-label="Email"><button class="btn btn-gradient">Ikuti</button></form></div>
+    <div><p class="footer-title">Jelajahi</p><nav class="footer-links"><a href="#fitur">Fitur</a><a href="#kode">Kode</a><a href="#template">Template</a></nav></div>
+    <div><p class="footer-title">Template</p><nav class="footer-links"><a href="store.html">Store</a><a href="about.html">Tentang</a><a href="docs.html">Dokumentasi</a></nav></div>
+    <div><p class="footer-title">Kontak</p><nav class="footer-links"><a href="#kontak">Form kontak</a><a href="#">halo@nusa-css.dev</a></nav></div>
+  </div>
+  <div class="footer-bottom"><span>© 2026 Nusa CSS · v1.4 · MIT</span><div class="social"><a href="#" aria-label="Situs"><i class="i i-globe"></i></a><a href="#" aria-label="Email"><i class="i i-mail"></i></a><a href="#" aria-label="Kode"><i class="i i-code"></i></a></div></div>
+</div></footer>
+
+<button class="btn btn-circle btn-gradient to-top" aria-label="Kembali ke atas"><i class="i i-arrow-right" style="rotate:-90deg"></i></button>
+<script src="assets/nusa.js"></script>
+<script>
+const $=(s,r=document)=>r.querySelector(s);
+const form=$('#form'),count=$('#hitung'),pesan=$('#pesan');
+pesan.addEventListener('input',()=>count.textContent=pesan.value.length+'/500');
+
+const rules={
+  nama:v=>v.trim().length<2?'Nama minimal 2 karakter.':'',
+  email:v=>/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim())?'':'Masukkan email yang valid.',
+  topik:v=>v?'':'Pilih salah satu topik.',
+  pesan:v=>v.trim().length<10?'Pesan minimal 10 karakter.':'',
+  setuju:(v,el)=>el.checked?'':'Centang persetujuan untuk melanjutkan.'
+};
+function check(el){
+  const rule=rules[el.name]; if(!rule)return true;
+  const msg=rule(el.value,el), err=el.closest('.field')?.querySelector('[data-err]')||el.closest('label')?.nextElementSibling;
+  el.setAttribute('aria-invalid',msg?'true':'false');
+  if(err&&err.hasAttribute('data-err')){err.textContent=msg;err.hidden=!msg}
+  return !msg;
+}
+form.addEventListener('focusout',e=>{if(e.target.name in rules&&e.target.dataset.touched)check(e.target)});
+form.addEventListener('input',e=>{if(e.target.dataset.touched||e.target.getAttribute('aria-invalid')==='true')check(e.target)});
+form.addEventListener('blur',e=>{e.target.dataset.touched=1},true);
+form.addEventListener('submit',async e=>{
+  e.preventDefault();
+  const fields=[...form.elements].filter(el=>el.name in rules);
+  const bad=fields.filter(el=>!check(el));
+  if(bad.length){bad[0].focus();Nusa.toast('Periksa kembali isian yang ditandai',{type:'error'});return}
+  const btn=form.querySelector('[type=submit]'),data=Object.fromEntries(new FormData(form));
+  data.minat=new FormData(form).getAll('minat');
+  // Ganti simulasi ini dengan permintaan ke server Anda, mis.:
+  // await fetch('/api/kontak',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)})
+  await Nusa.loading.button(btn,new Promise(r=>setTimeout(r,1400)));
+  $('#okText').textContent=`Terima kasih, ${data.nama.trim().split(' ')[0]}. Kami akan membalas ke ${data.email.trim()} dalam 1 hari kerja.`;
+  form.hidden=true;$('#ok').hidden=false;$('#ok').scrollIntoView({block:'center',behavior:'smooth'});
+  Nusa.toast('Pesan terkirim',{type:'success'});
+});
+$('#again').onclick=()=>{form.reset();count.textContent='0/500';form.querySelectorAll('[aria-invalid]').forEach(el=>el.removeAttribute('aria-invalid'));form.querySelectorAll('[data-touched]').forEach(el=>delete el.dataset.touched);$('#ok').hidden=true;form.hidden=false;$('#nama').focus()};
+$('#nl').addEventListener('submit',e=>{e.preventDefault();const i=e.target.firstElementChild;if(!i.validity.valid||!i.value){Nusa.toast('Masukkan email yang valid',{type:'error'});return}e.target.reset();Nusa.toast('Terima kasih sudah mengikuti!',{type:'success'})});
+</script>
+</body>
+</html>
