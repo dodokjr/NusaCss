@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NusaCss Motion Example</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      background: #101522;
+      color: white;
+    }
+
+    .box {
+      width: 130px;
+      height: 130px;
+      border-radius: 24px;
+      background: #7c5cff;
+    }
+  </style>
+</head>
+<body>
+  <div class="box"></div>
+
+  <script type="module">
+    import { motion } from "../../packages/motion/src/index.js";
+
+    motion.animate(".box", {
+      opacity: [0, 1],
+      y: [60, 0],
+      scale: [0.7, 1]
+    }, {
+      duration: 900,
+      easing: "ease-out-back"
+    });
+  </script>
+</body>
+</html>

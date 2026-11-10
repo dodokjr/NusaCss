@@ -1,0 +1,54 @@
+/* Nusa Motion Styling Layer */
+
+:root {
+  --nusa-motion-duration: 600ms;
+  --nusa-motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --nusa-motion-distance: 40px;
+}
+
+.nusa-motion {
+  transform-origin: center;
+}
+
+.nusa-motion-ready [data-nusa-reveal] {
+  opacity: 0;
+  transition:
+    opacity var(--nusa-motion-duration) var(--nusa-motion-ease),
+    transform var(--nusa-motion-duration) var(--nusa-motion-ease);
+}
+
+.nusa-motion-ready [data-nusa-reveal="up"] {
+  transform: translateY(var(--nusa-motion-distance));
+}
+
+.nusa-motion-ready [data-nusa-reveal="down"] {
+  transform: translateY(calc(var(--nusa-motion-distance) * -1));
+}
+
+.nusa-motion-ready [data-nusa-reveal="left"] {
+  transform: translateX(calc(var(--nusa-motion-distance) * -1));
+}
+
+.nusa-motion-ready [data-nusa-reveal="right"] {
+  transform: translateX(var(--nusa-motion-distance));
+}
+
+.nusa-motion-ready [data-nusa-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .nusa-motion-ready [data-nusa-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

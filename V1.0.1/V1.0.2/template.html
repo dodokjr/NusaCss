@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="NusaCss UI templates and examples.">
+  <title>Templates and Examples - NusaCss</title>
+
+  <link rel="stylesheet" href="assets/nusa.css">
+  <link rel="stylesheet" href="assets/nusa-motion.css">
+</head>
+<body>
+
+<header class="navbar">
+  <a class="logo" href="index.html">Nusa<span>Css</span></a>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="docs.html">Documentation</a>
+    <a href="template.html">Templates</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <a href="docs.html" class="btn btn-primary">Documentation</a>
+</header>
+
+<main class="section">
+  <div class="section-heading">
+    <span class="badge">Examples & Templates</span>
+    <h1>Build faster with examples.</h1>
+    <p>Pelajari penggunaan NusaCss melalui contoh komponen.</p>
+  </div>
+
+  <div class="template-grid">
+    <article class="card">
+      <div class="demo demo-card">
+        <div class="demo-inner">
+          <span class="badge">NusaCss</span>
+          <h2>Modern Card</h2>
+          <p>Reusable UI component.</p>
+          <button class="btn btn-primary">Explore</button>
+        </div>
+      </div>
+      <h3>Card Component</h3>
+      <p>Contoh komponen card responsif.</p>
+      <pre><code>&lt;div class="card"&gt;
+  &lt;h2&gt;Hello World&lt;/h2&gt;
+&lt;/div&gt;</code></pre>
+    </article>
+
+    <article class="card">
+      <div class="demo demo-animation">
+        <div class="animated-box" data-nusa-reveal>Motion</div>
+      </div>
+      <h3>Reveal Animation</h3>
+      <p>Animasi ketika elemen masuk viewport.</p>
+      <pre><code>&lt;div data-nusa-reveal&gt;
+  Hello Motion
+&lt;/div&gt;</code></pre>
+    </article>
+
+    <article class="card">
+      <div class="demo demo-button">
+        <button class="btn btn-primary">Hover Me</button>
+      </div>
+      <h3>Interactive Button</h3>
+      <p>Contoh tombol dengan efek hover.</p>
+      <pre><code>&lt;button class="btn btn-primary"&gt;
+  Click Me
+&lt;/button&gt;</code></pre>
+    </article>
+
+    <article class="card">
+      <div class="demo demo-grid">
+        <div>01</div><div>02</div><div>03</div>
+        <div>04</div><div>05</div><div>06</div>
+      </div>
+      <h3>Responsive Grid</h3>
+      <p>Grid layout responsif.</p>
+      <pre><code>&lt;div class="feature-grid"&gt;
+  ...
+&lt;/div&gt;</code></pre>
+    </article>
+  </div>
+</main>
+
+<footer class="footer">
+  <a href="index.html">Home</a>
+  <a href="docs.html">Documentation</a>
+  <p>© <span class="current-year"></span> NusaCss</p>
+</footer>
+
+<script type="module" src="assets/main.js"></script>
+</body>
+</html>

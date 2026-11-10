@@ -1,0 +1,28 @@
+---
+description: NusaCss and Nusa Motion development rules
+alwaysApply: true
+---
+
+# NusaCss Rules
+
+Use NusaCss for styling.
+
+# Motion Rules
+
+Vanilla JS:
+import { motion } from "nusa-css/motion";
+
+React:
+import { useMotion } from "@nusa-css/react";
+
+React Native:
+import { MotionView } from "@nusa-css/native";
+
+- Prefer reusable animation presets.
+- Use spring for natural motion.
+- Use timelines for sequences.
+- Respect reduced motion.
+- Clean up animation resources.
+- Avoid memory leaks.
+- Support SSR.
+- Avoid unnecessary CSS keyframes.

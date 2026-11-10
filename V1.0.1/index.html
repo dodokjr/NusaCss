@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="NusaCss adalah toolkit frontend modern: CSS utilities, komponen UI, dan JavaScript motion.">
+  <meta name="theme-color" content="#080c17"><title>NusaCss — Build interfaces with clarity</title>
+  <link rel="stylesheet" href="assets/nusa.css"><link rel="stylesheet" href="assets/nusa-motion.css"><link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<header class="navbar"><a class="logo" href="index.html"><span class="logo-mark">N</span><span>NusaCss</span></a>
+<nav id="mainNav"><a href="index.html">Home</a><a href="docs.html">Documentation</a><a href="template.html">Templates</a><a href="contact.html">Contact</a></nav>
+<div class="nav-actions"><button class="icon-button" id="themeToggle" type="button" aria-label="Toggle theme"><svg class="icon"><use href="assets/icons.svg#i-sun"/></svg></button><a class="btn btn-primary" href="docs.html">Get started <svg class="icon"><use href="assets/icons.svg#i-arrow"/></svg></a><button class="icon-button menu-toggle" id="menuToggle" type="button" aria-label="Open navigation" aria-expanded="false"><svg class="icon"><use href="assets/icons.svg#i-menu"/></svg></button></div></header>
+<main class="container">
+<section class="hero"><div data-reveal><span class="badge"><svg class="icon"><use href="assets/icons.svg#i-sparkles"/></svg> Modern frontend toolkit</span>
+<h1>Build better interfaces.<span class="gradient-text">Move with NusaCss.</span></h1>
+<p>Toolkit frontend untuk membangun pengalaman web yang konsisten: utility styling, komponen antarmuka, dan motion API dalam satu workflow yang ringan.</p>
+<div class="hero-actions"><a class="btn btn-primary" href="docs.html">Explore documentation <svg class="icon"><use href="assets/icons.svg#i-arrow"/></svg></a><a class="btn btn-outline" href="template.html">Browse examples</a></div>
+<p class="hero-note">Designed for Vanilla JavaScript, React, and modern frontend workflows.</p></div>
+<div class="hero-preview" data-reveal><div class="preview-glow"></div><div class="code-window"><div class="code-top"><i class="dot"></i><i class="dot"></i><i class="dot"></i><span>motion-demo.js</span></div><pre><code><span class="code-purple">import</span> { motion } <span class="code-purple">from</span> <span class="code-green">"nusa-css/motion"</span>;
+
+motion.animate(<span class="code-green">".card"</span>, {
+  opacity: [<span class="code-cyan">0</span>, <span class="code-cyan">1</span>],
+  y: [<span class="code-cyan">32</span>, <span class="code-cyan">0</span>],
+  scale: [<span class="code-cyan">.96</span>, <span class="code-cyan">1</span>]
+}, {
+  duration: <span class="code-cyan">800</span>,
+  easing: <span class="code-green">"ease-out"</span>
+});</code></pre><div class="preview-footer"><span>● Ready to build</span><span>ES Modules</span></div></div></div></section>
+<section class="section"><div class="section-heading" data-reveal><span class="badge">One toolkit, many possibilities</span><h2>Everything your workflow needs.</h2><p>Mulai dari layout hingga interaksi, gunakan fondasi yang konsisten dan mudah dikembangkan.</p></div>
+<div class="feature-grid">
+<article class="card" data-reveal><div class="feature-icon"><svg class="icon"><use href="assets/icons.svg#i-layers"/></svg></div><h3>Utility-first styling</h3><p>Bangun layout, spacing, typography, dan responsive interface dengan pendekatan yang konsisten.</p></article>
+<article class="card" data-reveal><div class="feature-icon"><svg class="icon"><use href="assets/icons.svg#i-zap"/></svg></div><h3>Motion engine</h3><p>API animasi JavaScript untuk transisi, easing, sequence, dan pengalaman yang terasa hidup.</p></article>
+<article class="card" data-reveal><div class="feature-icon"><svg class="icon"><use href="assets/icons.svg#i-braces"/></svg></div><h3>Framework friendly</h3><p>Struktur modular untuk penggunaan Vanilla JS dan integrasi framework melalui adapter.</p></article>
+<article class="card" data-reveal><div class="feature-icon"><svg class="icon"><use href="assets/icons.svg#i-box"/></svg></div><h3>Composable components</h3><p>Bangun pola UI yang dapat digunakan kembali dan disesuaikan dengan kebutuhan produk.</p></article>
+<article class="card" data-reveal><div class="feature-icon"><svg class="icon"><use href="assets/icons.svg#i-code"/></svg></div><h3>Developer workflow</h3><p>Contoh implementasi dan dokumentasi yang membantu tim memahami cara penggunaan.</p></article>
+<article class="card" data-reveal><div class="feature-icon"><svg class="icon"><use href="assets/icons.svg#i-book"/></svg></div><h3>Learn as you build</h3><p>Pelajari konsep, salin contoh, lalu kembangkan sesuai karakter aplikasi kamu.</p></article>
+</div></section>
+<section class="section split-section"><div data-reveal><span class="badge">Made for makers</span><h2>Less friction.<br><span class="gradient-text">More building.</span></h2><p class="muted">NusaCss mengutamakan API yang mudah dipahami dan struktur yang dapat berkembang bersama project.</p><ul class="check-list"><li><svg class="icon"><use href="assets/icons.svg#i-check"/></svg> Modular dan mudah diintegrasikan</li><li><svg class="icon"><use href="assets/icons.svg#i-check"/></svg> Contoh penggunaan yang praktis</li><li><svg class="icon"><use href="assets/icons.svg#i-check"/></svg> Styling website terpisah dari framework CSS</li></ul><a class="btn btn-primary" href="docs.html">Start learning <svg class="icon"><use href="assets/icons.svg#i-arrow"/></svg></a></div>
+<div class="mini-panel" data-reveal><div class="panel-row"><strong>CSS toolkit</strong><span class="pill">Styling</span></div><div class="panel-row"><strong>Motion API</strong><span class="pill">Animation</span></div><div class="panel-row"><strong>React adapter</strong><span class="pill">Integration</span></div><div class="panel-row"><strong>Native adapter</strong><span class="pill">Integration</span></div><p class="muted">Status integrasi dan API mengikuti implementasi package yang tersedia di repository.</p></div></section>
+<section class="section"><div class="cta" data-reveal><span class="badge">Start your next project</span><h2>Make your next interface<br>feel effortless.</h2><p>Jelajahi dokumentasi dan contoh untuk mulai menggunakan NusaCss.</p><a class="btn btn-primary" href="docs.html">Read the documentation <svg class="icon"><use href="assets/icons.svg#i-arrow"/></svg></a></div></section>
+</main>
+<footer class="footer"><div><a class="logo" href="index.html"><span class="logo-mark">N</span><span>NusaCss</span></a><p>Frontend toolkit for thoughtful interfaces.</p></div><div class="footer-links"><a href="docs.html">Documentation</a><a href="template.html">Templates</a><a href="contact.html">Contact</a><a href="privacy-policy.html">Privacy</a><a href="https://github.com/dodokjr/NusaCss" target="_blank" rel="noopener noreferrer">GitHub</a></div><div class="footer-bottom">© <span class="current-year"></span> NusaCss. Built for developers.</div></footer>
+<script type="module" src="assets/main.js"></script></body></html>

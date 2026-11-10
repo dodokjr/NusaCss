@@ -1,0 +1,59 @@
+{
+  "name": "nusa-css",
+  "version": "2.0.0",
+  "description": "Lightweight CSS framework with a modular JavaScript animation engine",
+  "type": "module",
+  "license": "MIT",
+  "sideEffects": [
+    "*.css"
+  ],
+  "main": "./assets/nusa.js",
+  "module": "./assets/nusa.mjs",
+  "types": "./assets/nusa.d.ts",
+  "exports": {
+    ".": {
+      "types": "./assets/nusa.d.ts",
+      "import": "./assets/nusa.mjs",
+      "default": "./assets/nusa.js"
+    },
+    "./css": "./assets/nusa.css",
+    "./motion": {
+      "types": "./packages/motion/src/index.d.ts",
+      "import": "./packages/motion/src/index.js"
+    },
+    "./motion/presets": "./packages/motion/src/presets/index.js",
+    "./react": {
+      "types": "./packages/react/src/index.d.ts",
+      "import": "./packages/react/src/index.js"
+    },
+    "./native": {
+      "types": "./packages/native/src/index.d.ts",
+      "import": "./packages/native/src/index.js"
+    }
+  },
+  "scripts": {
+    "test": "node --test",
+    "test:motion": "node --test packages/motion",
+    "check": "node --check packages/motion/src/index.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "peerDependencies": {
+    "react": ">=18"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    }
+  },
+  "keywords": [
+    "css",
+    "javascript",
+    "animation",
+    "motion",
+    "react",
+    "react-native",
+    "ui"
+  ]
+}

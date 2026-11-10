@@ -1,0 +1,16 @@
+{
+  "name": "@nusa-css/motion",
+  "version": "2.0.0",
+  "type": "module",
+  "main": "./src/index.js",
+  "module": "./src/index.js",
+  "types": "./src/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./src/index.d.ts",
+      "import": "./src/index.js"
+    },
+    "./presets": "./src/presets/index.js"
+  },
+  "sideEffects": false
+}

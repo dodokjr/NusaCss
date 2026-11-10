@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Ringan CSS — demo</title>
+<link rel="stylesheet" href="ringan/css/ringan.min.css"/>
+<script>
+  // Cegah kedip: terapkan tema dan gaya sebelum halaman digambar
+  (function () { try {
+    var t = localStorage.getItem('ringan-theme'), s = localStorage.getItem('ringan-style');
+    if (t === 'dark' || (!t && matchMedia('(prefers-color-scheme:dark)').matches)) document.documentElement.classList.add('dark');
+    if (s) document.documentElement.setAttribute('data-style', s);
+  } catch (e) {} })();
+</script>
+</head>
+<body class="antialiased">
+
+<header class="navbar glass sticky top-0 z-40">
+  <a class="navbar-brand font-serif" href="#">Ringan</a>
+  <div class="navbar-end">
+    <button class="btn btn-sm" data-r-theme aria-pressed="false">Gelap</button>
+    <button class="navbar-toggle" data-r-toggle="#menu" aria-expanded="false" aria-controls="menu" aria-label="Menu"><span class="hamburger"></span></button>
+  </div>
+  <nav class="navbar-menu" id="menu">
+    <a class="nav-link active" href="#fitur">Fitur</a>
+    <a class="nav-link" href="#komponen">Komponen</a>
+    <a class="nav-link" href="#form">Form</a>
+  </nav>
+</header>
+
+<main class="container py-12 md:py-20">
+
+  <section class="max-w-3xl">
+    <h1 class="font-serif text-4xl md:text-6xl font-bold leading-tight tracking-tight text-balance">CSS utility-first yang ringan dan rapi.</h1>
+    <p class="mt-5 text-lg text-muted max-w-xl leading-relaxed">Pilih gaya yang cocok: sederhana, modern, atau klasik. Semua warna dan sudut mengikuti satu set variabel.</p>
+    <div class="mt-8 flex flex-wrap gap-3" role="group" aria-label="Pilih gaya">
+      <button class="btn" data-r-style="simple" aria-pressed="false">Sederhana</button>
+      <button class="btn" data-r-style="modern" aria-pressed="true">Modern</button>
+      <button class="btn" data-r-style="classic" aria-pressed="false">Klasik</button>
+    </div>
+  </section>
+
+  <section id="fitur" class="mt-20 grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="card"><div class="p-5"><h2 class="font-semibold">Utility-first</h2><p class="mt-2 text-sm text-muted">Spasi, warna, grid, flex, tipografi, dan efek dengan varian <code>hover:</code>, <code>dark:</code>, <code>md:</code>.</p></div></div>
+    <div class="card"><div class="p-5"><h2 class="font-semibold">Interaktif</h2><p class="mt-2 text-sm text-muted">Hamburger, dropdown, modal, tab, dan toast hanya dengan atribut <code>data-r-*</code>.</p></div></div>
+    <div class="card"><div class="p-5"><h2 class="font-semibold">Siap React</h2><p class="mt-2 text-sm text-muted">Komponen React di <code>ringan-react.mjs</code> memakai class yang sama.</p></div></div>
+  </section>
+
+  <section id="komponen" class="mt-20">
+    <h2 class="text-2xl font-bold tracking-tight">Komponen interaktif</h2>
+
+    <div class="mt-6 flex flex-wrap items-center gap-3">
+      <button class="btn btn-primary" data-r-modal="#dlg">Buka modal</button>
+      <button class="btn" onclick="Ringan.toast('Perubahan disimpan',{type:'success'})">Tampilkan toast</button>
+      <div class="dropdown">
+        <button class="btn" data-r-dropdown aria-haspopup="menu" aria-expanded="false">Menu ▾</button>
+        <div class="dropdown-menu" role="menu">
+          <button class="dropdown-item" role="menuitem">Profil</button>
+          <button class="dropdown-item" role="menuitem">Pengaturan</button>
+          <div class="dropdown-divider"></div>
+          <button class="dropdown-item" role="menuitem">Keluar</button>
+        </div>
+      </div>
+      <button class="btn btn-outline" data-r-copy="npm i ringan-css">Salin perintah</button>
+    </div>
+
+    <div class="mt-8" data-r-tabs>
+      <div class="tabs" role="tablist">
+        <button class="tab" role="tab" data-r-tab="#t1">Ringkasan</button>
+        <button class="tab" role="tab" data-r-tab="#t2">Aktivitas</button>
+        <button class="tab" role="tab" data-r-tab="#t3">Pengaturan</button>
+      </div>
+      <div id="t1" class="tab-panel" role="tabpanel"><p class="text-muted">Panel ringkasan. Gunakan tombol panah kiri/kanan untuk berpindah tab.</p></div>
+      <div id="t2" class="tab-panel" role="tabpanel"><p class="text-muted">Daftar aktivitas terbaru muncul di sini.</p></div>
+      <div id="t3" class="tab-panel" role="tabpanel"><p class="text-muted">Atur preferensi akun Anda.</p></div>
+    </div>
+
+    <div class="mt-8 max-w-xl">
+      <details class="accordion"><summary>Apakah mendukung dark mode?</summary><div class="accordion-body">Ya. Tombol "Gelap" di navbar menyimpan pilihan Anda.</div></details>
+      <details class="accordion"><summary>Bisakah dipakai tanpa JavaScript?</summary><div class="accordion-body">CSS berdiri sendiri. JavaScript hanya menambah interaksi.</div></details>
+    </div>
+
+    <div class="mt-8 flex flex-wrap gap-2">
+      <span class="badge">Baru</span><span class="badge badge-primary">Primary</span><span class="badge badge-green">Aktif</span><span class="badge badge-amber">Menunggu</span><span class="badge badge-red">Gagal</span>
+    </div>
+    <div class="mt-6 grid gap-3 max-w-xl">
+      <div class="alert alert-sky">Perubahan disimpan otomatis setiap 30 detik.</div>
+      <div class="alert alert-red">Pembayaran gagal. Periksa nomor kartu lalu coba lagi.</div>
+    </div>
+    <div class="mt-6 max-w-xs"><div class="progress"><div class="progress-bar" style="--value:65%"></div></div></div>
+  </section>
+
+  <section id="form" class="mt-20 max-w-md">
+    <h2 class="text-2xl font-bold tracking-tight">Form</h2>
+    <form class="card mt-6" onsubmit="return false"><div class="p-5 space-y-4">
+      <div><label class="label" for="e">Email</label><input id="e" class="input" type="email" placeholder="nama@contoh.id"></div>
+      <div><label class="label" for="p">Kata sandi</label><input id="p" class="input input-error" type="password" value="123"><p class="mt-1 text-sm text-red-600 dark:text-red-400">Minimal 8 karakter.</p></div>
+      <button class="btn btn-primary btn-block">Masuk</button>
+    </div></form>
+  </section>
+</main>
+
+<footer class="footer"><div class="container">Ringan CSS · MIT</div></footer>
+
+<div class="modal" id="dlg" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Konfirmasi">
+  <div class="modal-overlay" data-r-close></div>
+  <div class="modal-dialog">
+    <div class="modal-header"><span>Hapus proyek?</span><button class="btn-close" data-r-close aria-label="Tutup">×</button></div>
+    <div class="modal-body">Tindakan ini tidak bisa dibatalkan. Tekan Esc atau klik latar untuk menutup.</div>
+    <div class="modal-footer"><button class="btn" data-r-close>Batal</button><button class="btn btn-primary" data-r-close onclick="Ringan.toast('Proyek dihapus',{type:'error'})">Hapus</button></div>
+  </div>
+</div>
+
+<script src="ringan/dist/ringan.js"></script>
+</body>
+</html>

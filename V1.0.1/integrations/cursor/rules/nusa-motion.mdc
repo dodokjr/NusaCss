@@ -1,0 +1,38 @@
+---
+description: Guidelines for using NusaCss Motion
+globs:
+  - "**/*.{js,jsx,ts,tsx}"
+alwaysApply: false
+---
+
+# NusaCss Motion
+
+Use NusaCss Motion for browser animations.
+
+## Vanilla JavaScript
+
+Import from `nusa-css/motion`.
+
+```js
+import { motion } from "nusa-css/motion";
+
+motion.animate(".element", {
+  opacity: [0, 1],
+  y: [30, 0]
+}, {
+  duration: 700,
+  easing: "ease-out"
+});
+```
+
+## React
+
+Use the React adapter from `nusa-css/react`.
+
+## React Native
+
+Use `MotionView` from `nusa-css/native`.
+
+Do not use browser DOM APIs in React Native.
+Do not access `document` or `Element` in native components.
+Respect reduced-motion preferences when implementing user-facing animations.

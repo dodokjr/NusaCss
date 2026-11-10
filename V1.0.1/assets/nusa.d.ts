@@ -1,0 +1,15 @@
+export interface ToastOptions{type?:'info'|'success'|'error';ms?:number}
+export const theme:{get():'light'|'dark'|'system';set(m:'light'|'dark'|'system'):void;toggle():void;apply():void};
+export const accent:{set(a:'indigo'|'blue'|'teal'|'green'|'orange'|'pink'|'violet'|'red'):void};
+export const modal:{open(id:string):void;close(id:string):void};
+export function toast(msg:string,opts?:ToastOptions):void;
+export function reveal(root?:ParentNode):void;
+export function countUp(el:HTMLElement,to?:number,ms?:number):void;
+export function typewriter(el:HTMLElement,words:string[],speed?:number):void;
+export function init():void;
+export const palette:{set(p:'default'|'ocean'|'sunset'|'forest'|'rose'|'royal'):void};
+export const fmt:{rupiah(n:number):string};
+export function copy(text:string):void;
+export function confirmBox(msg:string):Promise<boolean>;
+export function sparkline(el:HTMLElement,values:number[],w?:number,h?:number):void;
+export function donut(el:HTMLElement,values:number[],size?:number):void;

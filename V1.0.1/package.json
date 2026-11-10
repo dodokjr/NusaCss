@@ -1,0 +1,34 @@
+{
+  "name": "nusa-css",
+  "version": "1.0.0",
+  "description": "CSS utilities and cross-platform motion library",
+  "type": "module",
+  "main": "./packages/motion/src/index.js",
+  "module": "./packages/motion/src/index.js",
+  "types": "./packages/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./packages/types/index.d.ts",
+      "import": "./packages/motion/src/index.js"
+    },
+    "./motion": {
+      "types": "./packages/types/index.d.ts",
+      "import": "./packages/motion/src/index.js"
+    },
+    "./react": "./packages/react/src/index.js",
+    "./native": "./packages/native/src/index.js",
+    "./css": "./assets/nusa.css"
+  },
+  "scripts": {
+    "test": "node --test",
+    "test:motion": "node --test tests/motion.test.js"
+  },
+  "peerDependencies": {
+    "react": ">=18"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    }
+  }
+}

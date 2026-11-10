@@ -1,0 +1,51 @@
+[data-nusa-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+  
+  .nusa-motion-ready [data-nusa-reveal] {
+    opacity: 0;
+    transform: translateY(30px);
+    transition:
+      opacity .7s ease,
+      transform .7s cubic-bezier(.2,.7,.2,1);
+  }
+  
+  .nusa-motion-ready [data-nusa-reveal].is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  [data-nusa-reveal] {
+    will-change: opacity, transform;
+  }
+  
+  .card,
+  .btn,
+  .preview-window {
+    transition:
+      transform .25s ease,
+      border-color .25s ease,
+      box-shadow .25s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(124,92,255,.5);
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      scroll-behavior: auto !important;
+      animation-duration: .01ms !important;
+      transition-duration: .01ms !important;
+    }
+  
+    .nusa-motion-ready [data-nusa-reveal] {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  

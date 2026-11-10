@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="NusaCss - Modern CSS Framework and JavaScript Motion Library.">
+  <meta name="theme-color" content="#080b14">
+  <title>NusaCss - Modern Frontend Toolkit</title>
+
+  <link rel="stylesheet" href="assets/nusa.css">
+  <link rel="stylesheet" href="assets/nusa-motion.css">
+</head>
+<body>
+
+<header class="navbar">
+  <a class="logo" href="index.html">Nusa<span>Css</span></a>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="docs.html">Documentation</a>
+    <a href="template.html">Templates</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <div class="nav-actions">
+    <button id="themeToggle" aria-label="Toggle theme">☀</button>
+    <a class="btn btn-primary" href="docs.html">Get Started</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="hero-content" data-nusa-reveal>
+      <span class="badge">Modern Frontend Toolkit</span>
+
+      <h1>
+        Build Beautiful Interfaces
+        <span>With NusaCss.</span>
+      </h1>
+
+      <p>
+        Modern CSS framework dan JavaScript animation engine
+        untuk membangun website yang cepat, interaktif, dan responsif.
+      </p>
+
+      <div class="hero-actions">
+        <a href="docs.html" class="btn btn-primary">Get Started →</a>
+        <a href="template.html" class="btn btn-outline">Explore Examples</a>
+      </div>
+
+      <p class="hero-note">
+        Vanilla JS, React, React Native, dan frontend lainnya.
+      </p>
+    </div>
+
+    <div class="hero-preview" data-nusa-reveal>
+      <div class="preview-window">
+        <div class="preview-header">
+          <span></span><span></span><span></span>
+          <small>nusa-project.js</small>
+        </div>
+
+        <pre><code>import { motion } from "nusa-css/motion";
+
+motion.animate(".box", {
+  opacity: [0, 1],
+  y: [50, 0]
+}, {
+  duration: 800,
+  easing: "ease-out"
+});</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-heading" data-nusa-reveal>
+      <span class="badge">Features</span>
+      <h2>Everything you need to build.</h2>
+      <p>Tools untuk mempercepat pengembangan frontend.</p>
+    </div>
+
+    <div class="feature-grid">
+      <article class="card" data-nusa-reveal>
+        <div class="feature-icon">🎨</div>
+        <h3>Modern CSS</h3>
+        <p>Utility classes, responsive layouts, typography, dan UI components.</p>
+      </article>
+
+      <article class="card" data-nusa-reveal>
+        <div class="feature-icon">⚡</div>
+        <h3>JavaScript Motion</h3>
+        <p>Animation engine dengan easing, spring, timeline, dan sequence.</p>
+      </article>
+
+      <article class="card" data-nusa-reveal>
+        <div class="feature-icon">⚛️</div>
+        <h3>Framework Support</h3>
+        <p>Integrasi Vanilla JS, React, dan React Native melalui adapter.</p>
+      </article>
+
+      <article class="card" data-nusa-reveal>
+        <div class="feature-icon">📦</div>
+        <h3>NPM Ready</h3>
+        <p>Dirancang agar dapat digunakan melalui package manager npm.</p>
+      </article>
+
+      <article class="card" data-nusa-reveal>
+        <div class="feature-icon">🧩</div>
+        <h3>Reusable Components</h3>
+        <p>Komponen UI dan preset animasi yang dapat digunakan kembali.</p>
+      </article>
+
+      <article class="card" data-nusa-reveal>
+        <div class="feature-icon">🚀</div>
+        <h3>Developer Friendly</h3>
+        <p>API sederhana, dokumentasi jelas, dan struktur modular.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="cta section" data-nusa-reveal>
+    <h2>Ready to build something amazing?</h2>
+    <p>Mulai gunakan NusaCss untuk proyek frontend berikutnya.</p>
+    <a href="docs.html" class="btn btn-primary">Read Documentation →</a>
+  </section>
+</main>
+
+<footer class="footer">
+  <div>
+    <a class="logo" href="index.html">Nusa<span>Css</span></a>
+    <p>Modern CSS and JavaScript Motion Toolkit.</p>
+  </div>
+
+  <div class="footer-links">
+    <a href="docs.html">Documentation</a>
+    <a href="template.html">Templates</a>
+    <a href="contact.html">Contact</a>
+    <a href="privacy-policy.html">Privacy Policy</a>
+  </div>
+
+  <p>© <span class="current-year"></span> NusaCss. All rights reserved.</p>
+</footer>
+
+<script type="module" src="assets/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Dokumentasi Nusa CSS v1.4: instalasi, tema, layout, komponen, utilitas, dan animasi."><title>Documentation — NusaCss</title><link rel="stylesheet" href="assets/nusa.css"><link rel="stylesheet" href="assets/nusa-motion.css"><link rel="stylesheet" href="assets/site.css"><style>.demo{margin:18px 0;border:1px solid var(--line);border-radius:15px;overflow:hidden;background:var(--surface)}.demo-bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;padding:8px 12px;border-bottom:1px solid var(--line)}.demo-bar b{color:var(--muted);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase}.demo-bar div{display:flex;gap:4px;flex-wrap:wrap}.demo-bar button{padding:3px 10px;border:1px solid var(--line);border-radius:8px;background:var(--surface-2);color:var(--text);font-size:.74rem;font-weight:700}.demo-bar button[aria-pressed=true]{background:var(--primary);border-color:var(--primary);color:#fff}.demo-stage{display:grid;justify-items:center;overflow:auto;background:var(--surface-2)}.demo-frame{display:block;max-width:100%;border:0;background:transparent;transition:width .3s}.docs-content .demo pre{margin:0;max-height:360px;border:0;border-top:1px solid var(--line);border-radius:0}.clsref{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0}.clsref p{flex:0 0 100%;margin:0;font-size:.74rem}.clsref button{padding:2px 9px;border:1px solid var(--line);border-radius:99px;background:var(--surface);color:var(--text);font:.72rem "DM Mono",monospace;cursor:pointer}.clsref button:hover{border-color:var(--primary)}</style></head><body>
+<header class="navbar"><a class="logo" href="index.html"><span class="logo-mark">N</span><span>NusaCss</span></a><nav id="mainNav"><a href="index.html">Home</a><a href="docs.html" aria-current="page">Documentation</a><a href="template.html">Templates</a><a href="contact.html">Contact</a></nav><div class="nav-actions"><button class="icon-button" id="themeToggle" aria-label="Toggle theme"><svg class="icon"><use href="assets/icons.svg#i-sun"/></svg></button><a class="btn btn-primary" href="template.html">View examples</a><button class="icon-button menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false"><svg class="icon"><use href="assets/icons.svg#i-menu"/></svg></button></div></header>
+<main class="container"><section class="page-hero"><span class="badge"><svg class="icon"><use href="assets/icons.svg#i-book"/></svg> Developer guide</span><h1>Documentation</h1><p>Panduan Nusa CSS v1.4: framework CSS utility-first yang ringan, mendukung dark mode, tema, komponen siap pakai, dan animasi berbasis class.</p></section>
+<div class="docs-toolbar"><label class="search-wrap"><svg class="icon"><use href="assets/icons.svg#i-search"/></svg><input id="docsSearch" type="search" placeholder="Search documentation..." aria-label="Search documentation"></label></div>
+<div class="docs-layout" style="padding-top:10px"><aside class="docs-sidebar"><h3>Getting started</h3><a href="#intro">Introduction</a><a href="#install">Installation</a><a href="#purged">Build purged</a><h3>Dasar</h3><a href="#theme">Tema &amp; variabel</a><a href="#warna">Warna &amp; background</a><a href="#tipografi">Font &amp; teks</a><a href="#ukuran">Ukuran &amp; spasi</a><a href="#flexgrid">Flex &amp; grid</a><a href="#posisi">Posisi &amp; efek</a><a href="#layout">Layout</a><a href="#utilities">Utilitas</a><h3>Komponen</h3><a href="#buttons">Button &amp; badge</a><a href="#cards">Card</a><a href="#gambar">Gambar</a><a href="#navbar">Navbar</a><a href="#forms">Form &amp; tabel</a><a href="#feedback">Alert, modal, toast</a><a href="#icons">Ikon</a><h3>Efek</h3><a href="#loading">Loading</a><a href="#animate">Animate</a><a href="#reveal">Reveal &amp; stagger</a><a href="#scroll">Scroll effects</a><h3>Integrations</h3><a href="#vanilla">Vanilla JS</a><a href="#react">React</a></aside>
+<article class="docs-content">
+
+<section id="intro"><span class="badge">Start here</span><h1>NusaCss developer guide</h1><p>Nusa CSS v1.4 adalah satu stylesheet berisi variabel desain, komponen, utilitas, dan keyframes animasi dengan prefix <code>nu-</code>. Semua fitur dipakai lewat class dan atribut HTML. Stylesheet ini tidak menyertakan JavaScript.</p><p>Setiap contoh di bawah ini berupa pratinjau langsung (dirender di iframe dengan <code>nusa.css</code> asli) beserta kode lengkapnya. Beberapa komponen (modal, navbar mobile, reveal, to-top) hanya menyediakan style untuk state tertentu, misalnya <code>.open</code>, <code>.in</code>, atau <code>.show</code>. Menambah dan menghapus class itu tugas script kamu; contohnya ada di bagian <a href="#vanilla">Vanilla JS</a>.</p></section>
+
+<section id="install"><h2>Installation</h2><p>Hubungkan file CSS di <code>&lt;head&gt;</code>. Untuk website statis, hubungkan stylesheet langsung dari CDN:</p><pre><code>&lt;link rel="stylesheet" href="https://nusacss-app.vercel.app/V1.0.1/assets/nusa.css"&gt;</code></pre><p>Pasang class <code>dark</code> pada <code>&lt;html&gt;</code> untuk dark mode, dan opsional <code>data-palette</code> atau <code>data-style</code> untuk tema:</p><pre><code>&lt;html lang="id" class="dark" data-palette="ocean"&gt;</code></pre><p>Stylesheet memakai <code>oklch()</code> dan <code>color-mix()</code>, jadi butuh browser modern. Efek <code>scroll-*</code> memakai <code>animation-timeline</code> dan otomatis tidak aktif di browser yang belum mendukungnya.</p></section>
+
+<section id="purged"><h2>Build purged</h2><p><code>nusa.css</code> memuat sekitar 8.800 class (utilitas warna, varian responsif <code>sm:</code> <code>md:</code> <code>lg:</code> <code>xl:</code>, <code>hover:</code>, <code>dark:</code>, dan seterusnya) dengan ukuran sekitar 470 KB. <code>nusa_purged_min.css</code> adalah versi yang sudah dibersihkan dan di-minify, berukuran sekitar 46 KB. File ini hanya berisi sekitar 280 class yang dipakai halaman, ditambah semua variabel, keyframes, dan komponen dasar.</p><pre><code>&lt;!-- development: semua class tersedia --&gt;
+&lt;link rel="stylesheet" href="assets/nusa.css"&gt;
+
+&lt;!-- production: hanya class yang dipakai --&gt;
+&lt;link rel="stylesheet" href="assets/nusa_purged_min.css"&gt;</code></pre><p>Jika kamu menambah class baru yang tidak ada di build purged, misalnya <code>md:grid-cols-4</code> atau <code>bg-teal-500</code>, class itu tidak akan bekerja sampai kamu membuat ulang build purged atau kembali memakai <code>nusa.css</code>.</p></section>
+
+<section id="theme"><h2>Tema &amp; variabel</h2><p>Semua warna dan radius berasal dari custom property di <code>:root</code>. Ubah variabel untuk menyesuaikan seluruh komponen sekaligus.</p><pre><code>:root {
+  --bg, --surface, --surface-2   /* latar */
+  --text, --muted, --line        /* teks dan garis */
+  --brand, --brand-fg, --brand-soft
+  --ok, --bad, --warn, --inf     /* warna semantik */
+  --r: .625rem;                  /* radius dasar */
+  --nav-h: 3.75rem;              /* tinggi navbar */
+  --c-indigo-600, --c-sky-500 ...  /* palet 50-900 */
+}</code></pre><p>Palet tersedia untuk gray, indigo, blue, sky, teal, green, lime, amber, orange, red, pink, dan violet, masing-masing dengan skala 50 sampai 900.</p><pre><code>&lt;!-- dark mode --&gt;
+&lt;html class="dark"&gt;
+
+&lt;!-- palet: ocean | sunset | forest | rose | royal --&gt;
+&lt;html data-palette="sunset"&gt;
+
+&lt;!-- gaya klasik (radius kecil, font serif) --&gt;
+&lt;html data-style="classic"&gt;</code></pre><p>Palet dan dark mode bisa digabung, misalnya <code>class="dark" data-palette="forest"</code>. Warna semantik <code>--ok</code>, <code>--bad</code>, <code>--warn</code>, dan <code>--inf</code> otomatis lebih terang di dark mode.</p><template data-demo data-title="Palet, dark mode, dan gaya klasik (diatur per elemen)">
+<div class="grid-auto grid-sm">
+  <div class="card" data-palette="ocean" style="background:var(--bg)"><span class="badge">ocean</span><p class="mt-2"><button class="btn btn-sm">Tombol</button></p></div>
+  <div class="card" data-palette="sunset" style="background:var(--bg)"><span class="badge">sunset</span><p class="mt-2"><button class="btn btn-sm">Tombol</button></p></div>
+  <div class="card" data-palette="forest" style="background:var(--bg)"><span class="badge">forest</span><p class="mt-2"><button class="btn btn-sm">Tombol</button></p></div>
+  <div class="card" data-palette="rose" style="background:var(--bg)"><span class="badge">rose</span><p class="mt-2"><button class="btn btn-sm">Tombol</button></p></div>
+  <div class="card dark" style="background:var(--bg);color:var(--text)"><span class="badge">.dark</span><p class="mt-2"><button class="btn btn-sm">Tombol</button></p></div>
+  <div class="card" data-style="classic"><span class="badge">classic</span><p class="mt-2">Radius kecil, font serif.</p></div>
+</div>
+</template></section>
+
+<section id="warna"><h2>Warna &amp; background</h2><p>Warna semantik mengikuti dark mode. Tambahkan <code>/10</code> sampai <code>/90</code> untuk transparansi, atau <code>-soft</code> untuk latar lembut.</p><template data-demo data-title="Warna teks">
+<div class="row gap-4 text-lg font-semibold"><span class="text-brand">brand</span><span class="text-success">success</span><span class="text-danger">danger</span><span class="text-warning">warning</span><span class="text-info">info</span><span class="text-muted">muted</span><span class="text-brand/50">brand/50</span><span class="text-pink-500">pink-500</span></div>
+</template><template data-demo data-title="Background soft dan alpha">
+<div class="grid-auto grid-sm gap-3 text-sm font-semibold"><div class="p-4 rounded-lg bg-brand-soft text-brand">bg-brand-soft</div><div class="p-4 rounded-lg bg-success-soft text-success">bg-success-soft</div><div class="p-4 rounded-lg bg-danger-soft text-danger">bg-danger-soft</div><div class="p-4 rounded-lg bg-warning-soft text-warning">bg-warning-soft</div><div class="p-4 rounded-lg bg-info-soft text-info">bg-info-soft</div><div class="p-4 rounded-lg bg-brand/20 border border-brand/40">bg-brand/20</div></div>
+</template><template data-demo data-title="Gradient preset dan pola">
+<div class="grid-auto grid-sm gap-3 text-white text-sm font-bold"><div class="h-20 rounded-xl bg-grad-sunset p-3">sunset</div><div class="h-20 rounded-xl bg-grad-ocean p-3">ocean</div><div class="h-20 rounded-xl bg-grad-forest p-3">forest</div><div class="h-20 rounded-xl bg-grad-royal p-3">royal</div><div class="h-20 rounded-xl bg-gradient-to-br from-pink-400 to-indigo-600 p-3">from-to</div><div class="h-20 rounded-xl border bg-dots p-3 text-brand">bg-dots</div><div class="h-20 rounded-xl border bg-grid p-3 text-brand">bg-grid</div><div class="h-20 rounded-xl border bg-stripes p-3 text-brand">bg-stripes</div></div>
+</template><div class="clsref" data-cls="text-brand text-success text-danger text-warning text-info text-muted bg-brand-soft bg-success-soft bg-black/50 border-brand/30 bg-grad-sunset bg-grad-ocean bg-dots bg-grid bg-mesh from-pink-400 to-indigo-600 bg-gradient-to-r"></div></section>
+<section id="tipografi"><h2>Font &amp; teks</h2><p>Ukuran <code>text-2xs</code> sampai <code>text-9xl</code>, ukuran fluid, enam keluarga font, dan efek teks siap pakai.</p><template data-demo data-title="Skala ukuran dan keluarga font">
+<div class="stack stack-sm"><p class="text-xs">text-xs</p><p class="text-base">text-base</p><p class="text-3xl">text-3xl</p><p class="text-fluid-xl font-extrabold leading-none">text-fluid-xl</p><p class="font-serif text-xl">font-serif — Kopi dari kebun Nusantara</p><p class="font-display text-xl">font-display — Kopi dari kebun Nusantara</p><p class="font-rounded text-xl">font-rounded — Kopi dari kebun Nusantara</p><p class="font-mono text-xl">font-mono — Kopi dari kebun Nusantara</p></div>
+</template><template data-demo data-title="Berat, dekorasi, dan jarak">
+<div class="stack stack-sm"><p class="font-light">font-light</p><p class="font-black">font-black</p><p class="uppercase tracking-widest text-sm">uppercase tracking-widest</p><p class="underline decoration-wavy decoration-danger underline-offset-4">underline wavy</p><p class="leading-loose max-w-md text-muted">leading-loose membuat paragraf panjang terasa lebih lega dan nyaman dibaca.</p></div>
+</template><template data-demo data-title="Efek teks">
+<div class="stack"><p class="text-4xl font-black text-gradient">text-gradient</p><p class="text-4xl font-black text-shimmer">text-shimmer</p><p class="text-4xl font-black text-glow text-brand">text-glow</p><p class="text-5xl font-black text-outline">text-outline</p><p class="text-xl">Beri sorotan dengan <span class="marker">marker</span> dan <a href="#" class="link-underline text-brand font-semibold">link-underline</a>.</p><p class="text-xl"><span class="caret">Kursor berkedip</span></p><p class="drop-cap max-w-md text-muted">Drop cap memberi kesan editorial pada paragraf pembuka artikel.</p></div>
+</template><div class="clsref" data-cls="text-2xs text-sm text-xl text-5xl text-9xl text-fluid-lg text-fluid-2xl font-serif font-mono font-display font-rounded font-hand font-light font-bold font-black leading-none leading-loose tracking-tight tracking-widest text-center uppercase capitalize italic underline line-through truncate line-clamp-3 text-balance text-gradient text-shimmer text-glow text-outline marker link-underline drop-cap caret eyebrow"></div></section>
+<section id="ukuran"><h2>Ukuran, padding &amp; margin</h2><p>Pecahan (<code>w-1/2</code>), skala rem (<code>w-64</code>), kata kunci (<code>w-fit</code>), dan batas <code>min-*</code>/<code>max-*</code>. Skala spasi 0–96 (1 satuan = 0,25rem), ditambah padding fluid <code>pad</code>, <code>pad-lg</code>, <code>pad-xl</code>.</p><template data-demo data-title="Width, min/max, height, dan rasio">
+<div class="stack stack-sm text-sm font-semibold text-center"><div class="w-3/4 bg-brand-soft text-brand p-2 rounded">w-3/4</div><div class="w-1/3 bg-brand-soft text-brand p-2 rounded">w-1/3</div><div class="w-full md:w-1/4 bg-brand text-white p-2 rounded">w-full md:w-1/4</div><div class="max-w-xs bg-surface-2 p-3 rounded text-left">max-w-xs: lebar berhenti di 20rem walau wadahnya lebih lebar.</div><div class="row items-end text-xs text-white"><div class="size-16 bg-pink-500 rounded grid place-items-center">size-16</div><div class="aspect-video w-32 bg-teal-600 rounded grid place-items-center">16/9</div><div class="aspect-4/3 w-24 bg-amber-500 rounded grid place-items-center">4/3</div><div class="min-h-24 bg-brand p-3 rounded">min-h-24</div></div></div>
+</template><template data-demo data-title="Padding, padding fluid, space, dan margin negatif">
+<div class="stack"><div class="row gap-4 items-start text-xs font-bold text-white"><div class="bg-brand/20 rounded-lg p-2"><span class="bg-brand px-2 py-1 rounded inline-block">p-2</span></div><div class="bg-brand/20 rounded-lg p-8"><span class="bg-brand px-2 py-1 rounded inline-block">p-8</span></div><div class="bg-brand/20 rounded-lg px-14 py-3"><span class="bg-brand px-2 py-1 rounded inline-block">px-14 py-3</span></div></div><div class="pad-lg bg-surface-2 rounded-lg text-sm">pad-lg — clamp(1.5rem, 5vw, 3rem)</div><div class="flex space-x-6 text-xs font-bold text-white"><div class="bg-brand p-3 rounded">space-x-6</div><div class="bg-brand p-3 rounded">a</div><div class="bg-brand p-3 rounded -mt-3 relative">-mt-3</div></div></div>
+</template><div class="clsref" data-cls="w-1/2 w-3/4 w-full w-screen w-fit w-64 min-w-0 min-w-32 max-w-xs max-w-md max-w-prose max-w-7xl h-full h-screen h-dvh min-h-screen min-h-24 max-h-64 size-8 size-full aspect-square aspect-video aspect-4/3 p-4 px-6 py-10 pt-16 m-4 mx-auto my-12 -mt-4 gap-2 gap-6 gap-fluid space-x-4 space-y-6 pad pad-lg pad-xl pad-x-lg section-sm section-lg section-xl md:p-8"></div></section>
+<section id="flexgrid"><h2>Flex &amp; grid</h2><p>Flexbox lengkap, grid 1–12 kolom, <code>col-span</code>, <code>order</code>, kolom otomatis <code>grid-fit-*</code>, dan masonry lewat <code>columns-*</code>. Gunakan tombol Mobile/Tablet/Desktop pada pratinjau untuk melihat varian responsif.</p><template data-demo data-title="Flex: arah, perataan, gap">
+<div class="stack text-xs font-bold text-white"><div class="flex justify-between items-center gap-3 bg-surface-2 p-3 rounded"><span class="bg-brand p-2 rounded">justify-between</span><span class="bg-brand p-3 rounded">items-center</span><span class="bg-brand p-2 rounded">gap-3</span></div><div class="flex flex-col sm:flex-row gap-2 bg-surface-2 p-3 rounded"><span class="bg-teal-600 p-2 rounded grow">flex-col sm:flex-row</span><span class="bg-teal-600 p-2 rounded grow">grow</span></div></div>
+</template><template data-demo data-title="Grid: kolom, span, order, dan rows">
+<div class="stack"><div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs font-bold text-white text-center"><div class="bg-brand p-4 rounded md:col-span-2">md:col-span-2</div><div class="bg-brand p-4 rounded">1</div><div class="bg-brand p-4 rounded order-last md:order-none">order-last</div><div class="bg-pink-500 p-4 rounded col-span-full">col-span-full</div></div><div class="grid-fit-sm gap-3 text-xs font-bold text-white text-center"><div class="bg-brand p-4 rounded">grid-fit-sm</div><div class="bg-brand p-4 rounded">2</div><div class="bg-brand p-4 rounded">3</div><div class="bg-brand p-4 rounded">4</div></div><div class="grid grid-cols-3 grid-rows-2 gap-3 h-36 text-xs font-bold text-white text-center"><div class="bg-pink-500 rounded row-span-2 grid place-items-center">row-span-2</div><div class="bg-pink-500 rounded grid place-items-center col-span-2">col-span-2</div><div class="bg-pink-500 rounded grid place-items-center">3</div><div class="bg-pink-500 rounded grid place-items-center">4</div></div></div>
+</template><template data-demo data-title="Masonry dengan columns-3">
+<div class="columns-3 gap-3 text-xs font-bold text-white"><div class="bg-brand h-24 rounded mb-3 break-inside-avoid p-2">1</div><div class="bg-pink-500 h-40 rounded mb-3 break-inside-avoid p-2">2</div><div class="bg-teal-600 h-28 rounded mb-3 break-inside-avoid p-2">3</div><div class="bg-amber-500 h-36 rounded mb-3 break-inside-avoid p-2">4</div></div>
+</template><div class="clsref" data-cls="flex inline-flex grid flex-col flex-wrap flex-1 grow shrink-0 basis-1/2 items-center items-start justify-between justify-center self-center place-items-center grid-cols-1 grid-cols-12 grid-rows-3 col-span-2 col-span-full col-start-2 row-span-2 order-first order-last grid-fit-sm grid-fit-md columns-2 columns-3 md:grid-cols-3 lg:flex-row"></div></section>
+<section id="posisi"><h2>Posisi, z-index &amp; efek</h2><p><code>z-0</code> sampai <code>z-100</code> (langkah 10), <code>-z-10</code>, <code>z-max</code>. Gabungkan varian <code>hover:</code>, <code>focus:</code>, <code>active:</code>, <code>group-hover:</code>, dan <code>dark:</code> untuk interaksi tanpa CSS tambahan.</p><template data-demo data-title="z-index, tengah mutlak, dan sticky">
+<div class="stack"><div class="relative h-36 text-xs font-bold text-white"><div class="absolute top-0 left-0 size-24 rounded-xl bg-brand z-10 p-3 shadow-lg">z-10</div><div class="absolute top-6 left-14 size-24 rounded-xl bg-pink-500 z-30 p-3 shadow-lg">z-30</div><div class="absolute top-12 left-28 size-24 rounded-xl bg-teal-600 z-20 p-3 shadow-lg">z-20</div></div><div class="grid-auto grid-sm gap-3 text-xs font-bold"><div class="relative h-24 rounded-xl bg-surface-2"><span class="center-abs bg-brand text-white px-3 py-1 rounded-full">center-abs</span></div><div class="h-24 rounded-xl bg-surface-2 overflow-auto"><div class="sticky top-0 bg-brand text-white p-2">sticky top-0</div><div class="p-3 text-muted">Gulir kotak ini.<br><br>Baris kosong<br><br>Baris kosong</div></div></div></div>
+</template><template data-demo data-title="Shadow, ring, hover, dan transisi">
+<div class="grid-auto grid-sm gap-4 text-xs font-bold text-center"><div class="p-5 rounded-xl bg-surface shadow-lg">shadow-lg</div><div class="p-5 rounded-xl bg-surface shadow-brand">shadow-brand</div><div class="p-5 rounded-xl bg-surface ring-2 ring-brand">ring-2 ring-brand</div><div class="p-5 rounded-xl bg-brand text-white transition duration-300 hover:scale-110 cursor-pointer">hover:scale-110</div><div class="p-5 rounded-xl bg-pink-500 text-white transition duration-300 hover:-translate-y-2 hover:shadow-xl cursor-pointer">hover:-translate-y-2</div><div class="group p-5 rounded-xl bg-surface-2 cursor-pointer">group <span class="block opacity-0 group-hover:opacity-100 transition duration-300 text-brand">muncul saat hover</span></div></div>
+</template><template data-demo data-title="Efek kaca (backdrop-blur)">
+<div class="relative rounded-xl overflow-hidden bg-grad-sunset p-6 h-32 text-white font-bold"><div class="backdrop-blur-md bg-white/20 border border-white/30 rounded-xl p-4 max-w-xs">backdrop-blur-md + bg-white/20</div></div>
+</template><div class="clsref" data-cls="static relative absolute fixed sticky inset-0 top-0 left-1/2 translate-center center-abs z-0 z-10 z-30 z-50 z-max -z-10 isolate overflow-hidden overflow-auto shadow-sm shadow-lg shadow-xl shadow-brand ring-2 ring-brand opacity-50 blur-sm backdrop-blur-md grayscale transition duration-300 ease-spring scale-105 rotate-3 -translate-y-1 hover:scale-105 hover:shadow-lg focus:ring-2 active:scale-95 group-hover:opacity-100 dark:bg-black hover-lift"></div></section>
+<section id="layout"><h2>Layout</h2><p>Class layout memakai ukuran fluid (<code>clamp()</code>) sehingga spacing menyesuaikan layar tanpa breakpoint tambahan.</p><p>Class yang tersedia:</p><ul><li><strong>Container:</strong> <code>container</code>, <code>container-sm</code>, <code>container-md</code>, <code>container-lg</code>, <code>container-xl</code>, <code>container-fluid</code></li><li><strong>Section:</strong> <code>section</code>, <code>section-sm</code>, <code>section-lg</code>, <code>section-xl</code>, <code>section-alt</code>, <code>section-dark</code></li><li><strong>Hero:</strong> <code>hero</code>, <code>hero-sm</code>, <code>hero-full</code>, <code>hero-media</code> (gambar latar)</li><li><strong>Susunan:</strong> <code>stack</code> / <code>stack-sm</code> / <code>stack-lg</code>, <code>row</code>, <code>row-between</code>, <code>center</code>, <code>split</code> (dua kolom mulai 768px)</li><li><strong>Grid:</strong> <code>grid-auto</code> dengan <code>grid-sm</code> (min 11rem) atau <code>grid-lg</code> (min 22rem), plus <code>grid-cols-1</code> sampai <code>grid-cols-12</code></li><li><strong>Jarak fluid:</strong> <code>gap-fluid</code>, <code>gap-fluid-lg</code>, <code>pad</code>, <code>pad-lg</code>, <code>pad-xl</code></li><li><strong>Tipografi fluid:</strong> <code>display</code>, <code>title</code>, <code>lead</code>, <code>text-fluid-lg</code> sampai <code>text-fluid-3xl</code>, <code>text-balance</code></li><li><strong>Lainnya:</strong> <code>sticky-top</code>, <code>divider</code>, <code>divider-text</code>, <code>prose</code> (gaya artikel, max 68ch), <code>hide-scrollbar</code></li></ul><template data-demo data-title="Grid otomatis dan stat">
+<div class="grid-auto grid-sm">
+  <div class="card stat"><span class="stat-value">12K</span><span class="stat-label">Pengguna</span></div>
+  <div class="card stat"><span class="stat-value">98%</span><span class="stat-label">Kepuasan</span></div>
+  <div class="card stat"><span class="stat-value">4,9</span><span class="stat-label">Rating</span></div>
+</div>
+</template><template data-demo data-title="Stack, row, dan split">
+<div class="split">
+  <div class="stack">
+    <span class="badge badge-dot">Baru</span>
+    <h2 class="title">Bangun lebih cepat</h2>
+    <p class="text-muted">Spacing vertikal diatur oleh stack.</p>
+    <div class="row">
+      <button class="btn">Mulai</button>
+      <button class="btn btn-outline">Pelajari</button>
+    </div>
+  </div>
+  <div class="card glass"><p class="lead">Panel di kolom kedua (split dua kolom mulai 768px)</p></div>
+</div>
+</template><template data-demo data-title="Hero + footer gelap (ubah lebar perangkat)">
+<header class="hero aurora hero-sm"><div class="container stack center"><span class="eyebrow">hero</span><h1 class="text-fluid-xl font-extrabold tracking-tighter text-balance">Judul besar yang responsif</h1><p class="lead">Subjudul pendek.</p></div></header>
+<section class="section section-alt"><div class="container grid-auto gap-fluid"><div class="card card-hover">section-alt</div><div class="card card-hover">section-alt</div></div></section>
+<footer class="footer footer-dark footer-lg"><div class="container"><div class="footer-grid"><div class="stack"><b class="text-xl text-white">Merek</b><p class="text-sm">Deskripsi singkat.</p></div><div><p class="footer-title">Produk</p><nav class="footer-links"><a href="#">Fitur</a><a href="#">Harga</a></nav></div><div><p class="footer-title">Bantuan</p><nav class="footer-links"><a href="#">FAQ</a><a href="#">Kontak</a></nav></div></div><div class="footer-bottom"><span>© 2026 Merek</span></div></div></footer>
+</template><div class="clsref" data-cls="page main section section-alt section-dark container container-md container-fluid hero hero-sm hero-full hero-media footer footer-lg footer-dark footer-grid footer-title footer-links footer-bottom social"></div></section>
+
+<section id="utilities"><h2>Utilitas</h2><p>Nama utilitas mengikuti konvensi utility-first yang umum, sehingga mudah ditebak: <code>p-4</code>, <code>mt-6</code>, <code>gap-3</code>, <code>flex</code>, <code>items-center</code>, <code>justify-between</code>, <code>rounded-xl</code>, <code>shadow-xl</code>, <code>text-2xl</code>, <code>font-bold</code>, <code>w-full</code>, <code>max-w-xl</code>.</p><pre><code>&lt;div class="flex items-center justify-between gap-4 p-4 rounded-xl bg-surface border"&gt;
+  &lt;span class="text-muted text-sm"&gt;Status&lt;/span&gt;
+  &lt;span class="text-brand font-semibold"&gt;Aktif&lt;/span&gt;
+&lt;/div&gt;</code></pre><p><strong>Warna.</strong> Selain palet bernomor (<code>bg-indigo-500</code>, <code>text-green-600</code>, <code>border-red-200</code>, <code>from-sky-400 to-teal-500</code>), ada warna semantik yang mengikuti tema: <code>bg-brand</code>, <code>bg-brand-soft</code>, <code>bg-surface</code>, <code>bg-surface-2</code>, <code>text-brand</code>, <code>text-muted</code>, <code>text-danger</code>, <code>border-line</code>. Opacity dituliskan dengan garis miring, misalnya <code>bg-brand/10</code>.</p><p><strong>Varian.</strong> Tambahkan prefix untuk kondisi tertentu:</p><pre><code>md:grid-cols-3          /* mulai 768px */
+hover:bg-brand-soft     /* saat di-hover */
+focus:ring-2            /* saat fokus */
+dark:text-white         /* saat class "dark" aktif */
+group-hover:text-brand  /* saat parent .group di-hover */</code></pre><p>Breakpoint: <code>sm:</code> 640px, <code>md:</code> 768px, <code>lg:</code> 1024px, <code>xl:</code> 1280px.</p><p><strong>Efek visual:</strong> <code>glass</code>, <code>aurora</code>, <code>text-gradient</code>, <code>text-glow</code>, <code>text-outline</code>, <code>shadow-glow</code>, <code>hover-lift</code>, <code>shine</code>, <code>link-underline</code>, <code>marker</code>, <code>drop-cap</code>, <code>caret</code>.</p><template data-demo data-title="Utilitas, warna, dan efek">
+<div class="flex items-center justify-between gap-4 p-4 rounded-xl bg-surface border">
+  <span class="text-muted text-sm">Status</span>
+  <span class="text-brand font-semibold">Aktif</span>
+</div>
+<div class="flex flex-wrap gap-2 mt-4">
+  <span class="p-3 rounded-lg bg-indigo-500 text-white">indigo-500</span>
+  <span class="p-3 rounded-lg bg-brand/10 text-brand">brand/10</span>
+  <span class="p-3 rounded-lg bg-surface-2 border text-muted">surface-2</span>
+</div>
+<p class="mt-4 text-gradient text-fluid-lg font-extrabold">Teks gradien</p>
+<div class="grid-auto grid-sm mt-4">
+  <div class="card hover-lift">hover-lift</div>
+  <div class="card shadow-glow">shadow-glow</div>
+  <div class="card aurora">aurora</div>
+</div>
+</template></section>
+
+<section id="buttons"><h2>Button &amp; badge</h2><ul><li><strong>Ukuran:</strong> <code>btn-xs</code>, <code>btn-sm</code>, <code>btn-lg</code>, <code>btn-xl</code></li><li><strong>Bentuk:</strong> <code>btn-pill</code>, <code>btn-circle</code>, <code>btn-square</code>, <code>btn-icon</code>, <code>btn-block</code>, <code>btn-group</code></li><li><strong>Gaya:</strong> <code>btn-outline</code>, <code>btn-soft</code>, <code>btn-ghost</code>, <code>btn-link</code>, <code>btn-glass</code>, <code>btn-dark</code>, <code>btn-gradient</code>, <code>btn-3d</code></li><li><strong>Warna:</strong> <code>btn-red</code>, <code>btn-green</code>, <code>btn-blue</code>, <code>btn-amber</code>, <code>btn-teal</code>, <code>btn-pink</code>, dan seterusnya, serta <code>btn-danger</code> dan <code>btn-success</code>. Varian outline dan soft memakai pola <code>btn-outline-red</code> dan <code>btn-soft-red</code>.</li><li><strong>Badge:</strong> <code>badge-green</code>, <code>badge-red</code>, <code>badge-amber</code>, <code>badge-gray</code>, <code>badge-count</code>, <code>badge-dot</code>, <code>badge-lg</code></li></ul><p>Tombol dengan <code>disabled</code> atau class <code>disabled</code> otomatis redup dan tidak bisa diklik.</p><template data-demo data-title="Gaya tombol">
+<div class="row">
+  <button class="btn">Primary</button>
+  <button class="btn btn-outline">Outline</button>
+  <button class="btn btn-soft">Soft</button>
+  <button class="btn btn-ghost">Ghost</button>
+  <button class="btn btn-dark">Dark</button>
+  <button class="btn btn-gradient btn-pill">Gradient</button>
+  <button class="btn btn-3d">3D</button>
+  <button class="btn btn-loading">Menyimpan</button>
+  <button class="btn" disabled>Disabled</button>
+</div>
+</template><template data-demo data-title="Ukuran, warna, dan grup">
+<div class="row">
+  <button class="btn btn-xs">xs</button>
+  <button class="btn btn-sm">sm</button>
+  <button class="btn">md</button>
+  <button class="btn btn-lg">lg</button>
+</div>
+<div class="row mt-4">
+  <button class="btn btn-red">Red</button>
+  <button class="btn btn-green">Green</button>
+  <button class="btn btn-amber">Amber</button>
+  <button class="btn btn-outline-gray">Outline gray</button>
+  <button class="btn btn-soft-pink">Soft pink</button>
+</div>
+<div class="row mt-4">
+  <span class="btn-group"><button class="btn btn-outline">Kiri</button><button class="btn btn-outline">Tengah</button><button class="btn btn-outline">Kanan</button></span>
+  <button class="btn btn-circle" aria-label="Tambah"><i class="i i-plus"></i></button>
+  <button class="btn btn-icon btn-ghost" aria-label="Cari"><i class="i i-search"></i></button>
+</div>
+</template><template data-demo data-title="Badge dan chip">
+<div class="row">
+  <span class="badge">Default</span>
+  <span class="badge badge-green badge-dot">Online</span>
+  <span class="badge badge-red">Gagal</span>
+  <span class="badge badge-amber">Menunggu</span>
+  <span class="badge badge-gray">Draft</span>
+  <span class="chip active">Aktif</span>
+  <span class="chip">Chip</span>
+</div>
+</template></section>
+
+<section id="cards"><h2>Card</h2><p>Varian: <code>card-hover</code> (naik saat hover), <code>card-elevated</code>, <code>card-flat</code>, <code>card-brand</code>, <code>card-link</code>, <code>card-overlay</code>, <code>card-flush</code>. Ukuran padding: <code>card-sm</code>, <code>card-lg</code>, <code>card-xl</code>. Bagian dalam: <code>card-header</code>, <code>card-content</code>, <code>card-footer</code>.</p><p>Komponen terkait: <code>stat</code> (<code>stat-value</code>, <code>stat-label</code>), <code>pricing</code> dengan <code>price-big</code> dan <code>featured</code>, <code>product</code>, <code>profile</code>, <code>avatar</code> dan <code>avatars</code>, <code>quote</code>, <code>timeline</code>, <code>checklist</code>, <code>progress</code>, <code>skeleton</code>, <code>chip</code>, <code>logo-cloud</code>, <code>gallery</code>, <code>carousel</code>.</p><template data-demo data-title="Varian card">
+<div class="grid-auto grid-sm">
+  <article class="card card-hover">
+    <h3 class="card-title">Card hover</h3>
+    <p class="card-text text-muted">Naik saat di-hover.</p>
+  </article>
+  <article class="card card-elevated">
+    <h3 class="card-title">Elevated</h3>
+    <p class="card-text text-muted">Bayangan lebih tebal.</p>
+  </article>
+  <article class="card card-brand">
+    <h3 class="card-title">Brand</h3>
+    <p class="card-text">Warna brand penuh.</p>
+  </article>
+</div>
+</template><template data-demo data-title="Komponen pendukung">
+<div class="stack">
+  <div class="row"><span class="avatar">AN</span><span class="avatar avatar-sm">B</span><span class="avatar avatar-xl">C</span></div>
+  <div class="progress"><i style="width:68%"></i></div>
+  <div class="skeleton skeleton-title"></div>
+  <div class="skeleton skeleton-text"></div>
+  <ul class="checklist"><li>Tanpa JavaScript</li><li>Dark mode bawaan</li><li>Responsif</li></ul>
+  <div class="timeline">
+    <div><strong>v1.2</strong> <span class="text-muted">Efek dan tema</span></div>
+    <div><strong>v1.4</strong> <span class="text-muted">Variabel semantik</span></div>
+  </div>
+</div>
+</template></section>
+
+<section id="gambar"><h2>Gambar, galeri &amp; avatar</h2><p>Placeholder <code>.ph</code> (gradient + emoji dari <code>data-ph</code>, tanpa file gambar) dan efek untuk <code>&lt;img&gt;</code>. Untuk foto sungguhan, ganti <code>.ph</code> dengan <code>&lt;img class="img-cover" loading="lazy"&gt;</code>.</p><template data-demo data-title="Placeholder dan efek gambar">
+<div class="grid-auto grid-sm gap-4 text-xs font-bold text-center"><div><div class="ph ph-1 aspect-square rounded-xl" data-ph="🌅"></div><p class="mt-2">ph-1</p></div><div><div class="img-zoom rounded-xl"><div class="ph ph-3 aspect-square" data-ph="🔍"></div></div><p class="mt-2">img-zoom</p></div><div><div class="ph ph-2 aspect-square rounded-xl img-gray" data-ph="🎨"></div><p class="mt-2">img-gray</p></div><div><div class="ph ph-6 aspect-square rounded-xl img-shadow" data-ph="🌌"></div><p class="mt-2">img-shadow</p></div></div>
+</template><template data-demo data-title="Avatar, figure, dan galeri">
+<div class="stack"><div class="row"><span class="avatar avatar-sm">S</span><span class="avatar">M</span><span class="avatar avatar-lg">L</span><span class="avatar avatar-xl">XL</span><div class="avatars"><span class="avatar">A</span><span class="avatar" style="--brand:var(--c-pink-600)">B</span><span class="avatar" style="--brand:var(--c-teal-600)">C</span></div></div><figure class="figure max-w-xs"><div class="ph ph-1 aspect-video rounded-xl" data-ph="🏞️"></div><figcaption class="figcaption">figure + figcaption</figcaption></figure><div class="gallery"><div class="ph ph-1 aspect-square" data-ph="1"></div><div class="ph ph-2 aspect-square" data-ph="2"></div><div class="ph ph-3 aspect-square" data-ph="3"></div><div class="ph ph-4 aspect-square" data-ph="4"></div></div></div>
+</template><div class="clsref" data-cls="img img-cover img-contain img-zoom img-gray img-frame img-shadow figure figcaption gallery gallery-masonry avatar avatar-sm avatar-lg avatar-xl avatars ph ph-1 ph-2 ph-3 ph-4 ph-5 ph-6 object-cover aspect-square aspect-video rounded-xl rounded-full"></div></section>
+<section id="navbar"><h2>Navbar</h2><p>Navbar bersifat sticky. Menu mobile tampil saat <code>.navbar-menu</code> mendapat class <code>open</code>, dan ikon hamburger berubah menjadi X saat <code>aria-expanded="true"</code> pada <code>.navbar-toggle</code>. Tambahkan <code>scrolled</code> setelah halaman di-scroll untuk bayangan dan latar yang lebih pekat.</p><p>Varian: <code>navbar-transparent</code> (fixed, transparan sampai <code>scrolled</code>), <code>navbar-dark</code>. Untuk aplikasi: <code>app</code> + <code>sidebar</code> + <code>nav-link</code> (sidebar tampil mulai 768px), <code>appbar</code>, <code>bottom-nav</code> dengan <code>has-bottom-nav</code> pada body, <code>fab</code>, <code>breadcrumb</code>, <code>pagination</code>, <code>tabs</code> dengan <code>tab</code>.</p><template data-demo data-title="Navbar dengan menu mobile" data-h="230">
+<header class="navbar">
+  <a class="navbar-brand" href="#">Nusa</a>
+  <div class="navbar-end">
+    <button class="btn btn-sm">Masuk</button>
+    <button class="navbar-toggle" aria-expanded="false" aria-label="Menu"><span class="hamburger"></span></button>
+  </div>
+  <nav class="navbar-menu">
+    <a class="active" href="#">Home</a>
+    <a href="#">Docs</a>
+    <a href="#">Kontak</a>
+  </nav>
+</header>
+<script>
+  const t = document.querySelector(".navbar-toggle");
+  const m = document.querySelector(".navbar-menu");
+  t.onclick = () => t.setAttribute("aria-expanded", m.classList.toggle("open"));
+</script>
+</template><template data-demo data-title="Tabs, accordion, dropdown, tooltip" data-h="280">
+<div class="tabs">
+  <button class="tab active">Ringkasan</button>
+  <button class="tab">Detail</button>
+  <button class="tab">Riwayat</button>
+</div>
+<details class="acc mt-4" open><summary>Apa itu Nusa CSS?</summary><p class="text-muted mt-2">Framework CSS utility-first yang ringan.</p></details>
+<details class="acc"><summary>Apakah butuh JavaScript?</summary><p class="text-muted mt-2">Tidak untuk accordion ini.</p></details>
+<div class="row mt-4">
+  <details class="dropdown"><summary class="btn btn-outline">Menu</summary><div><a class="nav-link" href="#">Profil</a><a class="nav-link" href="#">Keluar</a></div></details>
+  <button class="btn btn-soft" data-tip="Tooltip dari CSS">Hover saya</button>
+</div>
+</template></section>
+
+<section id="forms"><h2>Form &amp; tabel</h2><p>Elemen form: <code>input</code>, <code>textarea</code>, <code>select</code>, <code>label</code>, <code>field</code>, <code>check</code>, <code>switch</code>, <code>input-group</code>, <code>qty</code>, <code>rating</code>, <code>newsletter</code>.</p><p>Varian tabel: <code>table-striped</code>, <code>table-bordered</code>, <code>table-sm</code>, <code>table-lg</code>, <code>table-flat</code>, <code>table-dark</code>, <code>table-card</code>, <code>table-center</code>. Bungkus dengan <code>table-responsive</code> agar bisa di-scroll horizontal di layar kecil.</p><template data-demo data-title="Elemen form">
+<form class="stack" onsubmit="return false">
+  <label class="field"><span>Email</span><input class="input" type="email" placeholder="nama@email.com"><small>Tidak akan dibagikan.</small></label>
+  <label class="field"><span>Peran</span><select class="select"><option>Developer</option><option>Designer</option></select></label>
+  <label class="field"><span>Pesan</span><textarea class="textarea" rows="3"></textarea></label>
+  <label class="row"><input type="checkbox" class="check" checked> Setuju syarat</label>
+  <label class="row"><input type="checkbox" class="switch" checked> Notifikasi</label>
+  <button class="btn">Kirim</button>
+</form>
+</template><template data-demo data-title="Tabel">
+<div class="table-card"><div class="table-responsive">
+  <table class="table table-striped">
+    <thead><tr><th>Paket</th><th>Harga</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td>Starter</td><td>Gratis</td><td><span class="badge badge-green">Aktif</span></td></tr>
+      <tr><td>Pro</td><td>Rp99.000</td><td><span class="badge badge-amber">Trial</span></td></tr>
+      <tr><td>Tim</td><td>Rp299.000</td><td><span class="badge badge-gray">Draft</span></td></tr>
+    </tbody>
+  </table>
+</div></div>
+</template></section>
+
+<section id="feedback"><h2>Alert, modal, toast</h2><p>Alert: <code>alert-success</code>, <code>alert-warn</code>, <code>alert-error</code>, <code>alert-info</code>, juga per warna (<code>alert-blue</code>, <code>alert-amber</code>, dst), dengan modifier <code>alert-solid</code>, <code>alert-bar</code>, <code>alert-title</code>, <code>alert-close</code>.</p><p>Modal tersembunyi sampai diberi class <code>open</code>. Ukuran: <code>modal-sm</code>, <code>modal-lg</code>, <code>modal-xl</code>, <code>modal-full</code>; tipe lain: <code>drawer</code> (dari kanan), <code>sheet</code> (dari bawah), <code>modal-blur</code>. Tambahkan <code>nu-lock</code> pada <code>&lt;body&gt;</code> untuk mengunci scroll saat modal terbuka.</p><p>Toast diletakkan di dalam <code>.toasts</code> (kanan bawah) atau <code>.toasts toasts-top</code> (kanan atas), dengan varian <code>toast-success</code>, <code>toast-error</code>, <code>toast-warn</code>. Komponen kecil lain: <code>spinner</code>, <code>loading-overlay</code>, <code>is-loading</code>, <code>kbd</code>, <code>dropdown</code> (berbasis <code>&lt;details&gt;</code>), <code>details.acc</code> (accordion), dan atribut <code>data-tip="..."</code> untuk tooltip.</p><template data-demo data-title="Alert">
+<div class="stack">
+  <div class="alert alert-success alert-bar"><strong class="alert-title">Berhasil</strong> Data tersimpan.</div>
+  <div class="alert alert-warn">Kuota hampir habis.</div>
+  <div class="alert alert-error">Terjadi kesalahan.</div>
+  <div class="alert alert-info alert-solid">Info dengan latar solid.</div>
+</div>
+</template><template data-demo data-title="Modal" data-h="300">
+<button class="btn" id="openModal">Buka modal</button>
+<div class="modal" id="m">
+  <div class="card">
+    <div class="modal-header"><h3>Konfirmasi</h3><button class="modal-close" aria-label="Tutup">&times;</button></div>
+    <div class="modal-body">Simpan perubahan?</div>
+    <div class="modal-footer"><button class="btn btn-ghost" data-close>Batal</button><button class="btn" data-close>Simpan</button></div>
+  </div>
+</div>
+<script>
+  const m = document.getElementById("m");
+  document.getElementById("openModal").onclick = () => m.classList.add("open");
+  m.onclick = (e) => { if (e.target === m || e.target.closest(".modal-close,[data-close]")) m.classList.remove("open"); };
+</script>
+</template><template data-demo data-title="Toast" data-h="200">
+<button class="btn" id="go">Tampilkan toast</button>
+<div class="toasts" id="toasts"></div>
+<script>
+  document.getElementById("go").onclick = () => {
+    const t = document.createElement("div");
+    t.className = "toast toast-success";
+    t.textContent = "Tersalin!";
+    document.getElementById("toasts").append(t);
+    setTimeout(() => t.remove(), 2500);
+  };
+</script>
+</template></section>
+
+<section id="icons"><h2>Ikon</h2><p>Ikon berupa mask CSS, jadi warnanya mengikuti <code>currentColor</code> dan ukurannya mengikuti <code>font-size</code>. Tidak perlu file SVG atau library tambahan.</p><p>Ikon tersedia: <code>i-home</code>, <code>i-user</code>, <code>i-users</code>, <code>i-settings</code>, <code>i-search</code>, <code>i-menu</code>, <code>i-x</code>, <code>i-check</code>, <code>i-plus</code>, <code>i-minus</code>, <code>i-trash</code>, <code>i-edit</code>, <code>i-bell</code>, <code>i-mail</code>, <code>i-phone</code>, <code>i-heart</code>, <code>i-star</code>, <code>i-cart</code>, <code>i-wallet</code>, <code>i-receipt</code>, <code>i-chart</code>, <code>i-calendar</code>, <code>i-clock</code>, <code>i-sun</code>, <code>i-moon</code>, <code>i-lock</code>, <code>i-eye</code>, <code>i-link</code>, <code>i-filter</code>, <code>i-logout</code>, <code>i-tag</code>, <code>i-truck</code>, <code>i-printer</code>, <code>i-copy</code>, <code>i-upload</code>, <code>i-download</code>, <code>i-image</code>, <code>i-info</code>, <code>i-alert</code>, <code>i-globe</code>, <code>i-play</code>, <code>i-arrow-right</code>, <code>i-grid</code>, <code>i-box</code>, <code>i-code</code>.</p><template data-demo data-title="Ikon dan ukurannya">
+<div class="grid-auto grid-sm">
+  <div class="center"><i class="i i-home"></i><small>i-home</small></div>
+  <div class="center"><i class="i i-user"></i><small>i-user</small></div>
+  <div class="center"><i class="i i-search"></i><small>i-search</small></div>
+  <div class="center"><i class="i i-bell"></i><small>i-bell</small></div>
+  <div class="center"><i class="i i-mail"></i><small>i-mail</small></div>
+  <div class="center"><i class="i i-cart"></i><small>i-cart</small></div>
+  <div class="center"><i class="i i-chart"></i><small>i-chart</small></div>
+  <div class="center"><i class="i i-code"></i><small>i-code</small></div>
+</div>
+<div class="row mt-4">
+  <i class="i i-heart text-danger" style="font-size:2rem"></i>
+  <i class="i i-star text-brand" style="font-size:2rem"></i>
+  <button class="btn"><i class="i i-download"></i> Unduh</button>
+</div>
+</template></section>
+
+<section id="loading"><h2>Efek loading</h2><p>Spinner, titik, equalizer, skeleton, shimmer, progress bar, dan <code>is-loading</code> untuk kotak yang sedang memuat.</p><template data-demo data-title="Indikator">
+<div class="row gap-8"><span class="spinner"></span><span class="spinner spinner-lg"></span><span class="dots"><i></i><i></i><i></i></span><span class="eq"><i></i><i></i><i></i><i></i></span><span class="orbit"></span><button class="btn btn-loading">Menyimpan</button><span class="text-shimmer font-bold">Memuat data…</span></div>
+</template><template data-demo data-title="Skeleton, shimmer, dan progress">
+<div class="stack max-w-md"><div class="card stack"><div class="row"><div class="skeleton skeleton-circle"></div><div class="grow"><div class="skeleton skeleton-title"></div><div class="skeleton skeleton-text mt-3"></div></div></div><div class="skeleton skeleton-img"></div><div class="shimmer bg-surface-2 h-10 rounded-lg"></div></div><div class="progress progress-indeterminate"><i></i></div><div class="progress progress-striped"><i style="width:65%"></i></div><div class="card is-loading"><b>is-loading</b><p class="card-text">Konten meredup dan spinner muncul di tengah.</p></div></div>
+</template><div class="clsref" data-cls="spinner spinner-sm spinner-lg dots eq orbit skeleton skeleton-text skeleton-title skeleton-circle skeleton-img shimmer text-shimmer is-loading btn-loading progress progress-indeterminate progress-striped animate-spin animate-pulse"></div></section>
+<section id="animate"><h2>Animate</h2><p>Animasi dipicu dengan class <code>animate-*</code>. Keyframes memakai prefix <code>nu-</code> (<code>nu-up</code>, <code>nu-fade</code>, <code>nu-zoom</code>, dan lainnya).</p><ul><li><strong>Sekali jalan (masuk):</strong> <code>animate-up</code>, <code>animate-down</code>, <code>animate-left</code>, <code>animate-right</code>, <code>animate-zoom</code>, <code>animate-fade</code>, <code>animate-wiggle</code></li><li><strong>Berulang:</strong> <code>animate-float</code>, <code>animate-spin</code>, <code>animate-ping</code>, <code>animate-pulse</code>, <code>animate-bounce</code>, <code>animate-gradient</code>, <code>animate-blink</code></li><li><strong>Delay animasi:</strong> <code>delay-100</code> sampai <code>delay-700</code></li><li><strong>Transisi:</strong> <code>transition</code>, <code>transition-colors</code>, <code>transition-transform</code>, <code>duration-150</code> sampai <code>duration-1000</code>, <code>ease-in</code>, <code>ease-out</code>, <code>ease-in-out</code>, <code>ease-spring</code>, <code>td-200</code> sampai <code>td-1000</code> (transition delay)</li><li><strong>Efek khusus:</strong> <code>shimmer</code>, <code>text-shimmer</code>, <code>shine</code>, <code>ripple</code>, <code>marquee</code>, <code>orbit</code>, <code>spark</code>, <code>donut</code>, <code>loader-bar</code></li></ul><p>Jika pengguna mengaktifkan <em>reduce motion</em> di sistemnya, durasi animasi dan transisi otomatis dipangkas hampir nol, dan elemen <code>.reveal</code> langsung tampil.</p><template data-demo data-title="Animasi masuk, berulang, dan stagger">
+<button class="btn btn-sm" id="re"><i class="i i-play"></i> Ulangi</button>
+<div id="box" class="mt-4">
+  <div class="grid-auto grid-sm stagger">
+    <div class="card animate-up">animate-up</div>
+    <div class="card animate-zoom">animate-zoom</div>
+    <div class="card animate-left">animate-left</div>
+  </div>
+  <div class="row mt-4">
+    <span class="badge animate-float">float</span>
+    <span class="badge animate-pulse">pulse</span>
+    <span class="badge animate-bounce">bounce</span>
+    <span class="spinner animate-spin"></span>
+  </div>
+</div>
+<script>
+  const box = document.getElementById("box");
+  document.getElementById("re").onclick = () => { box.innerHTML = box.innerHTML; };
+</script>
+</template></section>
+
+<section id="reveal"><h2>Reveal &amp; stagger</h2><p><code>.reveal</code> menyembunyikan elemen (transparan dan bergeser ke bawah) sampai class <code>in</code> ditambahkan, biasanya lewat <code>IntersectionObserver</code> saat elemen masuk layar.</p><p>Arah dan gaya: <code>reveal-left</code>, <code>reveal-right</code>, <code>reveal-zoom</code>, <code>reveal-flip</code>, <code>reveal-blur</code>. Delay transisi: <code>rd-1</code> sampai <code>rd-6</code> (0,1 detik per langkah). Class <code>stagger</code> memberi <code>animation-delay</code> bertahap (80 ms per anak, sampai 8 anak pertama) pada elemen yang memakai <code>animate-*</code>.</p><template data-demo data-title="Reveal dengan arah dan delay">
+<button class="btn btn-sm" id="re"><i class="i i-play"></i> Ulangi</button>
+<div class="grid-auto grid-sm mt-4">
+  <div class="card reveal">reveal</div>
+  <div class="card reveal reveal-left rd-2">reveal-left rd-2</div>
+  <div class="card reveal reveal-zoom rd-3">reveal-zoom rd-3</div>
+  <div class="card reveal reveal-blur rd-4">reveal-blur rd-4</div>
+</div>
+<script>
+  const els = document.querySelectorAll(".reveal");
+  const show = () => els.forEach((e) => e.classList.add("in"));
+  setTimeout(show, 100);
+  document.getElementById("re").onclick = () => {
+    els.forEach((e) => e.classList.remove("in"));
+    setTimeout(show, 300);
+  };
+</script>
+</template></section>
+
+<section id="scroll"><h2>Scroll effects</h2><p>Efek berikut dijalankan oleh CSS <em>scroll-driven animation</em>. Tidak perlu JavaScript, tetapi hanya aktif di browser yang mendukung <code>animation-timeline: view()</code>.</p><pre><code>&lt;h2 class="scroll-fade"&gt;Muncul saat di-scroll&lt;/h2&gt;
+&lt;img class="scroll-scale" src="foto.jpg" alt=""&gt;
+&lt;p class="scroll-slide"&gt;Geser masuk&lt;/p&gt;
+&lt;span class="scroll-fill"&gt;Garis bawah terisi&lt;/span&gt;</code></pre><p>Class lain yang berkaitan dengan scroll tetapi membutuhkan script kecil: <code>scroll-bar</code> (progress bar di atas halaman; atur <code>width</code> lewat JS), <code>to-top</code> (tombol kembali ke atas; tambahkan <code>show</code> setelah scroll), <code>parallax</code>, <code>[data-tilt]</code>, dan <code>scroll-hint</code> (panah yang bergerak naik-turun).</p></section>
+
+<section id="vanilla"><h2>Vanilla JavaScript</h2><p>Berikut contoh script minimal untuk mengaktifkan state yang dibutuhkan class di atas.</p><pre><code>// Dark mode
+document.documentElement.classList.toggle("dark");
+
+// Reveal saat masuk layar
+const io = new IntersectionObserver((entries) =&gt; {
+  entries.forEach((e) =&gt; {
+    if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+  });
+}, { threshold: 0.15 });
+document.querySelectorAll(".reveal").forEach((el) =&gt; io.observe(el));
+
+// Navbar mobile
+const toggle = document.querySelector(".navbar-toggle");
+const menu = document.querySelector(".navbar-menu");
+toggle.addEventListener("click", () =&gt; {
+  const open = menu.classList.toggle("open");
+  toggle.setAttribute("aria-expanded", open);
+});
+
+// Navbar berubah saat di-scroll
+addEventListener("scroll", () =&gt; {
+  document.querySelector(".navbar").classList.toggle("scrolled", scrollY &gt; 8);
+}, { passive: true });
+
+// Modal
+const modal = document.querySelector("#m1");
+modal.classList.add("open");
+document.body.classList.add("nu-lock");</code></pre></section>
+
+<section id="react"><h2>React</h2><p>Nusa CSS hanya berupa stylesheet, jadi di React cukup impor CSS sekali dan pakai <code>className</code>. State seperti <code>open</code> dan <code>in</code> diatur dengan state biasa.</p><pre><code>import "./assets/nusa.css";
+import { useState } from "react";
+
+export default function Example() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    &lt;&gt;
+      &lt;button className="btn btn-gradient" onClick={() =&gt; setOpen(true)}&gt;
+        Buka modal
+      &lt;/button&gt;
+
+      &lt;div className={"modal" + (open ? " open" : "")}&gt;
+        &lt;div className="card"&gt;
+          &lt;div className="modal-header"&gt;
+            &lt;h3&gt;Halo Nusa&lt;/h3&gt;
+            &lt;button className="modal-close" onClick={() =&gt; setOpen(false)}&gt;&amp;times;&lt;/button&gt;
+          &lt;/div&gt;
+          &lt;p className="modal-body animate-up"&gt;Dibangun dengan class Nusa CSS.&lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/&gt;
+  );
+}</code></pre><p>Dark mode dan tema tetap diatur lewat class dan atribut pada elemen <code>&lt;html&gt;</code> (<code>document.documentElement</code>). Karena stylesheet tidak bergantung pada DOM tertentu, pendekatan yang sama berlaku untuk Vue, Svelte, atau framework lain. React Native tidak didukung karena tidak memakai CSS.</p></section>
+
+</article></div></main>
+<footer class="footer"><div><a class="logo" href="index.html"><span class="logo-mark">N</span><span>NusaCss</span></a><p>Build with clarity.</p></div><div class="footer-links"><a href="index.html">Home</a><a href="template.html">Templates</a><a href="contact.html">Contact</a><a href="privacy-policy.html">Privacy</a></div><div class="footer-bottom">© <span class="current-year"></span> NusaCss</div></footer><script>(()=>{const root=document.documentElement,dark=()=>root.getAttribute("data-theme")!=="light",css=new URL("assets/nusa.css",location.href).href,frames=[],
+mk=(t,c,x)=>{const e=document.createElement(t);c&&(e.className=c);x&&(e.textContent=x);return e},
+dedent=s=>{const l=s.replace(/^\n+|\s+$/g,"").split("\n"),n=Math.min(...l.filter(x=>x.trim()).map(x=>x.match(/^ */)[0].length));return l.map(x=>x.slice(n)).join("\n")},
+copy=(x,b)=>{(navigator.clipboard?navigator.clipboard.writeText(x):Promise.reject()).then(()=>{const o=b.textContent;b.textContent="Tersalin";setTimeout(()=>b.textContent=o,1200)}).catch(()=>{})},
+group=(items,on)=>{const w=mk("div");items.forEach(([n,f],i)=>{const b=mk("button","",n);b.type="button";b.setAttribute("aria-pressed",String(i===on));b.onclick=()=>{[...w.children].forEach(x=>x.setAttribute("aria-pressed",String(x===b)));f()};w.append(b)});return w};
+document.querySelectorAll("template[data-demo]").forEach(t=>{const code=dedent(t.innerHTML),fig=mk("figure","demo"),bar=mk("div","demo-bar"),stage=mk("div","demo-stage"),f=mk("iframe","demo-frame"),pre=mk("pre"),c=mk("code","",code),fixed=t.dataset.h;
+f.title=t.dataset.title;f.style.width="100%";f.style.height=(fixed||140)+"px";pre.append(c);pre.style.display="none";stage.append(f);
+const fit=()=>{const d=f.contentDocument;if(d&&!fixed)f.style.height=d.documentElement.scrollHeight+"px"},
+setW=w=>{f.style.width=w;setTimeout(fit,80)},
+views=group([["Pratinjau",()=>{stage.style.display="";pre.style.display="none"}],["Kode",()=>{stage.style.display="none";pre.style.display=""}]],0),
+widths=group([["Mobile",()=>setW("375px")],["Tablet",()=>setW("768px")],["Desktop",()=>setW("100%")]],2),
+cp=mk("button","","Salin");cp.type="button";cp.onclick=()=>copy(code,cp);
+const right=mk("div");right.append(widths,cp);bar.append(mk("b","",t.dataset.title),views,right);fig.append(bar,stage,pre);t.after(fig);
+f.srcdoc='<!doctype html><html'+(dark()?' class="dark"':'')+'><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="'+css+'"><style>body{margin:0;padding:1.25rem;background:var(--bg);color:var(--text);font-family:var(--font)}</style></head><body>'+code+'<script>document.addEventListener("click",e=>{if(e.target.closest("a[href^=\'#\']"))e.preventDefault()})<\/script></body></html>';
+f.addEventListener("load",fit);frames.push(f)});
+document.querySelectorAll(".clsref").forEach(e=>{e.innerHTML="<p>Kelas terkait · klik untuk menyalin</p>";e.dataset.cls.split(" ").forEach(k=>{const b=mk("button","",k);b.type="button";b.onclick=()=>copy(k,b);e.append(b)})});
+new MutationObserver(()=>frames.forEach(f=>f.contentDocument&&f.contentDocument.documentElement.classList.toggle("dark",dark()))).observe(root,{attributes:true,attributeFilter:["data-theme","class"]});})();</script>
+<script type="module" src="assets/main.js"></script></body></html>
